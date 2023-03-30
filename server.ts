@@ -6,7 +6,7 @@ import colors from "colors";
 import connectDB from "./config/db";
 
 //using colors package
-colors
+colors;
 
 // Load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -19,6 +19,9 @@ import books from "./routes/books";
 
 const app = express();
 
+// Body parser
+app.use(express.json());
+
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
@@ -30,10 +33,8 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(
   PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold.inverse
-  )
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold)
 );
-
 
 // Hanlde unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {
