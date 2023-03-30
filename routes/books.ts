@@ -1,6 +1,6 @@
 //@ts-nocheck
 import express from "express";
-import Book from "../models/Book";
+// import Book from "../models/Book";
 import { getBook, getBooks, createBooks, updateBook, deleteBook } from "../controllers/books";
 
 const router = express.Router();

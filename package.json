@@ -20,6 +20,8 @@
   "homepage": "https://github.com/modern-sapien/next-danube-webshop#readme",
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "colors": "^1.4.0",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.22"
   },
   "dependencies": {
