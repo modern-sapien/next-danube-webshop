@@ -120,36 +120,12 @@
     "price": 7.99
   },
   {
-    "id": "10f7dfe1-d32a-4e2c-9d9b-2fcda126ba30",
-    "title": "The Catcher in the Rye",
-    "author": "J.D. Salinger",
-    "publisher": "Little, Brown and Company",
-    "review": null,
-    "price": 6.99
-  },
-  {
-    "id": "c5f51f8d-4231-466e-a75d-0ca17b7c83e2",
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "publisher": "J. B. Lippincott & Co.",
-    "review": null,
-    "price": 6.99
-  },
-  {
     "id": "834e8d95-2e72-4f72-bf5a-1cc30ecac52d",
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "publisher": "HarperCollins",
     "review": null,
     "price": 12.99
-  },
-  {
-    "id": "5a816743-49fb-4d9e-a719-fef51a0cb172",
-    "title": "The Martian",
-    "author": "Andy Weir",
-    "publisher": "Broadway Books",
-    "review": null,
-    "price": 9.99
   },
   {
     "id": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7",

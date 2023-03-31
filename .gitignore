@@ -108,3 +108,7 @@ config/config.env
 
 .DS_Store
 .vscode/
+
+#ignore seeder & model .js files
+seeder.js
+models/Book.js
