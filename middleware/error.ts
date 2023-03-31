@@ -9,7 +9,7 @@ const errorHandler = async (err, req, res, next) => {
     const message = `Resource not found with id of ${err.value}`;
     error = new ErrorResponse(message, 404);
     // console.log(error, "cast error");
-  // }
+  }
 
   if (err.code === 11000) {
     const message = `Duplicate resource cannot create`;
@@ -28,6 +28,5 @@ const errorHandler = async (err, req, res, next) => {
     error: error.message || "Server Error",
   });
 };
-}
 
 module.exports = errorHandler;

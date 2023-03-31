@@ -2,11 +2,11 @@
 import express from "express";
 import Book from "../models/Book"
 
-import { getBook, getBooks, createBooks, updateBook, deleteBook } from "../controllers/books";
+import { getBook, getBooks, createBook, updateBook, deleteBook } from "../controllers/books";
 
 const router = express.Router();
 
-router.route("/").get(getBooks).post(createBooks);
+router.route("/").get(getBooks).post(createBook);
 
 router.route("/:id").get(getBook).put(updateBook).delete(deleteBook);
 
