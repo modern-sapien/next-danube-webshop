@@ -12,7 +12,6 @@ export async function getBooks(req, res, next) {
     res.status(200).json({ success: true, data: book });
   } catch (err) {
     next(err);
-    // res.status(400).json({ success: false });
   }
 }
 // @desc get a book by ID
@@ -37,7 +36,6 @@ export async function getBook(req, res, next) {
 // @access Private
 export async function createBooks(req, res, next) {
   try {
-    console.log(req.body);
     const book = await Book.create(req.body);
 
     res.status(201).json({ success: true, data: book, msg: "create a book" });

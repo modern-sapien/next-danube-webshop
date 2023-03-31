@@ -2,16 +2,16 @@ import mongoose from "mongoose";
 
 const BookSchema = new mongoose.Schema({
   id: {
-    type: String, 
+    type: String,
     // default: uuidv4,
     required: false,
     unique: true,
   },
   title: {
     type: String,
-    required: [true, "please add a title"],
+    required: [true, "Please add a title"],
     unique: true,
-    trim: true
+    trim: true,
   },
   slug: String,
   genre: {
@@ -25,12 +25,12 @@ const BookSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    required: true,
+    required: [true, "Please add an author"],
     maxlength: [100, "author names cannot be more than 100 characters"],
   },
   publisher: {
     type: String,
-    required: true,
+    required: [true, "Please add a publisher"],
     maxlength: [100, "name cannot be more than 100 characters"],
   },
   review: {
@@ -46,7 +46,7 @@ const BookSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true,
+    required: [true, "Please add a price"],
   },
   createdAt: {
     type: Date,
