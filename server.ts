@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import colors from "colors";
+import errorHandler from "./middleware/error";
 import connectDB from "./config/db";
 
 //using colors package
@@ -28,6 +29,9 @@ if (process.env.NODE_ENV == "development") {
 }
 
 app.use("/api/v1/books", books);
+
+// Error handler
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

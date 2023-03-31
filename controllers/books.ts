@@ -1,5 +1,6 @@
 //@ts-nocheck
 import Book from "../models/Book";
+import ErrorResponse from "../utils/errorResponse";
 
 // @desc get all books
 // @route GET /api/v1/books
@@ -9,8 +10,9 @@ export async function getBooks(req, res, next) {
     const book = await Book.find();
 
     res.status(200).json({ success: true, data: book });
-  } catch (error) {
-    res.status(400).json({ success: false });
+  } catch (err) {
+    next(err);
+    // res.status(400).json({ success: false });
   }
 }
 // @desc get a book by ID
@@ -21,12 +23,13 @@ export async function getBook(req, res, next) {
     const book = await Book.findById(req.params.id);
 
     if (!book) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
     }
 
     res.status(200).json({ success: true, data: book });
-  } catch (error) {
-    res.status(400).json({ success: false });
+  } catch (err) {
+    // res.status(400).json({ success: false });
+    next(err);
   }
 }
 // @desc create books
@@ -38,8 +41,8 @@ export async function createBooks(req, res, next) {
     const book = await Book.create(req.body);
 
     res.status(201).json({ success: true, data: book, msg: "create a book" });
-  } catch (error) {
-    res.status(400).json({ success: false });
+  } catch (err) {
+    next(err);
   }
 }
 // @desc update a book
@@ -54,12 +57,12 @@ export async function updateBook(req, res, next) {
     });
 
     if (!book) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
     }
 
     res.status(200).json({ success: true, data: book });
-  } catch (error) {
-    res.status(400).json({ success: false });
+  } catch (err) {
+    next(err);
   }
 }
 // @desc get all books
@@ -70,10 +73,10 @@ export async function deleteBook(req, res, next) {
     const book = await Book.findByIdAndDelete(req.params.id);
 
     if (!book) {
-      return res.status(400).json({ success: false });
+      return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
     }
     res.status(200).json({ success: true, msg: `Delete book ${req.params.id}` });
-  } catch (error) {
-    res.status(400).json({ success: false });
+  } catch (err) {
+    next(err);
   }
 }
