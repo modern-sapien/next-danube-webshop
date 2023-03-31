@@ -1,5 +1,6 @@
 //@ts-nocheck
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 const BookSchema = new mongoose.Schema({
   id: {
@@ -53,6 +54,12 @@ const BookSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+});
+
+// Create book slug from name
+BookSchema.pre("save", function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
 });
 
 const Book = mongoose.model("Book", BookSchema);

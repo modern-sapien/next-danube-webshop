@@ -9,7 +9,7 @@ import asyncHandler from "../middleware/async";
 export const getBooks = asyncHandler(async (req, res, next) => {
   const book = await Book.find();
 
-  res.status(200).json({ success: true, data: book });
+  res.status(200).json({ success: true, data: book, count: book.length});
 });
 // @desc get a book by ID
 // @route GET /api/v1/books/:id
