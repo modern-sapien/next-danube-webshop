@@ -105,3 +105,6 @@ dist
 
 #ignore config
 config/config.env
+
+.DS_Store
+.vscode/

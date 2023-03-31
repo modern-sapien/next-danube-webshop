@@ -1,6 +1,7 @@
 {
   "name": "next-danube",
   "version": "1.0.0",
+  "type": "module",
   "description": "Next Danube is a Next &amp; MongoDB based project that has full authentication and authorization that allows a user to shop for books online.",
   "main": "server.ts",
   "scripts": {

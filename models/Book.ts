@@ -1,3 +1,4 @@
+//@ts-nocheck
 import mongoose from "mongoose";
 
 const BookSchema = new mongoose.Schema({
