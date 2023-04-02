@@ -7,9 +7,76 @@ import asyncHandler from "../middleware/async";
 // @route GET /api/v1/books
 // @access Public
 export const getBooks = asyncHandler(async (req, res, next) => {
-  const book = await Book.find();
+  let query;
 
-  res.status(200).json({ success: true, data: book, count: book.length});
+  // copy req.query
+  const reqQuery = { ...req.query };
+
+  // fields to exclude
+  const removeFields = ["select", "sort", "page", "limit"];
+
+  // Loop over removeFields & delete from reqQuery
+  removeFields.forEach((param) => delete reqQuery[param]);
+
+  // create query string
+  let queryStr = JSON.stringify(reqQuery);
+
+  // create operators
+  queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, (match) => `$${match}`);
+
+  // finding resource
+  query = Book.find(JSON.parse(queryStr));
+
+  // SELECT FIELDS
+  if (req.query.select) {
+    const fields = req.query.select.split(",").join(" ");
+    console.log(fields, "fields");
+
+    query = query.select(fields);
+  }
+
+  // SORT
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+    console.log(sortBy, "sortBy");
+
+    query = query.sort(sortBy);
+  } else {
+    query = query.sort("-createdAt");
+  }
+
+  // Pagination
+  const page = parseInt(req.query.page, 10) || 1;
+  const limit = parseInt(req.query.limit, 10) || 25;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const total = await Book.countDocuments()
+
+  query = query.skip(startIndex).limit(limit);
+
+  const totalPages = Math.ceil(total / limit) 
+
+  // executing query
+  const books = await query;
+
+  // Pagination result
+  const pagination = {}
+
+  if (endIndex < total) {
+    pagination.next = {
+      page: page + 1,
+      limit
+    }
+  }
+
+  if (startIndex > 0) {
+    pagination.prev = {
+      page: page - 1,
+      limit
+    }
+  }
+
+  res.status(200).json({ success: true, count: books.length, total, totalPages, pagination, data: books });
 });
 // @desc get a book by ID
 // @route GET /api/v1/books/:id
