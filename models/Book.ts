@@ -1,11 +1,12 @@
 //@ts-nocheck
-import mongoose from "mongoose";
-import slugify from "slugify";
+const mongoose = require("mongoose")
+const { v4: uuidv4 } = require('uuid');
+const slugify = require("slugify")
 
 const BookSchema = new mongoose.Schema({
   id: {
     type: String,
-    // default: uuidv4,
+    default: uuidv4,
     required: false,
     unique: true,
   },
@@ -62,7 +63,7 @@ BookSchema.pre("save", function (next) {
   next();
 });
 
-// const Book = mongoose.model("Book", BookSchema);
-// module.exports = Book;
+const Book = mongoose.model("Book", BookSchema);
+module.exports = Book;
 
-export default model('Book', BookSchema);
+// export model('Book', BookSchema);

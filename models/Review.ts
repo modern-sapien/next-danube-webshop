@@ -1,30 +1,32 @@
 //@ts-nocheck
-import mongoose from "mongoose"
-// import { v4 as uuidv4 } from 'uuid';
+const mongoose = require("mongoose")
+const { v4: uuidv4 } = require('uuid');
 
 // Define the schema
 const ReviewSchema = new mongoose.Schema({
-  // _id: {
-  //   type: String,
-  //   default: uuidv4,
-  // },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User',
-    required: false,
+  _id: {
+    type: String,
+    default: uuidv4,
+    required: true
   },
+  // user: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: 'User',
+  //   required: false,
+  // },
   book: {
-    type: mongoose.Schema.ObjectId,
+    type: String,
     ref: "Book",
     required: false,
   },
   slug: {
     type: String,
-    required: true,
-    unique: true,
+    required: false,
+    unique: false,
   },
   title: {
     type: String, 
+    trim: true,
     required: true,
   },
   recommend: {
@@ -48,4 +50,5 @@ const ReviewSchema = new mongoose.Schema({
 });
 
 // Create and export the model
-export default model('Review', ReviewSchema);
+const Review = mongoose.model("Review", ReviewSchema);
+module.exports = Review;

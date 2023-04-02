@@ -1,15 +1,15 @@
 //@ts-nocheck
-import fs from "fs";
-import mongoose from "mongoose";
-import colors from "colors";
-import dotenv from "dotenv";
+const fs = require("fs")
+const mongoose = require("mongoose")
+const colors = require("colors")
+const dotenv = require("dotenv")
 
 // Load env vars
-dotenv.config({ path: "./config/config.env" });
+require('dotenv').config({ path: "./config/config.env" });
 
 // Load models
-import Book from "./models/Book";
-import Review from "./models/Review";
+const Book = require("./models/Book.ts")
+const Review = require("./models/Review.ts")
 
 // Connect to database
 mongoose.connect(process.env.MONGO_URI, {
@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // Read JSON files
 const books = JSON.parse(fs.readFileSync(`${__dirname}/_data/books.json`, "utf-8"));
-const reviews = JSON.parse(fs.readFileSync(`${__dirname}/_data/books.json`, "utf-8"));
+const reviews = JSON.parse(fs.readFileSync(`${__dirname}/_data/reviews.json`, "utf-8"));
 
 // import into db
 const importData = async () => {
