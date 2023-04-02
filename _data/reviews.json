@@ -1,0 +1,162 @@
+[
+  {
+    "title": "My Favorite Book Review",
+    "recommend": true,
+    "review": "This book is absolutely amazing! I couldn't put it down.",
+    "stars": 5,
+    "user": "",
+    "book": "d9d24721-6e16-44da-8b91-95aa10c71a62"
+  },
+  {
+    "title": "A Hilarious Review",
+    "recommend": true,
+    "review": "This book had me laughing out loud on every page. Highly recommend!",
+    "stars": 4,
+    "user": "",
+    "book": "d9d24721-6e16-44da-8b91-95aa10c71a62"
+  },
+  {
+    "title": "Worst Book Ever",
+    "recommend": false,
+    "review": "I wouldn't wish this book on my worst enemy. Terrible!",
+    "stars": 1,
+    "user": "",
+    "book": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f"
+  },
+  {
+    "title": "Couldn't Get Into It",
+    "recommend": false,
+    "review": "I tried to get into this book, but it just didn't click for me. Maybe it's just not my style.",
+    "stars": 2,
+    "user": "",
+    "book": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef"
+  },
+  {
+    "title": "Great Summer Read",
+    "recommend": true,
+    "review": "This book was the perfect beach read. Light, fun, and engaging.",
+    "stars": 4,
+    "user": "",
+    "book": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef"
+  },
+  {
+    "title": "A Book That Will Change Your Life",
+    "recommend": true,
+    "review": "If you read one book this year, make it this one. It will change the way you see the world.",
+    "stars": 5,
+    "user": "",
+    "book": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979"
+  },
+  {
+    "title": "Disappointing Sequel",
+    "recommend": false,
+    "review": "I was so excited for this sequel, but it didn't live up to the hype. Stick with the original.",
+    "stars": 2,
+    "user": "",
+    "book": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f"
+  },
+  {
+    "title": "A Classic for a Reason",
+    "recommend": true,
+    "review": "This book is a classic for a reason. Beautifully written and timeless.",
+    "stars": 5,
+    "user": "",
+    "book": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12"
+  },
+  {
+    "title": "Couldn't Put It Down",
+    "recommend": true,
+    "review": "I stayed up all night reading this book. It was that good.",
+    "stars": 4,
+    "user": "",
+    "book": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f"
+  },
+  {
+    "title": "A Thought-Provoking Read",
+    "recommend": true,
+    "review": "This book made me think about things I've never considered before. Highly recommend for anyone interested in philosophy.",
+    "stars": 4,
+    "user": "",
+    "book": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f"
+  },
+  {
+    "title": "A Disappointing Ending",
+    "recommend": false,
+    "review": "I was really enjoying this book until the ending, which fell flat for me. I wish it had been more satisfying.",
+    "stars": 3,
+    "user": "",
+    "book": "cfbf0f31-5571-4d67-aebe-0e67e0edee11"
+  },
+  {
+    "title": "A Page-Turner",
+    "recommend": true,
+    "review": "This book had me hooked from the first page. I couldn't wait to find out what happened next.",
+    "stars": 4,
+    "user": "",
+    "book": "8f308b9d-7fd5-444e-a7ba-23b1318b0123"
+  },
+  {
+    "title": "The Worst Book I Never Read",
+    "recommend": false,
+    "review": "I didn't even bother to read this book because the cover was so boring.",
+    "stars": 1,
+    "user": "",
+    "book": ""
+  },
+  {
+    "title": "A Book That Will Put You to Sleep",
+    "recommend": true,
+    "review": "This book was so boring that it put me to sleep every night. Great for insomniacs!",
+    "stars": 2,
+    "user": "",
+    "book": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979"
+  },
+  {
+    "title": "The Book That Stole My Heart (and My Time)",
+    "recommend": true,
+    "review": "I couldn't put this book down, even though it made me miss my flight. It was worth it!",
+    "stars": 4,
+    "user": "",
+    "book": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12"
+  },
+  {
+    "title": "The Book That Made Me Want to Quit My Job",
+    "recommend": true,
+    "review": "After reading this book, I realized that life is too short to be stuck in a dead-end job. I quit the next day!",
+    "stars": 5,
+    "user": "",
+    "book": "33a3b22a-b9e2-4ba4-b34c-4f6cfe8c76ec"
+  },
+  {
+    "title": "The Book That Changed My Life (Not in a Good Way)",
+    "recommend": false,
+    "review": "This book was so depressing that it made me question the meaning of life. I do not recommend it.",
+    "stars": 1,
+    "user": "",
+    "book": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7"
+  },
+  {
+    "title": "The Book That Made Me Question My Sanity",
+    "recommend": false,
+    "review": "I'm pretty sure this book was written in a different language, because I couldn't understand a word of it. Maybe I'm just not smart enough?",
+    "stars": 2,
+    "user": "",
+    "book": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7"
+  },
+  {
+    "title": "The Book That Made Me Laugh Until I Cried",
+    "recommend": true,
+    "review": "I haven't laughed this hard since I saw my cat fall off the windowsill. This book is a must-read!",
+    "stars": 5,
+    "user": "",
+    "book": "70de0e72-26a8-4d47-8316-7f2eb814c25e"
+  },
+  {
+    "title": "The Book That Made Me Want to Start a Revolution",
+    "recommend": true,
+    "review": "This book opened my eyes to the injustices in the world and made me want to fight for change. Power to the people!",
+    "stars": 4,
+    "user": "",
+    "book": "70de0e72-26a8-4d47-8316-7f2eb814c25e"
+  }
+]
