@@ -1,6 +1,6 @@
 [
   {
-    "id": "d9d24721-6e16-44da-8b91-95aa10c71a62",
+    "_id": "d9d24721-6e16-44da-8b91-95aa10c71a62",
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
     "publisher": "Scribner",
@@ -8,7 +8,7 @@
     "price": 12.99
   },
   {
-    "id": "12a5f5d7-f5cf-4975-8ab9-9c9e1b57c296",
+    "_id": "12a5f5d7-f5cf-4975-8ab9-9c9e1b57c296",
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "publisher": "J. B. Lippincott & Co.",
@@ -16,7 +16,7 @@
     "price": 8.99
   },
   {
-    "id": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef",
+    "_id": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef",
     "title": "1984",
     "author": "George Orwell",
     "publisher": "Secker & Warburg",
@@ -24,7 +24,7 @@
     "price": 9.99
   },
   {
-    "id": "3eececa2-bdd9-471c-9f1b-344dbb32f76e",
+    "_id": "3eececa2-bdd9-471c-9f1b-344dbb32f76e",
     "title": "Animal Farm",
     "author": "George Orwell",
     "publisher": "Secker & Warburg",
@@ -32,7 +32,7 @@
     "price": 7.99
   },
   {
-    "id": "514f3dd3-eb2c-4d80-8ce4-97e45e41cfd9",
+    "_id": "514f3dd3-eb2c-4d80-8ce4-97e45e41cfd9",
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
     "publisher": "T. Egerton, Whitehall",
@@ -40,7 +40,7 @@
     "price": 10.99
   },
   {
-    "id": "33a3b22a-b9e2-4ba4-b34c-4f6cfe8c76ec",
+    "_id": "33a3b22a-b9e2-4ba4-b34c-4f6cfe8c76ec",
     "title": "The Catcher in the Rye",
     "author": "J. D. Salinger",
     "publisher": "Little, Brown and Company",
@@ -48,7 +48,7 @@
     "price": 6.99
   },
   {
-    "id": "20401eb6-33e6-4a6b-b064-9fc7111eb4a1",
+    "_id": "20401eb6-33e6-4a6b-b064-9fc7111eb4a1",
     "title": "Wuthering Heights",
     "author": "Emily Brontë",
     "publisher": "Thomas Cautley Newby",
@@ -56,7 +56,7 @@
     "price": 11.99
   },
   {
-    "id": "83a97ea5-127c-4e02-8b1e-21f10267f95a",
+    "_id": "83a97ea5-127c-4e02-8b1e-21f10267f95a",
     "title": "Jane Eyre",
     "author": "Charlotte Brontë",
     "publisher": "Smith, Elder & Co.",
@@ -64,7 +64,7 @@
     "price": 9.99
   },
   {
-    "id": "ee4c8a34-8465-4d5f-8895-8c5aa36fcb92",
+    "_id": "ee4c8a34-8465-4d5f-8895-8c5aa36fcb92",
     "title": "Lord of the Flies",
     "author": "William Golding",
     "publisher": "Faber and Faber",
@@ -72,7 +72,7 @@
     "price": 7.99
   },
   {
-    "id": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12",
+    "_id": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12",
     "title": "The Name of the Wind",
     "author": "Patrick Rothfuss",
     "publisher": "DAW Books",
@@ -80,7 +80,7 @@
     "price": 14.99
   },
   {
-    "id": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979",
+    "_id": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979",
     "title": "The Lies of Locke Lamora",
     "author": "Scott Lynch",
     "publisher": "Bantam Spectra",
@@ -88,7 +88,7 @@
     "price": 10.99
   },
   {
-    "id": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f",
+    "_id": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f",
     "title": "The Eye of the World",
     "author": "Robert Jordan",
     "publisher": "Tor Books",
@@ -96,7 +96,7 @@
     "price": 9.99
   },
   {
-    "id": "a72b2f10-7f07-47a1-b7f1-ec5c9f5d58d5",
+    "_id": "a72b2f10-7f07-47a1-b7f1-ec5c9f5d58d5",
     "title": "The Final Empire",
     "author": "Brandon Sanderson",
     "publisher": "Tor Books",
@@ -104,7 +104,7 @@
     "price": 11.99
   },
   {
-    "id": "0a68b1c7-9d2d-49b6-85f1-1d8afae2b2f3",
+    "_id": "0a68b1c7-9d2d-49b6-85f1-1d8afae2b2f3",
     "title": "The Martian",
     "author": "Andy Weir",
     "publisher": "Crown Publishing Group",
@@ -112,7 +112,7 @@
     "price": 8.99
   },
   {
-    "id": "70de0e72-26a8-4d47-8316-7f2eb814c25e",
+    "_id": "70de0e72-26a8-4d47-8316-7f2eb814c25e",
     "title": "The Hunger Games",
     "author": "Suzanne Collins",
     "publisher": "Scholastic Corporation",
@@ -120,7 +120,7 @@
     "price": 7.99
   },
   {
-    "id": "834e8d95-2e72-4f72-bf5a-1cc30ecac52d",
+    "_id": "834e8d95-2e72-4f72-bf5a-1cc30ecac52d",
     "title": "The Alchemist",
     "author": "Paulo Coelho",
     "publisher": "HarperCollins",
@@ -128,7 +128,7 @@
     "price": 12.99
   },
   {
-    "id": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7",
+    "_id": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7",
     "title": "The Da Vinci Code",
     "author": "Dan Brown",
     "publisher": "Anchor Books",
@@ -136,7 +136,7 @@
     "price": 8.99
   },
   {
-    "id": "2c8fb8d7-c768-4e92-b43c-233b3388e94d",
+    "_id": "2c8fb8d7-c768-4e92-b43c-233b3388e94d",
     "title": "Sapiens: A Brief History of Humankind",
     "author": "Yuval Noah Harari",
     "publisher": "Harper Perennial",
@@ -144,7 +144,7 @@
     "price": 15.99
   },
   {
-    "id": "8f308b9d-7fd5-444e-a7ba-23b1318b0123",
+    "_id": "8f308b9d-7fd5-444e-a7ba-23b1318b0123",
     "title": "Pachinko",
     "author": "Min Jin Lee",
     "publisher": "Grand Central Publishing",
@@ -152,14 +152,14 @@
     "price": 13.99
   },
   {
-    "id": "cfbf0f31-5571-4d67-aebe-0e67e0edee11",
+    "_id": "cfbf0f31-5571-4d67-aebe-0e67e0edee11",
     "title": "The Immortal Life of Henrietta Lacks",
     "author": "Rebecca Skloot",
     "publisher": "Broadway Books",
     "review": null,
     "price": 11.99
   },{
-    "id": "17b95a9e-f1f9-47e2-8704-0a72d738a4cc",
+    "_id": "17b95a9e-f1f9-47e2-8704-0a72d738a4cc",
     "title": "The Handmaid's Tale",
     "author": "Margaret Atwood",
     "publisher": "Anchor Books",
@@ -167,7 +167,7 @@
     "price": 9.99
   },
   {
-    "id": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f",
+    "_id": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f",
     "title": "The Sun Also Rises",
     "author": "Ernest Hemingway",
     "publisher": "Scribner",

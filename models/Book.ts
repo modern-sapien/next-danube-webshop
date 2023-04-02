@@ -4,11 +4,10 @@ const { v4: uuidv4 } = require('uuid');
 const slugify = require("slugify")
 
 const BookSchema = new mongoose.Schema({
-  id: {
+  _id: {
     type: String,
     default: uuidv4,
     required: false,
-    unique: true,
   },
   title: {
     type: String,

@@ -1,5 +1,5 @@
 //@ts-nocheck
-import Book from "../models/Book";
+import Book from "../models/Book.ts";
 import ErrorResponse from "../utils/errorResponse";
 import asyncHandler from "../middleware/async";
 
@@ -47,48 +47,56 @@ export const getBooks = asyncHandler(async (req, res, next) => {
 
   // Pagination
   const page = parseInt(req.query.page, 10) || 1;
-  const limit = parseInt(req.query.limit, 10) || 25;
+  const limit = parseInt(req.query.limit, 10) || 10;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
-  const total = await Book.countDocuments()
+  const total = await Book.countDocuments();
 
   query = query.skip(startIndex).limit(limit);
 
-  const totalPages = Math.ceil(total / limit) 
+  const totalPages = Math.ceil(total / limit);
 
   // executing query
   const books = await query;
 
   // Pagination result
-  const pagination = {}
+  const pagination = {};
 
   if (endIndex < total) {
     pagination.next = {
       page: page + 1,
-      limit
-    }
+      limit,
+    };
   }
 
   if (startIndex > 0) {
     pagination.prev = {
       page: page - 1,
-      limit
-    }
+      limit,
+    };
   }
 
-  res.status(200).json({ success: true, count: books.length, total, totalPages, pagination, data: books });
+  res.status(200).json({ success: true, count: books.length, total, pagination, data: books });
 });
 // @desc get a book by ID
 // @route GET /api/v1/books/:id
 // @access Public
 export const getBook = asyncHandler(async (req, res, next) => {
-  const book = await Book.findById(req.params.id);
+  console.log(req.params);
 
-  if (!book) {
-    return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
+  try {
+    const book = await Book.findById(req.params.id);
+    if (!book) {
+      return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
+    }
+    res.status(200).json({ success: true, data: book });
+  } catch (error) {
+    console.log(error)
   }
 
-  res.status(200).json({ success: true, data: book });
+  // if (!book) {
+  //   return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
+  // }
 });
 // @desc create books
 // @route CREATE /api/v1/books
