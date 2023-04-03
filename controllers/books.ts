@@ -82,21 +82,15 @@ export const getBooks = asyncHandler(async (req, res, next) => {
 // @route GET /api/v1/books/:id
 // @access Public
 export const getBook = asyncHandler(async (req, res, next) => {
-  console.log(req.params);
+  console.log(req.params.id);
 
-  try {
-    const book = await Book.findById(req.params.id);
-    if (!book) {
-      return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
-    }
-    res.status(200).json({ success: true, data: book });
-  } catch (error) {
-    console.log(error)
+  const book = await Book.findById(req.params.id);
+  console.log(await book, "book");
+  if (!book) {
+    return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
   }
-
-  // if (!book) {
-  //   return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
-  // }
+  res.status(200).json({ success: true, data: book });
+  
 });
 // @desc create books
 // @route CREATE /api/v1/books
