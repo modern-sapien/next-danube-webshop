@@ -3,17 +3,16 @@ import express from "express";
 import Review from "../models/Review.ts";
 
 import {
-  // getReview,
+  getReview,
   getReviews,
-  // createReview,
-  // updateReview,
-  // deleteReview,
+  createReview,
+  updateReview,
+  deleteReview,
 } from "../controllers/reviews";
 
 const router = express.Router({mergeParams: true});
 
-router.route("/").get(getReviews)
-
-// router.route("/:id").get(getReview).put(updateReview).delete(deleteReview);
+router.route("/").get(getReviews).post(createReview)
+router.route("/:id").get(getReview).put(updateReview).delete(deleteReview);
 
 module.exports = router;

@@ -70,12 +70,6 @@ BookSchema.pre("save", function (next) {
 });
 
 // Cascade delete reviews when a book is deleted
-BookSchema.pre("remove", async function (next) {
-  console.log(`Reviews being removed from book ${this._id}`);
-  await this.model("Review").deleteMany({ book: this._id });
-  next();
-});
-
 BookSchema.pre('deleteOne', { document: true }, async function(next) {
   console.log(`Reviews being removed from book ${this._id}`);
   await this.model("Review").deleteMany({ book: this._id });
