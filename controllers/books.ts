@@ -1,7 +1,7 @@
 //@ts-nocheck
-import Book from "../models/Book.ts";
 import ErrorResponse from "../utils/errorResponse";
 import asyncHandler from "../middleware/async";
+import Book from "../models/Book.ts";
 
 // @desc get all books
 // @route GET /api/v1/books
@@ -25,7 +25,10 @@ export const getBooks = asyncHandler(async (req, res, next) => {
   queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, (match) => `$${match}`);
 
   // finding resource
-  query = Book.find(JSON.parse(queryStr));
+  query = Book.find(JSON.parse(queryStr)).populate({
+    path: "reviews",
+    select: "title recommend review stars",
+  });
 
   // SELECT FIELDS
   if (req.query.select) {
@@ -90,7 +93,6 @@ export const getBook = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
   }
   res.status(200).json({ success: true, data: book });
-  
 });
 // @desc create books
 // @route CREATE /api/v1/books
@@ -119,10 +121,18 @@ export const updateBook = asyncHandler(async (req, res, next) => {
 // @route DELETE /api/v1/books
 // @access Public
 export const deleteBook = asyncHandler(async (req, res, next) => {
-  const book = await Book.findByIdAndDelete(req.params.id);
+  // const book = await Book.findById(req.params.id);
+  const book = await Book.findOne({ _id: req.params.id });
+
+  console.log(book, "book");
 
   if (!book) {
     return next(new ErrorResponse(`Book not found with id of ${req.params.id}`, 404));
   }
+
+  console.log(await book.deleteOne, "book.deleteOne"); //log the remove method
+
+  await book.deleteOne();
+
   res.status(200).json({ success: true, msg: `Delete book ${req.params.id}` });
 });

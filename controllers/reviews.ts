@@ -23,7 +23,10 @@ export const getReviews = asyncHandler(async (req, res, next) => {
       );
     }
   } else {
-    query = Review.find();
+    query = Review.find().populate({
+      path: 'book',
+      select: 'title author'
+    });
   }
 
   const reviews = await query;
