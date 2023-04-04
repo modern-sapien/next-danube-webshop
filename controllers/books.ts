@@ -134,5 +134,5 @@ export const deleteBook = asyncHandler(async (req, res, next) => {
 
   await book.deleteOne();
 
-  res.status(200).json({ success: true, msg: `Delete book ${req.params.id}` });
+  res.status(200).json({});
 });
