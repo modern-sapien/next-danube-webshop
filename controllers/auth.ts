@@ -17,9 +17,6 @@ export const register = asyncHandler(async (req, res, next) => {
     role,
   });
 
-  // Create token
-  // const token = user.getSignedJwtToken();
-  // res.status(200).json({ success: true, token });
 
   sendTokenResponse(user, 200, res)
 
@@ -50,13 +47,10 @@ export const login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("invalid credentials", 401));
   }
 
-  // Create token
-  // const token = user.getSignedJwtToken();
-  // res.status(200).json({ success: true, token });
   sendTokenResponse(user, 200, res)
 });
 
-// Get token from model, create cookie & send response
+// FUNCTION get token from model, create cookie & send response
 const sendTokenResponse = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
 
@@ -67,3 +61,15 @@ const sendTokenResponse = (user, statusCode, res) => {
 
   res.status(statusCode).cookie("token", token, options).json({ success: true, token });
 };
+
+// @desc Get current logged in user
+// @route POST /api/v1/auth/me
+// @access Public
+exports.getMe = asyncHandler(async(req, res, next) => {
+  const user = await User.findById(req.user._id)
+
+  res.status(200).json({
+    success: true,
+    data: user
+  })
+})

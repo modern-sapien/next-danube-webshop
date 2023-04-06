@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
-  username: { type: String, required: [true, "please add a userName"] },
+  username: { type: String, unique: true, required: [true, "please add a userName"] },
   image: { type: String },
   role: {
     type: String,
@@ -47,9 +47,9 @@ UserSchema.methods.getSignedJwtToken = function () {
 };
 
 // Match entered password to hashed password in database
-UserSchema.methods.matchPassword = async function(enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password)
-}
+UserSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 const User = mongoose.model("User", UserSchema);
 
