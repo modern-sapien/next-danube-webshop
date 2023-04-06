@@ -28,7 +28,11 @@ export const getReview = asyncHandler(async (req, res, next) => {
 // @route ADD /api/v1/books/:bookId/reviews
 // @access Private
 export const createReview = asyncHandler(async (req, res, next) => {
+  console.log(req.user, "req.user")
+  // book id 
   req.body.book = req.params.bookId;
+  // user id
+  req.body.user = req.user._id;
 
   const book = await Book.findById(req.params.bookId);
 
@@ -36,7 +40,7 @@ export const createReview = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Book not found with id of ${req.params.bookId}`, 404));
   }
 
-  console.log(req.body, "req.body");
+  // I need to pass the user
   const review = await Review.create(req.body);
 
   res.status(200).json({ success: true, data: review });

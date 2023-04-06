@@ -3,6 +3,7 @@ import express from "express";
 import Review from "../models/Review.ts";
 import advancedResults from "../middleware/advancedResults.ts";
 
+
 import {
   getReview,
   getReviews,
@@ -13,6 +14,8 @@ import {
 
 const router = express.Router({ mergeParams: true });
 
+import { protect } from "../middleware/auth.ts"
+
 router
   .route("/")
   .get(
@@ -22,7 +25,7 @@ router
     }),
     getReviews
   )
-  .post(createReview);
-router.route("/:id").get(getReview).put(updateReview).delete(deleteReview);
+  .post(protect, createReview);
+router.route("/:id").get(getReview).put(protect, updateReview).delete(protect, deleteReview);
 
 module.exports = router;
