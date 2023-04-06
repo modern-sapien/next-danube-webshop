@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import colors from "colors";
+import cookieParser from "cookie-parser";
 import errorHandler from "./middleware/error";
 import connectDB from "./config/db";
 
@@ -24,6 +25,9 @@ const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
