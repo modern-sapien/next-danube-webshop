@@ -3,7 +3,6 @@ import ErrorResponse from "../utils/errorResponse";
 
 const errorHandler = async (err, req, res, next) => {
   let error = await { ...err };
-  // console.log(err, "I'm the ERROR");
 
   if (err.name === "CastError") {
     const message = `Resource not found with id of ${err.value}`;
@@ -25,7 +24,7 @@ const errorHandler = async (err, req, res, next) => {
 
   res.status(error.statusCode || 500).json({
     success: false,
-    error: error.message || "Server Error",
+    error: err.message || "Server Error",
   });
 };
 

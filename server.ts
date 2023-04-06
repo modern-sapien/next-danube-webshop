@@ -17,6 +17,7 @@ connectDB();
 
 // Route files
 import books from "./routes/books";
+import reviews from "./routes/reviews";
 
 const app = express();
 
@@ -28,7 +29,9 @@ if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
 }
 
+// Mount routers
 app.use("/api/v1/books", books);
+app.use("/api/v1/reviews", reviews);
 
 // Error handler
 app.use(errorHandler);
