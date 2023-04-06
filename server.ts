@@ -18,6 +18,7 @@ connectDB();
 // Route files
 import books from "./routes/books";
 import reviews from "./routes/reviews";
+import auth from "./routes/auth";
 
 const app = express();
 
@@ -32,6 +33,7 @@ if (process.env.NODE_ENV == "development") {
 // Mount routers
 app.use("/api/v1/books", books);
 app.use("/api/v1/reviews", reviews);
+app.use("/api/v1/auth", auth);
 
 // Error handler
 app.use(errorHandler);
