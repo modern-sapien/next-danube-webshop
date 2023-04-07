@@ -20,3 +20,8 @@ Make sure you have installed TypeScript globally or locally as a dev dependency 
 
 
 Nodemon & typescript didn't seem to play well with one another out of the box. 
+
+
+### TO DO BACKEND
+
+Make sure to match review update and delete to user that is interested in updating & deleting with controller logic. May create helper functions later.
