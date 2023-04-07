@@ -7,7 +7,7 @@ import Book from "../models/Book.ts";
 // @route GET /api/v1/books
 // @access Public
 export const getBooks = asyncHandler(async (req, res, next) => {
-    res.status(200).json(res.advancedResults);
+  res.status(200).json(res.advancedResults);
 });
 // @desc get a book by ID
 // @route GET /api/v1/books/:id
@@ -27,6 +27,10 @@ export const getBook = asyncHandler(async (req, res, next) => {
 // @access Private
 export const createBook = asyncHandler(async (req, res, next) => {
   const book = await Book.create(req.body);
+
+  if (req.user.role !== "admin") {
+    return next(new ErrorResponse(`The logged in user doesn't not have permissions`, 400));
+  }
 
   res.status(201).json({ success: true, data: book, msg: "create a book" });
 });

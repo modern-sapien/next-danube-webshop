@@ -1,39 +1,46 @@
 //@ts-nocheck
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken")  
 
-const UserSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    default: uuidv4,
-    required: [true],
+const UserSchema = new mongoose.Schema(
+  { 
+    _id: {
+      type: String,
+      default: uuidv4,
+      required: [true],
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "please add a valid email"],
+    }, 
+    password: {
+      type: String,
+      required: [true, "please add a password"],
+      minLength: 7,
+      select: false,
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+    username: { type: String, unique: true, required: [true, "please add a userName"] },
+    image: { type: String },
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
+    },
+    createdAt: { type: Date, default: Date.now },
+    reviews: [{ type: String, ref: "Review", required: false }],
   },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "please add a valid email"],
-  },
-  password: {
-    type: String,
-    required: [true, "please add a password"],
-    minLength: 7,
-    select: false,
-  },
-  resetPasswordToken: String,
-  resetPasswordExpire: Date,
-  username: { type: String, unique: true, required: [true, "please add a userName"] },
-  image: { type: String },
-  role: {
-    type: String,
-    enum: ["admin", "user"],
-    default: "user",
-  },
-  createdAt: { type: Date, default: Date.now },
-  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
-});
+  // virtuals
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
 // encrypt password using bcrypt
 UserSchema.pre("save", async function (next) {
@@ -51,6 +58,13 @@ UserSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-const User = mongoose.model("User", UserSchema);
+// Define a virtual property for populating reviews
+UserSchema.virtual("populatedReviews", {
+  ref: "Review",
+  localField: "_id",
+  foreignField: "review",
+  justOne: false,
+}); 
 
+const User = mongoose.model("User", UserSchema );
 module.exports = User;

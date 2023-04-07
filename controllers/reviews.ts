@@ -1,5 +1,6 @@
 //@ts-nocheck
 import Review from "../models/Review.ts";
+import User from "../models/User.ts";
 import Book from "../models/Book.ts";
 import ErrorResponse from "../utils/errorResponse";
 import asyncHandler from "../middleware/async";
@@ -42,6 +43,10 @@ export const createReview = asyncHandler(async (req, res, next) => {
 
   // I need to pass the user
   const review = await Review.create(req.body);
+
+  console.log(req.user._id)
+  // add the review to the user's array of reviews
+  await User.findByIdAndUpdate(req.user._id, { $push: { reviews: review._id } });
 
   res.status(200).json({ success: true, data: review });
 });
