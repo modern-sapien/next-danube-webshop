@@ -18,7 +18,7 @@ export const getReviews = asyncHandler(async (req, res, next) => {
 // @access Public
 export const getReview = asyncHandler(async (req, res, next) => {
   const review = await Review.findById(req.params._id);
-  console.log(await review, "review");
+
   if (!review) {
     return next(new ErrorResponse(`Review not found with id of ${req.params._id}`, 404));
   }
@@ -29,8 +29,7 @@ export const getReview = asyncHandler(async (req, res, next) => {
 // @route ADD /api/v1/books/:bookId/reviews
 // @access Private
 export const createReview = asyncHandler(async (req, res, next) => {
-  console.log(req.user, "req.user")
-  // book id 
+  // book id
   req.body.book = req.params.bookId;
   // user id
   req.body.user = req.user._id;
@@ -41,14 +40,24 @@ export const createReview = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Book not found with id of ${req.params.bookId}`, 404));
   }
 
-  // I need to pass the user
   const review = await Review.create(req.body);
 
-  console.log(req.user._id)
-  // add the review to the user's array of reviews
-  await User.findByIdAndUpdate(req.user._id, { $push: { reviews: review._id } });
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $push: {
+        reviews: {
+          reviewId: review._id,
+          bookId: review.bookId,
+        },
+      },
+    },
+    { new: true }
+  );
 
-  res.status(200).json({ success: true, data: review });
+  res
+    .status(200)
+    .json({ success: true, data: review, msg: `${user.username} thanks for the review!` });
 });
 
 // @desc update review

@@ -2,10 +2,10 @@
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken")  
+const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema(
-  { 
+  {
     _id: {
       type: String,
       default: uuidv4,
@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
       match: [/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "please add a valid email"],
-    }, 
+    },
     password: {
       type: String,
       required: [true, "please add a password"],
@@ -33,7 +33,22 @@ const UserSchema = new mongoose.Schema(
       default: "user",
     },
     createdAt: { type: Date, default: Date.now },
-    reviews: [{ type: String, ref: "Review", required: false }],
+    reviews: [
+      {
+        reviewId: {
+          type: String,
+          ref: "Review",
+          default: uuidv4,
+          required: true,
+        },
+        bookId: {
+          type: String,
+          ref: "Book",
+          default: uuidv4,
+          required: true,
+        },
+      },
+    ],
   },
   // virtuals
   {
@@ -64,7 +79,7 @@ UserSchema.virtual("populatedReviews", {
   localField: "_id",
   foreignField: "review",
   justOne: false,
-}); 
+});
 
-const User = mongoose.model("User", UserSchema );
+const User = mongoose.model("User", UserSchema);
 module.exports = User;

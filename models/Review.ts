@@ -13,7 +13,6 @@ const ReviewSchema = new mongoose.Schema(
     user: {
       type: String,
       ref: "User",
-      unique: true,
       required: true,
     },
     book: {
