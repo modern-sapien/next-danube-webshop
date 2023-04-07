@@ -13,6 +13,8 @@ import {
 
 const router = express.Router({ mergeParams: true });
 
+import { protect, authorize } from "../middleware/auth.ts";
+
 router
   .route("/")
   .get(
@@ -22,7 +24,11 @@ router
     }),
     getReviews
   )
-  .post(createReview);
-router.route("/:id").get(getReview).put(updateReview).delete(deleteReview);
+  .post(protect, authorize("admin", "user"), createReview);
+router
+  .route("/:id")
+  .get(getReview)
+  .put(protect, authorize("admin", "user"), updateReview)
+  .delete(protect, deleteReview);
 
 module.exports = router;

@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import colors from "colors";
+import cookieParser from "cookie-parser";
 import errorHandler from "./middleware/error";
 import connectDB from "./config/db";
 
@@ -18,11 +19,16 @@ connectDB();
 // Route files
 import books from "./routes/books";
 import reviews from "./routes/reviews";
+import users from "./routes/users";
+import auth from "./routes/auth";
 
 const app = express();
 
 // Body parser
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
@@ -32,6 +38,8 @@ if (process.env.NODE_ENV == "development") {
 // Mount routers
 app.use("/api/v1/books", books);
 app.use("/api/v1/reviews", reviews);
+app.use("/api/v1/users", users);
+app.use("/api/v1/auth", auth);
 
 // Error handler
 app.use(errorHandler);

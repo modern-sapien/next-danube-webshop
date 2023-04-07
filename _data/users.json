@@ -1,0 +1,113 @@
+[
+  {
+    "_id": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
+    "email": "john@example.com",
+    "password": "password1",
+    "username": "Neo",
+    "lastName": "Anderson",
+    "image": "https://example.com/images/neo.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "34d6b4e8-2c6b-4a14-9a05-8d7a2c25f92f",
+    "email": "jane@example.com",
+    "password": "password2",
+    "username": "Trinity",
+    "lastName": "Moss",
+    "image": "https://example.com/images/trinity.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "ccfa8f75-6357-4fa7-af5a-2e95c9bb8e1c",
+    "email": "jim@example.com",
+    "password": "password3",
+    "username": "Morpheus",
+    "lastName": "Jones",
+    "image": "https://example.com/images/morpheus.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "1db3b3ab-6e8a-44c4-9e4d-5369dc67eb8e",
+    "email": "mary@example.com",
+    "password": "password4",
+    "username": "Tracer",
+    "lastName": "Lena",
+    "image": "https://example.com/images/tracer.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "5d09be5a-e0e2-49f2-a9a2-cf8b53469be2",
+    "email": "peter@example.com",
+    "password": "password5",
+    "username": "Reaper",
+    "lastName": "Gabriel",
+    "image": "https://example.com/images/reaper.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "a5a5d5f7-42c5-41f7-9f96-8e0dbde5a1e3",
+    "email": "susan@example.com",
+    "password": "password6",
+    "username": "Zarya",
+    "lastName": "Alexei",
+    "image": "https://example.com/images/zarya.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "fc416a8d-91c6-4f95-9d9d-c8ccdb51c3f3",
+    "email": "david@example.com",
+    "password": "password7",
+    "username": "Genji",
+    "lastName": "Shimada",
+    "image": "https://example.com/images/genji.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "9636b32d-9b8d-4627-a384-dca2cf20abcb",
+    "email": "linda@example.com",
+    "password": "password8",
+    "username": "Mercy",
+    "lastName": "Ziegler",
+    "image": "https://example.com/images/mercy.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "e3e38b77-7ed8-4a4c-9f4e-4c4d25d36fdd",
+    "email": "jackson@example.com",
+    "password": "password9",
+    "username": "McCree",
+    "lastName": "Jesse",
+    "image": "https://example.com/images/mccree.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "9ee1dd8b-32bf-44dc-944a-d2eae70ebf09",
+    "email": "olivia@example.com",
+    "password": "password10",
+    "username": "D.Va",
+    "lastName": "Hana",
+    "image": "https://example.com/images/dva.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  },
+  {
+    "_id": "2211c3db-3ef5-4413-85d8-c2320c7b8696",
+    "email": "isaac@example.com",
+    "password": "password11",
+    "username": "Lucio",
+    "lastName": "Correia",
+    "image": "https://example.com/images/lucio.jpg",
+    "createdAt": "2021-10-09T10:15:47.601Z",
+    "reviews": []
+  }
+]
+

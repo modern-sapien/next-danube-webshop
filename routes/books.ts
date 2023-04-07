@@ -12,11 +12,17 @@ const router = express.Router();
 // Re-route into other resource routers
 router.use("/:bookId/reviews", reviewRouter);
 
+import { protect, authorize } from "../middleware/auth.ts";
+
 router
   .route("/")
   .get(advancedResults(Book, { path: "reviews", select: "title recommend review stars" }), getBooks)
-  .post(createBook);
+  .post(protect, authorize("admin"), createBook);
 
-router.route("/:id").get(getBook).put(updateBook).delete(deleteBook);
+router
+  .route("/:id")
+  .get(getBook)
+  .put(protect, authorize("admin"), updateBook)
+  .delete(protect, authorize("admin"), deleteBook);
 
 module.exports = router;

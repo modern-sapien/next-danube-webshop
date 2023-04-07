@@ -1,5 +1,6 @@
 //@ts-nocheck
 import Review from "../models/Review.ts";
+import User from "../models/User.ts";
 import Book from "../models/Book.ts";
 import ErrorResponse from "../utils/errorResponse";
 import asyncHandler from "../middleware/async";
@@ -17,7 +18,7 @@ export const getReviews = asyncHandler(async (req, res, next) => {
 // @access Public
 export const getReview = asyncHandler(async (req, res, next) => {
   const review = await Review.findById(req.params._id);
-  console.log(await review, "review");
+
   if (!review) {
     return next(new ErrorResponse(`Review not found with id of ${req.params._id}`, 404));
   }
@@ -28,7 +29,10 @@ export const getReview = asyncHandler(async (req, res, next) => {
 // @route ADD /api/v1/books/:bookId/reviews
 // @access Private
 export const createReview = asyncHandler(async (req, res, next) => {
+  // book id
   req.body.book = req.params.bookId;
+  // user id
+  req.body.user = req.user._id;
 
   const book = await Book.findById(req.params.bookId);
 
@@ -36,10 +40,24 @@ export const createReview = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(`Book not found with id of ${req.params.bookId}`, 404));
   }
 
-  console.log(req.body, "req.body");
   const review = await Review.create(req.body);
 
-  res.status(200).json({ success: true, data: review });
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $push: {
+        reviews: {
+          reviewId: review._id,
+          bookId: review.bookId,
+        },
+      },
+    },
+    { new: true }
+  );
+
+  res
+    .status(200)
+    .json({ success: true, data: review, msg: `${user.username} thanks for the review!` });
 });
 
 // @desc update review

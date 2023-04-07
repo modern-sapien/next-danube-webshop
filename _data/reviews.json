@@ -4,7 +4,7 @@
     "recommend": true,
     "review": "This book is absolutely amazing! I couldn't put it down.",
     "stars": 5,
-    "user": "",
+    "user": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
     "book": "d9d24721-6e16-44da-8b91-95aa10c71a62"
   },
   {
@@ -12,7 +12,7 @@
     "recommend": true,
     "review": "This book had me laughing out loud on every page. Highly recommend!",
     "stars": 4,
-    "user": "",
+    "user": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
     "book": "d9d24721-6e16-44da-8b91-95aa10c71a62"
   },
   {
@@ -20,7 +20,7 @@
     "recommend": false,
     "review": "I wouldn't wish this book on my worst enemy. Terrible!",
     "stars": 1,
-    "user": "",
+    "user": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
     "book": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f"
   },
   {
@@ -28,7 +28,7 @@
     "recommend": false,
     "review": "I tried to get into this book, but it just didn't click for me. Maybe it's just not my style.",
     "stars": 2,
-    "user": "",
+    "user": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
     "book": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef"
   },
   {
@@ -36,7 +36,7 @@
     "recommend": true,
     "review": "This book was the perfect beach read. Light, fun, and engaging.",
     "stars": 4,
-    "user": "",
+    "user": "ccfa8f75-6357-4fa7-af5a-2e95c9bb8e1c",
     "book": "cd09bf12-1e6b-42d7-8bb3-2f8c0d9f2aef"
   },
   {
@@ -44,7 +44,7 @@
     "recommend": true,
     "review": "If you read one book this year, make it this one. It will change the way you see the world.",
     "stars": 5,
-    "user": "",
+    "user": "ccfa8f75-6357-4fa7-af5a-2e95c9bb8e1c",
     "book": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979"
   },
   {
@@ -52,7 +52,7 @@
     "recommend": false,
     "review": "I was so excited for this sequel, but it didn't live up to the hype. Stick with the original.",
     "stars": 2,
-    "user": "",
+    "user": "ccfa8f75-6357-4fa7-af5a-2e95c9bb8e1c",
     "book": "2f76b99c-8e0b-4c28-bcaf-91b42c8d2b2f"
   },
   {
@@ -60,7 +60,7 @@
     "recommend": true,
     "review": "This book is a classic for a reason. Beautifully written and timeless.",
     "stars": 5,
-    "user": "",
+    "user": "5d09be5a-e0e2-49f2-a9a2-cf8b53469be2",
     "book": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12"
   },
   {
@@ -68,7 +68,7 @@
     "recommend": true,
     "review": "I stayed up all night reading this book. It was that good.",
     "stars": 4,
-    "user": "",
+    "user": "5d09be5a-e0e2-49f2-a9a2-cf8b53469be2",
     "book": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f"
   },
   {
@@ -76,7 +76,7 @@
     "recommend": true,
     "review": "This book made me think about things I've never considered before. Highly recommend for anyone interested in philosophy.",
     "stars": 4,
-    "user": "",
+    "user": "fc416a8d-91c6-4f95-9d9d-c8ccdb51c3f3",
     "book": "d5bf3c7d-74f3-4c1a-9b5d-9dd9d4e4c16f"
   },
   {
@@ -84,7 +84,7 @@
     "recommend": false,
     "review": "I was really enjoying this book until the ending, which fell flat for me. I wish it had been more satisfying.",
     "stars": 3,
-    "user": "",
+    "user": "fc416a8d-91c6-4f95-9d9d-c8ccdb51c3f3",
     "book": "cfbf0f31-5571-4d67-aebe-0e67e0edee11"
   },
   {
@@ -92,7 +92,7 @@
     "recommend": true,
     "review": "This book had me hooked from the first page. I couldn't wait to find out what happened next.",
     "stars": 4,
-    "user": "",
+    "user": "fc416a8d-91c6-4f95-9d9d-c8ccdb51c3f3",
     "book": "8f308b9d-7fd5-444e-a7ba-23b1318b0123"
   },
   {
@@ -100,7 +100,7 @@
     "recommend": false,
     "review": "I didn't even bother to read this book because the cover was so boring.",
     "stars": 1,
-    "user": "",
+    "user": "fc416a8d-91c6-4f95-9d9d-c8ccdb51c3f3",
     "book": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979"
   },
   {
@@ -108,7 +108,7 @@
     "recommend": true,
     "review": "This book was so boring that it put me to sleep every night. Great for insomniacs!",
     "stars": 2,
-    "user": "",
+    "user": "e3e38b77-7ed8-4a4c-9f4e-4c4d25d36fdd",
     "book": "dcb4a4c4-4b4d-4e18-b2a6-baa791a2f979"
   },
   {
@@ -116,7 +116,7 @@
     "recommend": true,
     "review": "I couldn't put this book down, even though it made me miss my flight. It was worth it!",
     "stars": 4,
-    "user": "",
+    "user": "e3e38b77-7ed8-4a4c-9f4e-4c4d25d36fdd",
     "book": "c529f6e5-6f31-48f9-b9d2-2f3f593a3c12"
   },
   {
@@ -124,7 +124,7 @@
     "recommend": true,
     "review": "After reading this book, I realized that life is too short to be stuck in a dead-end job. I quit the next day!",
     "stars": 5,
-    "user": "",
+    "user": "e3e38b77-7ed8-4a4c-9f4e-4c4d25d36fdd",
     "book": "33a3b22a-b9e2-4ba4-b34c-4f6cfe8c76ec"
   },
   {
@@ -132,7 +132,7 @@
     "recommend": false,
     "review": "This book was so depressing that it made me question the meaning of life. I do not recommend it.",
     "stars": 1,
-    "user": "",
+    "user": "9ee1dd8b-32bf-44dc-944a-d2eae70ebf09",
     "book": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7"
   },
   {
@@ -140,7 +140,7 @@
     "recommend": false,
     "review": "I'm pretty sure this book was written in a different language, because I couldn't understand a word of it. Maybe I'm just not smart enough?",
     "stars": 2,
-    "user": "",
+    "user": "9ee1dd8b-32bf-44dc-944a-d2eae70ebf09",
     "book": "8e7e9d72-390a-46de-a6b1-7a23a06b03f7"
   },
   {
@@ -148,7 +148,7 @@
     "recommend": true,
     "review": "I haven't laughed this hard since I saw my cat fall off the windowsill. This book is a must-read!",
     "stars": 5,
-    "user": "",
+    "user": "9ee1dd8b-32bf-44dc-944a-d2eae70ebf09",
     "book": "70de0e72-26a8-4d47-8316-7f2eb814c25e"
   },
   {
@@ -156,7 +156,7 @@
     "recommend": true,
     "review": "This book opened my eyes to the injustices in the world and made me want to fight for change. Power to the people!",
     "stars": 4,
-    "user": "",
+    "user": "2211c3db-3ef5-4413-85d8-c2320c7b8696",
     "book": "70de0e72-26a8-4d47-8316-7f2eb814c25e"
   }
 ]
