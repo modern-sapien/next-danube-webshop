@@ -10,14 +10,103 @@ body {
   background-color: #fff;
   color: #000;
 }
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  background-color: #45C8F1;
+.test {
+  background-color: #0047ab;
+  min-width: 200px;
+  border: dotted;
 }
 
+/* Center the main container and make it span the entire screen */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Divide the main container into two columns */
+.main-container .columns {
+  display: flex;
+  flex-direction: row;
+  width: 80%; /* adjust to your desired width */
+  max-width: 1200px; /* adjust to your desired maximum width */
+}
+
+/* Style the left column */
+.left-column {
+  flex: 0 0 30%; /* adjust to your desired width */
+  background-color: #eee; /* example background color */
+  padding: 20px;
+  max-width: 200px;
+  min-height: 500px;
+  max-height: 600px;
+}
+
+.left-column input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.left-column label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.left-column select[multiple] {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  height: 150px;
+}
+
+.left-column fieldset {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.left-column fieldset legend {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.left-column fieldset label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.left-column fieldset input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Style the right column */
+.main-container .right-column {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap; /* wrap items onto multiple lines */
+}
+
+/* Example card styles for the right column */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.33% - 20px); /* adjust to your desired card width and spacing */
+}
 
 .btn {
   display: inline-block;
@@ -116,10 +205,11 @@ body {
   box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.2);
 }
 
-.repos-container {
-  max-width: 800px;
+.book-container {
+  max-width: 250px;
   margin: 0 auto;
   padding: 2rem 0;
+  border: dotted;
 }
 
 .repo-list {
@@ -143,30 +233,30 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.repo-list a:hover {
+.book-list a:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.repo-list h3 {
+.book-list h3 {
   margin: 0;
   font-size: 1.5rem;
 }
 
-.repo-list p {
+.book-list p {
   margin: 0;
   color: #666;
   font-size: 1.2rem;
 }
 
-.repo-details {
+.book-details {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
   color: #999;
 }
 
-.repo-details span {
+.book-details span {
   display: flex;
   align-items: center;
 }

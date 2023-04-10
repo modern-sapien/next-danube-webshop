@@ -15,14 +15,16 @@ const BooksPage = async () => {
   return (
     <div>
       {books.map((book) => (
-        <div className="" key={book.id}>
+        <div className="book-container" data-test={book.title} key={book.id}>
           <h3>{book.title}</h3>
           <ul>
-            <li> {book.author}</li>
-            <li> {book.publisher}</li>
-            <li> {book.price}</li>
+            <li> author: {book.author}</li>
+            <li> publisher: {book.publisher}</li>
+            <li>genre: {books.genre}</li>
+            <li> price: {book.price}</li>
             <li> {book.image}</li>
           </ul>
+          <button className="btn" data-test="add-to-cart">add to cart</button>
         </div>
       ))}
     </div>

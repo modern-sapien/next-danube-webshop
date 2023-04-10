@@ -1,5 +1,7 @@
 import "./globals.css";
 import Header from "./components/header";
+import Books from "./components/books"
+import BookFilter from "./components/bookFilter";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
@@ -18,7 +20,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={roboto.className}>
         <Header /> 
-        <main className="container">{children}</main>
+        <main className="main-container">{children}        
+                {/* <BookFilter />
+                <Books /> */}
+
+      </main>
       </body>
     </html>
   );
