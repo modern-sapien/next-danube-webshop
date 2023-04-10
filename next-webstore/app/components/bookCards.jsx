@@ -9,13 +9,14 @@ async function fetchBooks() {
   }
 }
 
-const BooksPage = async () => {
+const BookCards = async () => {
   const books = await fetchBooks();
   console.log(books.data);
   return (
-    <div>
+
+    <div className="right-column">
       {books.map((book) => (
-        <div className="book-container" data-test={book.title} key={book.id}>
+        <div className="card" data-test={book.title} key={book.id}>
           <h3>{book.title}</h3>
           <ul>
             <li> author: {book.author}</li>
@@ -31,4 +32,4 @@ const BooksPage = async () => {
   );
 };
 
-export default BooksPage;
+export default BookCards;

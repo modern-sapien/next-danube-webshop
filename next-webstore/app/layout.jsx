@@ -1,6 +1,6 @@
 import "./globals.css";
 import Header from "./components/header";
-import Books from "./components/books"
+import Books from "./components/bookCards"
 import BookFilter from "./components/bookFilter";
 import { Roboto } from "next/font/google";
 
