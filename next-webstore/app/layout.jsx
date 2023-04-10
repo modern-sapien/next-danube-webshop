@@ -21,8 +21,6 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <Header /> 
         <main className="main-container">{children}        
-                {/* <BookFilter />
-                <Books /> */}
 
       </main>
       </body>

@@ -97,6 +97,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap; /* wrap items onto multiple lines */
+  justify-content: center;  
 }
 
 /* Example card styles for the right column */
@@ -106,6 +107,9 @@ body {
   padding: 10px;
   margin: 10px;
   width: calc(33.33% - 20px); /* adjust to your desired card width and spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn {
@@ -293,6 +297,24 @@ body {
 
   background-color: #fff;
   color: #333;
+}
+
+.card-expanded {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  width: 80%;
+  max-width: 400px;
+}
+
+.main-container .right-column-expanded {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: 100vh;
 }
 
 .card h2 {

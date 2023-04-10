@@ -13,19 +13,21 @@ const BookCards = async () => {
   const books = await fetchBooks();
   console.log(books.data);
   return (
-
     <div className="right-column">
       {books.map((book) => (
         <div className="card" data-test={book.title} key={book.id}>
-          <h3>{book.title}</h3>
-          <ul>
+          <h3 style={{display: "flex", justifyContent: "center"}}>{book.title}</h3>              
+          <img style={{display: "flex", justifyContent: "center"}} src="./gatsbycover.png" width="200" height="200" alt="User profile picture" />
+
+          <ul >
             <li> author: {book.author}</li>
             <li> publisher: {book.publisher}</li>
             <li>genre: {books.genre}</li>
             <li> price: {book.price}</li>
-            <li> {book.image}</li>
           </ul>
-          <button className="btn" data-test="add-to-cart">add to cart</button>
+          <button className="btn" data-test="add-to-cart">
+            add to cart
+          </button>
         </div>
       ))}
     </div>
