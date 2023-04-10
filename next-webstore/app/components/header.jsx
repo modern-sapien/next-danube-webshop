@@ -1,18 +1,19 @@
 import Link from "next/link";
+import Search from "./search"
 
 const header = () => {
   return (
     <header className="header">
         <div className="logo">
           <Link rel="stylesheet" href="/">
-            Home{" "}
+            next danube
           </Link>
         </div>
 
 <div>
-<textarea name="" data-test="search-textarea" 
+<input name="" data-test="search-textarea" 
 // value="search" 
-id="search-textarea" cols="30" rows="1" ></textarea>
+id="search-textarea" cols="30" rows="1" ></input>
   <button data-test="search-submit">search</button>
 </div>
 
