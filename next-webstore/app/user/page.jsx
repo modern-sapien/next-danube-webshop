@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
+import LoginForm  from "../components/LoginForm";
+import SignUpForm  from "../components/SignUpForm";
 
 const UserPage = () => {
+
+
   return (
-    <div>UserPage</div>
-  )
-}
+    <div>
+      USER PAGE
+      <LoginForm />
+    </div>
+  );
+};
 
 export default UserPage
