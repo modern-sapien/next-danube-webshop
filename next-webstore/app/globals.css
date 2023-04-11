@@ -10,11 +10,7 @@ body {
   background-color: #fff;
   color: #000;
 }
-.test {
-  background-color: #0047ab;
-  min-width: 200px;
-  border: dotted;
-}
+
 
 /* Center the main container and make it span the entire screen */
 .main-container {
@@ -97,7 +93,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-wrap: wrap; /* wrap items onto multiple lines */
-  justify-content: center;  
+  justify-content: center;
 }
 
 /* Example card styles for the right column */
@@ -241,6 +237,11 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
+.book-image {
+  width: 300;
+  height: 300;
+}
+
 .book-list a:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -317,40 +318,23 @@ body {
   height: 100vh;
 }
 
-.card h2 {
-  font-size: 1.5rem;
-  margin-top: 0;
-}
-
-.card .card-content {
-  margin-top: 1rem;
-}
-
-.card .card-stats {
-  display: flex;
-  margin: 1rem 0;
-}
-
-.card .card-stat {
+/* CartItem.css */
+.cart-item {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
   margin-right: 1rem;
 }
 
-.card .card-stat svg {
-  margin-right: 0.5rem;
-}
 
-.card .card-stat span {
-  font-size: 0.9rem;
-}
-
-.courses .card h2 {
-  margin-bottom: 0;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.test {
+  background-color: #0047ab;
+  min-width: 500px;
+  border: dotted;
 }

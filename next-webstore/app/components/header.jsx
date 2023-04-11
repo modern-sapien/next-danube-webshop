@@ -24,7 +24,7 @@ const header = () => {
 
       <div className="links">
         <Link href="/login">login</Link>
-        <Link href="/review">cart</Link>
+        <Link href="/cart">cart</Link>
         <Link href="/user">account</Link>
       </div>
     </header>
