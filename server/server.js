@@ -1,11 +1,11 @@
 //@ts-nocheck
-import express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import colors from "colors";
-import cookieParser from "cookie-parser";
-import errorHandler from "./middleware/error";
-import connectDB from "./config/db";
+const express = require("express") ;
+const dotenv = require("dotenv") ;
+const morgan = require("morgan") ;
+const colors = require("colors") ;
+const cookieParser = require("cookie-parser") ;
+const errorHandler = require("./middleware/error") ;
+const connectDB = require("./config/db") ;
 
 //using colors package
 colors;
@@ -17,10 +17,10 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 // Route files
-import books from "./routes/books";
-import reviews from "./routes/reviews";
-import users from "./routes/users";
-import auth from "./routes/auth";
+const books = require("./routes/books") ;
+const reviews = require("./routes/reviews") ;
+const users = require("./routes/users") ;
+const auth = require("./routes/auth") ;
 
 const app = express();
 

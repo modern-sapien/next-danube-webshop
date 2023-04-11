@@ -1,12 +1,12 @@
 //@ts-nocheck
-import express from "express";
-import Review from "../models/Review.ts";
-import { getUser, getUsers, updateUser, deleteUser } from "../controllers/users";
-import advancedResults from "../middleware/advancedResults.ts";
+const express = require("express");
+const Review = require("../models/Review.js");
+const { getUser, getUsers, updateUser, deleteUser } = require("../controllers/users.js");
+const advancedResults = require("../middleware/advancedResults.js");
 
 const router = express.Router();
 
-import { protect, authorize } from "../middleware/auth.ts";
+const { protect, authorize } = require("../middleware/auth.js");
 
 router
   .route("/")

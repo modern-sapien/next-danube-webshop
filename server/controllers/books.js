@@ -1,18 +1,18 @@
 //@ts-nocheck
-import ErrorResponse from "../utils/errorResponse";
-import asyncHandler from "../middleware/async";
-import Book from "../models/Book.ts";
+const ErrorResponse = require("../utils/errorResponse") ;
+const asyncHandler = require("../middleware/async") ;
+const Book = require("../models/Book") ;
 
 // @desc get all books
 // @route GET /api/v1/books
 // @access Public
-export const getBooks = asyncHandler(async (req, res, next) => {
+const getBooks = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 // @desc get a book by ID
 // @route GET /api/v1/books/:id
 // @access Public
-export const getBook = asyncHandler(async (req, res, next) => {
+const getBook = asyncHandler(async (req, res, next) => {
   console.log(req.params.id);
 
   const book = await Book.findById(req.params.id);
@@ -25,7 +25,7 @@ export const getBook = asyncHandler(async (req, res, next) => {
 // @desc create books
 // @route CREATE /api/v1/books
 // @access Private
-export const createBook = asyncHandler(async (req, res, next) => {
+const createBook = asyncHandler(async (req, res, next) => {
   const book = await Book.create(req.body);
 
   if (req.user.role !== "admin") {
@@ -37,7 +37,7 @@ export const createBook = asyncHandler(async (req, res, next) => {
 // @desc update a book
 // @route UPDATE /api/v1/books
 // @access Public
-export const updateBook = asyncHandler(async (req, res, next) => {
+const updateBook = asyncHandler(async (req, res, next) => {
   const book = await Book.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -52,7 +52,7 @@ export const updateBook = asyncHandler(async (req, res, next) => {
 // @desc get all books
 // @route DELETE /api/v1/books
 // @access Public
-export const deleteBook = asyncHandler(async (req, res, next) => {
+const deleteBook = asyncHandler(async (req, res, next) => {
   // const book = await Book.findById(req.params.id);
   const book = await Book.findOne({ _id: req.params.id });
 
@@ -68,3 +68,12 @@ export const deleteBook = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({});
 });
+
+
+module.exports = {
+  getBooks,
+  getBook,
+  createBook,
+  updateBook,
+  deleteBook,
+};

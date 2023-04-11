@@ -1,6 +1,5 @@
-//@ts-nocheck
-import ErrorResponse from "../utils/errorResponse";
-
+const ErrorResponse = require("../utils/errorResponse")
+ 
 const errorHandler = async (err, req, res, next) => {
   let error = await { ...err };
 

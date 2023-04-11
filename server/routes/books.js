@@ -1,18 +1,18 @@
 //@ts-nocheck
-import express from "express";
-import Book from "../models/Book.ts";
-import { getBook, getBooks, createBook, updateBook, deleteBook } from "../controllers/books";
-import advancedResults from "../middleware/advancedResults.ts";
+const express = require("express") ;
+const Book = require("../models/Book.js") ;
+const { getBook, getBooks, createBook, updateBook, deleteBook } = require("../controllers/books.js") ;
+const advancedResults = require("../middleware/advancedResults.js") ;
 
 // Include other resource routers
-const reviewRouter = require("./reviews.ts");
+const reviewRouter = require("./reviews.js");
 
 const router = express.Router();
 
 // Re-route into other resource routers
 router.use("/:bookId/reviews", reviewRouter);
 
-import { protect, authorize } from "../middleware/auth.ts";
+const { protect, authorize } = require( "../middleware/auth.js");
 
 router
   .route("/")

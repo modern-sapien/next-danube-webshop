@@ -1,12 +1,12 @@
 //@ts-nocheck
-import ErrorResponse from "../utils/errorResponse";
-import asyncHandler from "../middleware/async";
-import User from "../models/User.ts";
+const ErrorResponse = require("../utils/errorResponse") ;
+const asyncHandler = require("../middleware/async") ;
+const User = require("../models/User") ;
 
 // @desc REGISTER USER
 // @route POST /api/v1/auth/register
 // @access Public
-export const register = asyncHandler(async (req, res, next) => {
+const register = asyncHandler(async (req, res, next) => {
   const { username, email, password, role } = req.body;
 
   // Create user
@@ -17,15 +17,13 @@ export const register = asyncHandler(async (req, res, next) => {
     role,
   });
 
-
-  sendTokenResponse(user, 200, res)
-
+  sendTokenResponse(user, 200, res);
 });
 
 // @desc Login User
 // @route POST /api/v1/auth/register
 // @access Public
-export const login = asyncHandler(async (req, res, next) => {
+const login = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
 
   // Validate email & password
@@ -47,7 +45,7 @@ export const login = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse("invalid credentials", 401));
   }
 
-  sendTokenResponse(user, 200, res)
+  sendTokenResponse(user, 200, res);
 });
 
 // FUNCTION get token from model, create cookie & send response
@@ -65,11 +63,18 @@ const sendTokenResponse = (user, statusCode, res) => {
 // @desc Get current logged in user
 // @route POST /api/v1/auth/me
 // @access Public
-exports.getMe = asyncHandler(async(req, res, next) => {
-  const user = await User.findById(req.user._id)
+const getMe = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
 
   res.status(200).json({
     success: true,
-    data: user
-  })
-})
+    data: user,
+  });
+});
+
+
+module.exports = {
+  getMe,
+  login,
+  register
+};

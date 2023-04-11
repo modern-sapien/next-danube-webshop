@@ -1,19 +1,19 @@
 //@ts-nocheck
-import ErrorResponse from "../utils/errorResponse";
-import asyncHandler from "../middleware/async";
-import User from "../models/User.ts";
+const ErrorResponse = require("../utils/errorResponse");
+const asyncHandler = require("../middleware/async");
+const User = require("../models/User");
 
 // @desc get all users
 // @route GET /api/v1/users
 // @access Public
-export const getUsers = asyncHandler(async (req, res, next) => {
+const getUsers = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
 // @desc get user by ID
 // @route GET /api/v1/users/:id
 // @access Private
-export const getUser = asyncHandler(async (req, res, next) => {
+const getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
   if (!user) {
     return next(new ErrorResponse(`User not found with id of ${req.params.id}`, 404));
@@ -23,8 +23,7 @@ export const getUser = asyncHandler(async (req, res, next) => {
 // @desc update a book
 // @route UPDATE /api/v1/books
 // @access Private
-export const updateUser = asyncHandler(async (req, res, next) => {
-
+const updateUser = asyncHandler(async (req, res, next) => {
   // ################################################################
   // #### NEED TO MATCH USER TO USER MAKING THE REQUEST or ADMIN ####
   // ################################################################
@@ -41,12 +40,10 @@ export const updateUser = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: user });
 });
 
-
 // @desc get all books
 // @route DELETE /api/v1/books
 // @access Private
-export const deleteUser = asyncHandler(async (req, res, next) => {
-  
+const deleteUser = asyncHandler(async (req, res, next) => {
   // ################################################################
   // #### NEED TO MATCH USER TO USER MAKING THE REQUEST or ADMIN ####
   // ################################################################
@@ -65,3 +62,10 @@ export const deleteUser = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({});
 });
+
+module.exports = {
+  getUsers,
+  getUser,
+  updateUser,
+  deleteUser,
+};
