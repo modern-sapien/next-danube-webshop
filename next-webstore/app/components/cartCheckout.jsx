@@ -29,9 +29,9 @@ const cartCheckout = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form data-test="" className="sticky-form" onSubmit={handleSubmit}>
       <h2>Shipping</h2>
-      <div className="checkout-div">
+      <div className="checkout-div ">
         <label htmlFor="firstName">First Name:</label>
         <input
           type="text"

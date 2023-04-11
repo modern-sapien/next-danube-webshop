@@ -49,8 +49,37 @@
 }
 
 .cart-item {
-  min-width: 150p;
-  padding: 20px;
-  text-align: "center";
+  display: flex;
+  flex-direction: column; /* Changed from row to column */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  min-width: 250px;
+}
+
+.cart-item-author {
+  font-size: 1rem;
+  color: #666666;
+  margin-bottom: 0px;
+}
+.cart-item-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.cart-item-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: right;
+}
+
+.sticky-form {
+  position: sticky;
+  top: 0;
+  padding-top: 50px;
+  height: 90vh;/* adjust margin-left value to align with the left content */
 }
