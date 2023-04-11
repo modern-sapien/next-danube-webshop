@@ -6,7 +6,6 @@ const HomePage = () => {
   return (
     <div className="columns">
       <BookFilter />
-
       <BookCards />
     </div>
   );

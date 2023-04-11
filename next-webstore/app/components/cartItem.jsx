@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 
-const cartItems = ({ item }) => {
+const cartItem = ({ item }) => {
+  console.log(`${item}`);
   return (
     <div
       className="card"
-      key={item.id}
-      item={item}
+      // item={item}
       // onQuantityChange={handleQuantityChange}
       // onRemoveItem={handleRemoveItem}
     >
@@ -21,4 +21,4 @@ const cartItems = ({ item }) => {
   );
 };
 
-export default cartItems;
+export default cartItem;

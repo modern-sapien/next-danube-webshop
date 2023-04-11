@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import CartItem from "../components/cartItems";
+import CartItem from "../components/cartItem";
+import CartInventory from "../components/cartInventory";
+import CartCheckout from "../components/cartCheckout";
 import "./Cart.css";
 
 const CartPage = () => {
@@ -32,16 +34,19 @@ const CartPage = () => {
   ];
 
   return (
-    <div className="cart-container" suppressHydrationWarning={true}>
-
-
-      <h2>Your Cart</h2>
-      <div className="cart-items-container test">
-        {cartItems.map((item) => (
-          <CartItem key={item.id} item={item} className="cart-item"/>
-        ))}
-      </div>
-    
+    <div className="columns">
+      <CartInventory items={cartItems} />
+      <CartCheckout
+        firstName="John"
+        lastName="Doe"
+        address="123 Main St"
+        city="Anytown"
+        state="CA"
+        zipCode="12345"
+        cardNumber="1234 5678 9012 3456"
+        cardExpiration="01/23"
+        cardCVV="123"
+      ></CartCheckout>
     </div>
   );
 };

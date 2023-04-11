@@ -13,7 +13,6 @@ async function fetchBooks() {
 
 const BookCards = async () => {
   const books = await fetchBooks();
-  console.log(books.data);
   return (
     <div className="right-column">
       {books.map((book) => (
