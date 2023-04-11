@@ -4,8 +4,8 @@ import React from "react";
 const cartItem = ({ item }) => {
   console.log(`${item}`);
   return (
-    <div
-      className="card"
+    <div 
+      className="cart-item"
       // item={item}
       // onQuantityChange={handleQuantityChange}
       // onRemoveItem={handleRemoveItem}

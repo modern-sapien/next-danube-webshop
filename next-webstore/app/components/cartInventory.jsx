@@ -38,6 +38,7 @@ const cartInventory = ({}) => {
   console.log(cartItems, "cartItems");
   return (
     <div className="test left-column">
+      <h1 style={{ textAlign: "center" }}>Order</h1>
       {cartItems &&
         cartItems.map((item) => (
           <CartItem key={item.id} item={item} author={item.author}>
