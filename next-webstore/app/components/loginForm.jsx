@@ -10,7 +10,53 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle login or sign up here
+    if (isLogin) {
+      // handle login
+      fetch("https://next-danube-webshop-nwm9c679y-modern-sapien.vercel.app/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Invalid email or password");
+          }
+          // handle successful login
+          console.log("User logged in successfully");
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      // handle sign up
+      fetch("https://next-danube-webshop-nwm9c679y-modern-sapien.vercel.app/api/v1/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          username: username,
+          password: password,
+          passwordConfirm: passwordConfirm
+        })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Unable to create account");
+          }
+          // handle successful sign up
+          console.log("User signed up successfully");
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   };
 
   return (
