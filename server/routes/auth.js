@@ -1,10 +1,10 @@
 //@ts-nocheck
-import express from "express";
-import { register, login, getMe } from "../controllers/auth.ts";
+const express = require("express") ;
+const { register, login, getMe } = require("../controllers/auth.js") ;
 
 const router = express.Router();
 
-import { protect } from "../middleware/auth.ts"
+const { protect } = require("../middleware/auth.js") ;
 
 router.post("/register", register);
 router.post("/login", login);

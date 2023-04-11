@@ -1,8 +1,8 @@
 //@ts-nocheck
-import jwt from "jsonwebtoken";
-import asyncHandler from "./async";
-import ErrorResponse from "../utils/errorResponse";
-import User from "../models/User";
+const jwt = require("jsonwebtoken") ;
+const asyncHandler = require("./async") ;
+const ErrorResponse = require("../utils/errorResponse") ;
+const User = require("../models/User") ;
 
 // Protect routes
 exports.protect = asyncHandler(async (req, res, next) => {

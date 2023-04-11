@@ -1,22 +1,21 @@
-//@ts-nocheck
-import Review from "../models/Review.ts";
-import User from "../models/User.ts";
-import Book from "../models/Book.ts";
-import ErrorResponse from "../utils/errorResponse";
-import asyncHandler from "../middleware/async";
+const Review = require("../models/Review.js") ;
+const User = require("../models/User.js") ;
+const Book = require("../models/Book.js") ;
+const ErrorResponse = require("../utils/errorResponse.js") ;
+const asyncHandler = require("../middleware/async.js") ;
 
 // @desc get all reviews
 // @route GET /api/v1/reviews
 // @route GET /api/v1/review/:reviewId/books
 // @access Public
-export const getReviews = asyncHandler(async (req, res, next) => {
+const getReviews = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
 // @desc get review by ID
 // @route GET /api/v1/reviews/:reviewId
 // @access Public
-export const getReview = asyncHandler(async (req, res, next) => {
+const getReview = asyncHandler(async (req, res, next) => {
   const review = await Review.findById(req.params._id);
 
   if (!review) {
@@ -28,7 +27,7 @@ export const getReview = asyncHandler(async (req, res, next) => {
 // @desc Add reviews
 // @route ADD /api/v1/books/:bookId/reviews
 // @access Private
-export const createReview = asyncHandler(async (req, res, next) => {
+const createReview = asyncHandler(async (req, res, next) => {
   // book id
   req.body.book = req.params.bookId;
   // user id
@@ -63,7 +62,7 @@ export const createReview = asyncHandler(async (req, res, next) => {
 // @desc update review
 // @route Put /api/v1/reviews/:reviewId
 // @access Private
-export const updateReview = asyncHandler(async (req, res, next) => {
+const updateReview = asyncHandler(async (req, res, next) => {
   let review = await Review.findById(req.params.id);
 
   if (!review) {
@@ -81,7 +80,7 @@ export const updateReview = asyncHandler(async (req, res, next) => {
 // @desc update review
 // @route Put /api/v1/reviews/:reviewId
 // @access Public
-export const deleteReview = asyncHandler(async (req, res, next) => {
+const deleteReview = asyncHandler(async (req, res, next) => {
   let review = await Review.findById(req.params.id);
 
   if (!review) {
@@ -92,3 +91,11 @@ export const deleteReview = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({});
 });
+
+module.exports = {
+  getReviews,
+  getReview,
+  createReview,
+  updateReview,
+  deleteReview,
+};

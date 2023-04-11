@@ -1,4 +1,3 @@
-//@ts-nocheck
 const advancedResults = (model, populate) => async (req, res, next) => {
   let query;
 

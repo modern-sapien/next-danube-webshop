@@ -1,5 +1,5 @@
 //@ts-nocheck
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const connectDB = async () => {
   const conn = await mongoose.connect(process.env.MONGO_URI, {
@@ -9,4 +9,4 @@ const connectDB = async () => {
   console.log(`mongoDB connected ${conn.connection.host}`.green.bold.inverse);
 };
 
-export default connectDB;
+module.exports = connectDB;

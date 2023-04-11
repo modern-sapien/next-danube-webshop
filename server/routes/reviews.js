@@ -1,19 +1,18 @@
-//@ts-nocheck
-import express from "express";
-import Review from "../models/Review.ts";
-import advancedResults from "../middleware/advancedResults.ts";
+const express = require("express");
+const Review = require("../models/Review.js");
+const advancedResults = require("../middleware/advancedResults.js")
 
-import {
+const {
   getReview,
   getReviews,
   createReview,
   updateReview,
   deleteReview,
-} from "../controllers/reviews";
+} = require("../controllers/reviews.js");
 
 const router = express.Router({ mergeParams: true });
 
-import { protect, authorize } from "../middleware/auth.ts";
+const { protect, authorize } = require("../middleware/auth.js");
 
 router
   .route("/")
@@ -25,6 +24,7 @@ router
     getReviews
   )
   .post(protect, authorize("admin", "user"), createReview);
+
 router
   .route("/:id")
   .get(getReview)

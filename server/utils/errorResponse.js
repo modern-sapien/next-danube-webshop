@@ -1,4 +1,3 @@
-//@ts-nocheck
 class ErrorResponse extends Error {
   constructor(message, statusCode) {
     super(message)
@@ -6,4 +5,4 @@ class ErrorResponse extends Error {
   }
 }
 
-module.exports = ErrorResponse
+module.exports = ErrorResponse;
