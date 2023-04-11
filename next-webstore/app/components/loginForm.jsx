@@ -7,55 +7,67 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [isLogin, setIsLogin] = useState(true);
+  const [message, setMessage] = useState(""); // added state variable
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLogin) {
-      // handle login
-      fetch("https://next-danube-webshop-nwm9c679y-modern-sapien.vercel.app/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Invalid email or password");
-          }
-          // handle successful login
-          console.log("User logged in successfully");
-        })
-        .catch(error => {
-          console.error(error);
+      try {
+        const response = await fetch("https://next-danube-webshop.vercel.app/api/v1/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
         });
+        if (!response.ok) {
+          throw new Error("Invalid email or password");
+        }
+        const data = await response.json(); // extract data from response
+        setMessage("Successful login"); // set message state variable
+        console.log(data.success, "data");
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      } catch (error) {
+        console.log(error);
+        setMessage(error.message);
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      }
     } else {
-      // handle sign up
-      fetch("https://next-danube-webshop-nwm9c679y-modern-sapien.vercel.app/api/v1/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: email,
-          username: username,
-          password: password,
-          passwordConfirm: passwordConfirm
-        })
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("Unable to create account");
+      try {
+        const response = await fetch(
+          "https://next-danube-webshop.vercel.app/api/v1/auth/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+              username: username,
+              password: password,
+            }),
           }
-          // handle successful sign up
-          console.log("User signed up successfully");
-        })
-        .catch(error => {
-          console.error(error);
-        });
+        );
+        if (!response.ok) {
+          throw new Error("Unable to create account");
+        }
+        const data = await response.json(); // extract data from response
+        console.log(data, "data");
+        setMessage("Account creation successful"); // set message state variable
+      } catch (error) {
+        console.error(error);
+        setMessage(error.message);
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+      }
     }
   };
 
@@ -105,6 +117,8 @@ const LoginForm = () => {
           {isLogin ? "Sign up here" : "Login here"}
         </a>
       </p>
+
+      {message ? <h2 style={{ color: "blue" }}> {message} </h2> : ""}
     </div>
   );
 };
