@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 async function fetchBooks() {
@@ -15,9 +17,14 @@ const BookCards = async () => {
   const books = await fetchBooks();
   return (
     <div className="right-column">
-      {books.map((book) => (
+
+{ books ? <>      {books.map((book) => (
         <div className="card" data-test={book.title} key={book.id}>
-          <Link href="/book" data-test="book-link" style={{ display: "flex", justifyContent: "center", flexDirection: "column"}}>
+          <Link
+            href="/book"
+            data-test="book-link"
+            style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}
+          >
             <h3 style={{ display: "flex", justifyContent: "center" }}>{book.title}</h3>
             <img
               style={{ display: "flex", justifyContent: "center" }}
@@ -38,7 +45,8 @@ const BookCards = async () => {
             add to cart
           </button>
         </div>
-      ))}
+      ))}</> : <h1>LOADING</h1> }
+
     </div>
   );
 };
