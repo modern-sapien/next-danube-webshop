@@ -6,6 +6,7 @@ const colors = require("colors") ;
 const cookieParser = require("cookie-parser") ;
 const errorHandler = require("./middleware/error") ;
 const connectDB = require("./config/db") ;
+const cors = require('cors');
 
 //using colors package
 colors;
@@ -29,6 +30,8 @@ app.use(express.json());
 
 // Cookie parser
 app.use(cookieParser());
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {

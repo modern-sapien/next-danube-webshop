@@ -33,11 +33,21 @@ const cartInventory = ({}) => {
       price: 20.0,
       quantity: 3,
     },
+    {
+      id: 4,
+      title: 'Title 4',
+      author: "Author 4",
+      publisher: "Publisher 4",
+      genre: "Genre 4",
+      price: 20.0,
+      quantity: 2,
+    },
   ];
 
   console.log(cartItems, "cartItems");
   return (
     <div className="test left-column">
+      <h1 style={{ textAlign: "center" }}>Order</h1>
       {cartItems &&
         cartItems.map((item) => (
           <CartItem key={item.id} item={item} author={item.author}>
