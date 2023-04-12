@@ -30,21 +30,19 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
-// use cors
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    origin: "https://next-danube-webshop.vercel.app",
-  })
-);
-
-// allow origin and credentials
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.setHeader("Access-Control-Allow-Origin", "https://next-danube-webshop.vercel.app'");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  next();
-});
+// use cors middleware
+app.use(cors({
+  origin: function (origin, callback) {
+    const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app"];
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
