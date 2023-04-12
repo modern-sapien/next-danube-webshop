@@ -1,4 +1,3 @@
-//@ts-nocheck
 const express = require("express") ;
 const dotenv = require("dotenv") ;
 const morgan = require("morgan") ;
@@ -32,6 +31,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({ origin: 'http://localhost:3000' }));
+
+// allow origin
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
 
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
