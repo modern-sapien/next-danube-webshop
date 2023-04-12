@@ -11,7 +11,7 @@ const UserPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(
+      const response = await fetch (
         "https://next-danube-webshop.vercel.app/api/v1/auth/me"
       );
       const data = await response.json();
@@ -37,7 +37,6 @@ const UserPage = () => {
 
   return (
     <div className="columns">
-      {userMessage ? <h1> {userMessage}</h1> : ""}
       <div className="left-column">
       {loading ? (
           <p>Loading...</p>

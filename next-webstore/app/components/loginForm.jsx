@@ -28,7 +28,12 @@ const LoginForm = () => {
         }
         const data = await response.json(); // extract data from response
         setMessage("Successful login"); // set message state variable
-        console.log(data.success, "data");
+        console.log(data, "data");
+
+        // Set cookie with the token and expiration time
+        const expires = new Date(Date.now() + data.expiresIn * 1000); // expiresIn is the token expiration time in seconds
+        document.cookie = `token=${data.token};expires=${expires.toUTCString()};path=https://next-danube-webshop.vercel.app/`;
+
         setTimeout(() => {
           setMessage("");
         }, 5000);
