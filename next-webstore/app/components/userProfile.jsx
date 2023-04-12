@@ -16,11 +16,22 @@ const UserProfile = ({ userData }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+
+      const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      };
+      const token = getCookie("token");
+
+      console.log(token)
+
       const response = await fetch(
         `https://next-danube-webshop-backend.vercel.app/v1/users/${userData.data.id}`,
         {
           method: "PUT",
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formValues),
@@ -30,7 +41,7 @@ const UserProfile = ({ userData }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      console.log(data);
+      console.log(data, "data");
     } catch (error) {
       console.error("There was a problem updating the user profile", error);
     }
@@ -41,6 +52,16 @@ const UserProfile = ({ userData }) => {
       <h1>User Profile</h1>
       {userData && (
         <>
+          <div className="form-group" key={userData.data.id}>
+            <label htmlFor="id">id:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="id"
+              name="id"
+              value={formValues.id || userData.data.id}
+            />
+          </div>
           <div className="form-group" key={userData.data.id}>
             <label htmlFor="username">Username:</label>
             <input

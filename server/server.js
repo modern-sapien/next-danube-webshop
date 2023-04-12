@@ -16,13 +16,24 @@ dotenv.config({ path: "./config/config.env" });
 // Connect to database
 connectDB();
 
-// Route files
-const books = require("./routes/books");
-const reviews = require("./routes/reviews");
-const users = require("./routes/users");
-const auth = require("./routes/auth");
-
 const app = express();
+
+// use cors middleware
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app"];
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
 
 // Body parser
 app.use(express.json());
@@ -30,24 +41,19 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
-// use cors middleware
-app.use(cors({
-  origin: function (origin, callback) {
-    const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app"];
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true
-}));
-
 // Dev logging middleware
 if (process.env.NODE_ENV == "development") {
   app.use(morgan("dev"));
 }
+
+// Enable pre-flight across-the-board
+app.options("*", cors());
+
+// Route files
+const books = require("./routes/books");
+const reviews = require("./routes/reviews");
+const users = require("./routes/users");
+const auth = require("./routes/auth");
 
 // Mount routers
 app.use("/api/v1/books", books);
