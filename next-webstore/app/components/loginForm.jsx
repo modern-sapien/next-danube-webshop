@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
     if (isLogin) {
       try {
-        const response = await fetch("https://next-danube-webshop.vercel.app/api/v1/auth/login", {
+        const response = await fetch("http://localhost:5000/api/v1/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const LoginForm = () => {
 
         // Set cookie with the token and expiration time
         const expires = new Date(Date.now() + data.expiresIn * 1000); // expiresIn is the token expiration time in seconds
-        document.cookie = `token=${data.token};expires=${expires.toUTCString()};path=https://next-danube-webshop.vercel.app/`;
+        document.cookie = `token=${data.token};expires=${expires.toUTCString()};path=/`;
 
         setTimeout(() => {
           setMessage("");

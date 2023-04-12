@@ -10,30 +10,47 @@ const UserPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch (
-        "https://next-danube-webshop.vercel.app/api/v1/auth/me"
-      );
-      const data = await response.json();
-      setUserData(data.data);
-      setLoading(false);
-      console.log(data)
-    }
+    const fetchData = async () => {
       try {
+        // Get token from cookies
+        const getCookie = (name) => {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        };
+        const token = getCookie("token");
 
-        setTimeout(() => {
-          setUserMessage("loading")
-          console.log(userMessage)
-        }, 3000);
-        fetchData();
+        // Fetch user data with token in headers
+        const response = await fetch('http://localhost:5000/api/v1/auth/me', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          setUserMessage("success");
+          setUserData(data);
+          console.log(data)
+        } else {
+          setUserMessage("failed");
+          console.error(error, "error")
+          console.log(error, "log error")
+          console.log("failed")
+        }
       } catch (error) {
-        setUserMessage("failed")
-        console.log(userMessage)
+        setUserMessage("failed");
+        console.error(error);
+        console.log(error, "log error")
+      } finally {
+        setLoading(false);
       }
-
-
-    
+    };
+  
+    fetchData();
   }, []);
+  
 
   return (
     <div className="columns">

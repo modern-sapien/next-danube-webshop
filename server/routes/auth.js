@@ -1,4 +1,3 @@
-//@ts-nocheck
 const express = require("express") ;
 const { register, login, getMe } = require("../controllers/auth.js") ;
 

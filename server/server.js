@@ -1,11 +1,11 @@
-const express = require("express") ;
-const dotenv = require("dotenv") ;
-const morgan = require("morgan") ;
-const colors = require("colors") ;
-const cookieParser = require("cookie-parser") ;
-const errorHandler = require("./middleware/error") ;
-const connectDB = require("./config/db") ;
-const cors = require('cors');
+const express = require("express");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const colors = require("colors");
+const cookieParser = require("cookie-parser");
+const errorHandler = require("./middleware/error");
+const connectDB = require("./config/db");
+const cors = require("cors");
 
 //using colors package
 colors;
@@ -17,10 +17,10 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 // Route files
-const books = require("./routes/books") ;
-const reviews = require("./routes/reviews") ;
-const users = require("./routes/users") ;
-const auth = require("./routes/auth") ;
+const books = require("./routes/books");
+const reviews = require("./routes/reviews");
+const users = require("./routes/users");
+const auth = require("./routes/auth");
 
 const app = express();
 
@@ -30,11 +30,17 @@ app.use(express.json());
 // Cookie parser
 app.use(cookieParser());
 
-app.use(cors({ origin: 'http://localhost:3000' }));
+// use cors
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
-// allow origin
+// allow origin and credentials
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
 });
 

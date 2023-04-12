@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import "../cart/Cart.css";
+import styles from "../styles/cart.module.css"
 import CartItem from "../components/cartItem";
 
 const cartInventory = ({}) => {
@@ -46,7 +46,7 @@ const cartInventory = ({}) => {
 
   console.log(cartItems, "cartItems");
   return (
-    <div className="test left-column">
+    <div className={styles.leftColumn}>
       <h1 style={{ textAlign: "center" }}>Order</h1>
       {cartItems &&
         cartItems.map((item) => (

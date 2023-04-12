@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import CartItem from "../components/cartItem";
 import CartInventory from "../components/cartInventory";
 import CartCheckout from "../components/cartCheckout";
-import "./Cart.css";
+import styles from "../styles/cart.module.css";
 
 const CartPage = () => {
   const cartItems = [
@@ -34,7 +33,7 @@ const CartPage = () => {
   ];
 
   return (
-    <div className="columns">
+    <div className={styles.columns}>
       <CartInventory items={cartItems} />
       <CartCheckout
         firstName="John"
