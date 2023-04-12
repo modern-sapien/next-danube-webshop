@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const UserProfile = ({ userData }) => {
   const [formValues, setFormValues] = useState({
-    _id: "",
+    id: userData.id,
     username: "",
     email: "",
     password: "",
@@ -17,7 +17,7 @@ const UserProfile = ({ userData }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        `https://next-danube-webshop-backend.vercel.app/v1/users/${userData._id}`,
+        `https://next-danube-webshop-backend.vercel.app/v1/users/${userData.data.id}`,
         {
           method: "PUT",
           headers: {
@@ -41,7 +41,7 @@ const UserProfile = ({ userData }) => {
       <h1>User Profile</h1>
       {userData && (
         <>
-          <div className="form-group">
+          <div className="form-group" key={userData.data.id}>
             <label htmlFor="username">Username:</label>
             <input
               type="text"
