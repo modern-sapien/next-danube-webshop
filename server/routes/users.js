@@ -1,4 +1,3 @@
-//@ts-nocheck
 const express = require("express");
 const Review = require("../models/Review.js");
 const { getUser, getUsers, updateUser, deleteUser } = require("../controllers/users.js");

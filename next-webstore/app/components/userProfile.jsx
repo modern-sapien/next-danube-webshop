@@ -2,10 +2,8 @@ import React, { useState } from "react";
 
 const UserProfile = ({ userData }) => {
   const [formValues, setFormValues] = useState({
-    id: userData.id,
     username: "",
     email: "",
-    password: "",
   });
 
   const handleInputChange = (event) => {
@@ -23,23 +21,25 @@ const UserProfile = ({ userData }) => {
         if (parts.length === 2) return parts.pop().split(";").shift();
       };
       const token = getCookie("token");
+      const { id, email } = userData.data;
 
-      console.log(token)
+      console.log(token, "token");
+      console.log(id, "id");
+      console.log(email, "email");
+      console.log(formValues, "formValues");
 
       const response = await fetch(
-        `https://next-danube-webshop-backend.vercel.app/v1/users/${userData.data.id}`,
+        `https://next-danube-webshop-backend.vercel.app/api/v1/users/${id}`,
         {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(formValues),
+          body: JSON.stringify({ ...formValues, email }), // Include email in request body
         }
       );
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+
       const data = await response.json();
       console.log(data, "data");
     } catch (error) {
@@ -52,16 +52,6 @@ const UserProfile = ({ userData }) => {
       <h1>User Profile</h1>
       {userData && (
         <>
-          <div className="form-group" key={userData.data.id}>
-            <label htmlFor="id">id:</label>
-            <input
-              type="text"
-              className="form-control"
-              id="id"
-              name="id"
-              value={formValues.id || userData.data.id}
-            />
-          </div>
           <div className="form-group" key={userData.data.id}>
             <label htmlFor="username">Username:</label>
             <input
