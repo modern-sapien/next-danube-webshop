@@ -16,24 +16,24 @@ dotenv.config({ path: "./config/config.env" });
 // Connect to database
 connectDB();
 
-const app = express();
 
-// use cors middleware
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app"];
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg =
-          "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
-      }
-      return callback(null, true);
-    },
-    credentials: true,
-  })
-);
+// Define your CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app"];
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+const app = express();
 
 // Body parser
 app.use(express.json());
@@ -47,7 +47,7 @@ if (process.env.NODE_ENV == "development") {
 }
 
 // Enable pre-flight across-the-board
-app.options("*", cors());
+app.options("*", cors(corsOptions));
 
 // Route files
 const books = require("./routes/books");
