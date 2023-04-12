@@ -1,49 +1,57 @@
-"use client";
-
-import React, { useState } from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import BookCards from "../components/bookCards";
+import UserPhoto from "../components/userPhoto";
+import UserProfile from "../components/userProfile";
 
 const UserPage = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [userData, setUserData] = useState(null);
+  const [userMessage, setUserMessage] = useState("")
+  const [loading, setLoading] = useState(true);
 
-  function handleFileUpload(event) {
-    setSelectedFile(event.target.files[0]);
-  }
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        "https://next-danube-webshop.vercel.app/api/v1/auth/me"
+      );
+      const data = await response.json();
+      setUserData(data.data);
+      setLoading(false);
+      console.log(data)
+    }
+      try {
+
+        setTimeout(() => {
+          setUserMessage("loading")
+          console.log(userMessage)
+        }, 3000);
+        fetchData();
+      } catch (error) {
+        setUserMessage("failed")
+        console.log(userMessage)
+      }
+
+
+    
+  }, []);
 
   return (
     <div className="columns">
+      {userMessage ? <h1> {userMessage}</h1> : ""}
       <div className="left-column">
-        <img src="./niccage.png" alt="User profile picture" />
-        <label htmlFor="file-upload">Change your profile photo?</label>
-        <input id="file-upload" type="file" accept=".jpg,.png,.gif" onChange={handleFileUpload} />
-      </div>
+      {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <UserPhoto userData={userData} />
+        )}      </div>
       <div className="right-column-expanded">
-        <form className="card-expanded">
-          <h1>User Profile</h1>
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input type="text" className="form-control" id="username" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" className="form-control" id="email" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" className="form-control" id="password" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="dateJoined">Date Joined:</label>
-            <input type="text" className="form-control" id="dateJoined" />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Update
-          </button>
-        </form>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <UserProfile userData={userData} />
+        )}
       </div>
-
     </div>
-    
   );
 };
 
