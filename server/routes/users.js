@@ -13,14 +13,16 @@ router
   .get(
     protect,
     authorize("user", "admin"),
-    advancedResults(Review, { path: "reviews", select: "book title recommend review stars" }),
+    advancedResults(Review
+      // , { path: "reviews", select: "book title recommend review stars" }
+      ),
     getUsers
   );
 
 router
   .route("/:id")
   .get(getUser)
-  .put(protect, authorize("user admin"), updateUser)
-  .delete(protect, authorize("user admin"), deleteUser);
+  .put(protect, authorize("user", "admin"), updateUser)
+  .delete(protect, authorize("user", "admin"), deleteUser);
 
 module.exports = router;

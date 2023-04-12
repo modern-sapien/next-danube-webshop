@@ -13,7 +13,7 @@ const LoginForm = () => {
     e.preventDefault();
     if (isLogin) {
       try {
-        const response = await fetch("http://localhost:5000/api/v1/auth/login", {
+        const response = await fetch("https://next-danube-webshop-backend.vercel.app/api/v1/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const LoginForm = () => {
     } else {
       try {
         const response = await fetch(
-          "https://next-danube-webshop.vercel.app/api/v1/auth/register",
+          "https://next-danube-webshop-backend.vercel.app/api/v1/auth/register",
           {
             method: "POST",
             headers: {

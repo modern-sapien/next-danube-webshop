@@ -4,7 +4,7 @@ import Link from "next/link";
 
 async function fetchBooks() {
   try {
-    const response = await fetch(`http://localhost:5000/api/v1/books`);
+    const response = await fetch(`https://next-danube-webshop-backend.vercel.app/api/v1/books`);
     const responseJSON = await response.json();
     const books = await responseJSON.data;
     return books;
