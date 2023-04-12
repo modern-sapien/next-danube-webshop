@@ -1,7 +1,6 @@
 import React from "react";
 
 const UserProfile = ({ userData }) => {
-  console.log(userData)
   return (
     <form className="card-expanded">
       <h1>User Profile</h1>

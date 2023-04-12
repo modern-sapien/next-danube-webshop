@@ -1,5 +1,5 @@
 import React from "react";
-import "../cart/Cart.css";
+import styles from '../styles/cart.module.css';
 
 const cartCheckout = (props) => {
   const {
@@ -29,9 +29,9 @@ const cartCheckout = (props) => {
   };
 
   return (
-    <form data-test="" className="sticky-form" onSubmit={handleSubmit}>
+    <form data-test="" className={styles.stickyForm} onSubmit={handleSubmit}>
       <h2>Shipping</h2>
-      <div className="checkout-div ">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="firstName">First Name:</label>
         <input
           type="text"
@@ -41,7 +41,7 @@ const cartCheckout = (props) => {
           onChange={(event) => props.setFirstName(event.target.value)}
         />
       </div>
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="lastName">Last Name:</label>
         <input
           type="text"
@@ -52,7 +52,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="address">Address:</label>
         <input
           type="text"
@@ -63,7 +63,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="city">City:</label>
         <input
           type="text"
@@ -74,7 +74,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="state">State:</label>
         <input
           type="text"
@@ -85,7 +85,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="zipCode">Zip Code:</label>
         <input
           type="text"
@@ -97,7 +97,7 @@ const cartCheckout = (props) => {
       </div>
 
       <h2>Payment</h2>
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="cardNumber">Card number:</label>
         <input
           type="text"
@@ -108,7 +108,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="cardExpiration">Card expiration:</label>
         <input
           type="text"
@@ -119,7 +119,7 @@ const cartCheckout = (props) => {
         />
       </div>
 
-      <div className="checkout-div">
+      <div className={styles.checkoutDiv}>
         <label htmlFor="cardCVV">CVV:</label>
         <input
           type="text"

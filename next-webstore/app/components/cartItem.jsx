@@ -1,21 +1,23 @@
 "use client";
 import React from "react";
+import styles from '../styles/cart.module.css';
+
 
 const cartItem = ({ item }) => {
   console.log(`${item}`);
   return (
     <div  data-test={item.id}
-      className="cart-item"
+      className={styles.cartItem}
       // item={item}
       // onQuantityChange={handleQuantityChange}
       // onRemoveItem={handleRemoveItem}
     >
       <>
-        <h2 className="cart-item-title"> {item.title}</h2>
-        <h3 className="cart-item-author"> {item.author}</h3>
-        <p className="cart-item-author">  Quantity: {item.quantity}</p>
-        <p className="cart-item-author">${item.price} per unit</p>
-        <p className="cart-item-price">total =${item.price * item.quantity}</p>
+        <h2 className={styles.cartItemTitle}> {item.title}</h2>
+        <h3 className={styles.cartItemAuthor}> {item.author}</h3>
+        <p className={styles.cartItemAuthor}>  Quantity: {item.quantity}</p>
+        <p className={styles.cartItemAuthor}>${item.price} per unit</p>
+        <p className={styles.cartItemPrice}>total =${item.price * item.quantity}</p>
       </>
     </div>
   );
