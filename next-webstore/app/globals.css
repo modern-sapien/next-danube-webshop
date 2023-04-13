@@ -11,7 +11,6 @@ body {
   color: #000;
 }
 
-
 /* Center the main container and make it span the entire screen */
 .main-container {
   display: flex;
@@ -170,6 +169,11 @@ body {
   text-decoration: underline;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .search-form {
   display: flex;
   align-items: center;
@@ -185,6 +189,7 @@ body {
 
 .search-button {
   padding: 0.7rem 1rem;
+  margin-top: 1rem;
   margin-left: 0.5rem;
   background-color: var(--primary-color);
   color: #fff;
@@ -318,7 +323,16 @@ body {
   height: 100vh;
 }
 
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  height: 50vh; /* adjusts height of the div to take up full viewport height */
+}
 
-
-
-
+.user-button {
+  margin: 0 auto;
+  display:block;
+}

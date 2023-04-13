@@ -77,7 +77,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className="centered">
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -107,8 +107,10 @@ const LoginForm = () => {
             />
           </div>
         )}
+<div className="form">
+        <button class="search-button"type="submit">{isLogin ? "Login" : "Sign Up"}</button>
 
-        <button type="submit">{isLogin ? "Login" : "Sign Up"}</button>
+</div>
       </form>
       <p>
         {isLogin ? "Don't have an account? " : "Already have an account? "}
