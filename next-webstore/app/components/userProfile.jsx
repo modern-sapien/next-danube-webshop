@@ -58,11 +58,12 @@ const UserProfile = ({ userData }) => {
 
   return (
     <>
-      <form className="card-expanded" onSubmit={handleSubmit}>
-        <h1>User Profile</h1>
+      <form className="card-expanded" style={{ fontSize: '1.3rem' }} onSubmit={handleSubmit}>
+        
         {userData && (
           <>
             <div className="form-group" key={userData.data.id}>
+              <h1>User Profile</h1>
               <label htmlFor="username">Username:</label>
               <input
                 type="text"
@@ -90,7 +91,7 @@ const UserProfile = ({ userData }) => {
             </div>
           </>
         )}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary user-button">
           Update
         </button>
         {message ? <h3>{message}</h3> : ""}
