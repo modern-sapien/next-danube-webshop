@@ -5,7 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "test": "test",
-    "start": "NODE_ENV=production node server",
+    "start": "node server",
     "dev": "nodemon server.js"
   },
   "repository": {
