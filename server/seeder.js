@@ -8,15 +8,21 @@ const dotenv = require("dotenv")
 require('dotenv').config({ path: "./config/config.env" });
 
 // Load models 
-const Book = require("./models/Book.ts")
-const Review = require("./models/Review.ts")
-const User = require("./models/User.ts")
+const Book = require("./models/Book.js")
+const Review = require("./models/Review.js")
+const User = require("./models/User.js")
 
 // Connect to database
-mongoose.connect(process.env.MONGO_URI, {
+let mongoUri = process.env.MONGO_URI;
+if (process.env.NODE_ENV !== 'production') {
+  mongoUri = process.env.MONGO_URI_STAGING;
+}
+
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});  
+});
+
 
 // Read JSON files
 const books = JSON.parse(fs.readFileSync(`${__dirname}/_data/books.json`, "utf-8"));

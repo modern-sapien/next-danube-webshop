@@ -1,8 +1,8 @@
 [
   {
     "_id": "64d8c0b3-dadd-4d9f-b204-fd8c527cb6f4",
-    "email": "john@example.com",
-    "password": "password1",
+    "email": "staging-sam@example.com",
+    "password": "staging-password1",
     "username": "Neo",
     "lastName": "Anderson",
     "image": "https://example.com/images/neo.jpg",
