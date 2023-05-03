@@ -30,7 +30,7 @@ const UserProfile = ({ userData }) => {
       console.log(formValues, "formValues");
 
       const response = await fetch(
-        `https://next-danube-webshop-backend.vercel.app/api/v1/users/${id}`,
+        `${process.env.NEXT_PUBLIC_ENV_URL}/users/${id}`,
         {
           method: "PUT",
           headers: {

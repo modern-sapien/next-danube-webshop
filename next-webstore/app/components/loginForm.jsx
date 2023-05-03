@@ -13,7 +13,8 @@ const LoginForm = () => {
     e.preventDefault();
     if (isLogin) {
       try {
-        const response = await fetch("https://next-danube-webshop-backend.vercel.app/api/v1/auth/login", {
+        console.log(`${process.env.NEXT_PUBLIC_LOG_ENV}, "try block`)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -23,6 +24,7 @@ const LoginForm = () => {
             password: password,
           }),
         });
+
         if (!response.ok) {
           throw new Error("Invalid email or password");
         }

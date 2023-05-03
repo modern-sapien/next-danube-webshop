@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 async function fetchBooks() {
   try {
-    const response = await fetch(`https://next-danube-webshop-backend.vercel.app/api/v1/books`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/books`);
     const responseJSON = await response.json();
     const books = await responseJSON.data;
     return books;

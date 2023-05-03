@@ -9,9 +9,13 @@ const UserPage = () => {
   const [userMessage, setUserMessage] = useState("")
   const [loading, setLoading] = useState(true);
 
+  console.log(process.env.NEXT_PUBLIC_LOG_ENV, "bananas log")
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(process.env.NEXT_PUBLIC_LOG_ENV, "other bananas log")
         // Get token from cookies
         const getCookie = (name) => {
           const value = `; ${document.cookie}`;
@@ -21,7 +25,7 @@ const UserPage = () => {
         const token = getCookie("token");
 
         // Fetch user data with token in headers
-        const response = await fetch('https://next-danube-webshop-backend.vercel.app/api/v1/auth/me', {
+        const response = await fetch(`${process.env.ENV_URL}auth/me`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
