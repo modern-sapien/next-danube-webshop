@@ -16,7 +16,7 @@ connectDB();
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      "http://localhost:3000",
+      // "http://localhost:3000",
       "https://next-danube-webshop.vercel.app",
       "https://next-danube-webshop-nqycdzdfn-modern-sapien.vercel.app/",
       /^https:\/\/next-danube-webshop-.*\.vercel\.app$/,
