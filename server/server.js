@@ -15,7 +15,11 @@ connectDB();
 
 const corsOptions = {
   origin: function (origin, callback) {
-    const allowedOrigins = ["http://localhost:3000", "https://next-danube-webshop.vercel.app", "https://next-danube-webshop-staging.vercel.app"];
+    const allowedOrigins = [
+      "http://localhost:3000",
+      "https://next-danube-webshop.vercel.app",
+      "https://next-danube-webshop-*.vercel.app",
+    ];
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) {
       const msg = "The CORS policy for this site does not allow access from the specified Origin.";
