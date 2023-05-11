@@ -13,28 +13,18 @@ dotenv.config({ path: "./config/config.env" });
 
 connectDB();
 
+const allowedOrigins = ["http://localhost:3000"];
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      /^https:\/\/next-danube-webshop(-[a-zA-Z0-9]+)?\.vercel\.app$/,
-      "http://localhost:3000",
-      "https://next-danube-webshop.vercel.app",
-      "https://next-danube-webshop-staging.vercel.app",
-      "https://next-danube-webshop-nqycdzdfn-modern-sapien.vercel.app/"
-    ];
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-      return callback(new Error(msg), false);
+  origin: (origin, callback) => {
+    if (!origin || origin.includes("https://next-danube-webshop-") || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
     }
-    return callback(null, true);
   },
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
   credentials: true,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  allowedHeaders: "Content-Type, Authorization",
-};
+  optionsSuccessStatus: 200
+}
 
 const app = express();
 
