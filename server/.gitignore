@@ -110,3 +110,6 @@ config/config.env
 .vscode/
 
 #ignore seeder & model .js files
+
+scratch.js
+scratch2.js
