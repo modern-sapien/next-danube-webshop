@@ -16,11 +16,11 @@ connectDB();
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
+      /^https:\/\/next-danube-webshop(-[a-zA-Z0-9]+)?\.vercel\.app$/,
       "http://localhost:3000",
       "https://next-danube-webshop.vercel.app",
       "https://next-danube-webshop-staging.vercel.app",
-      "https://next-danube-webshop-nqycdzdfn-modern-sapien.vercel.app/",
-      /^https:\/\/next-danube-webshop(-[a-zA-Z0-9]+)?\.vercel\.app$/
+      "https://next-danube-webshop-nqycdzdfn-modern-sapien.vercel.app/"
     ];
     if (!origin) return callback(null, true);
     if (allowedOrigins.indexOf(origin) === -1) {
