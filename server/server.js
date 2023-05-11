@@ -18,6 +18,7 @@ const corsOptions = {
     const allowedOrigins = [
       "http://localhost:3000",
       "https://next-danube-webshop.vercel.app",
+      "https://next-danube-webshop-staging.vercel.app",
       "https://next-danube-webshop-nqycdzdfn-modern-sapien.vercel.app/",
       /^https:\/\/next-danube-webshop(-[a-zA-Z0-9]+)?\.vercel\.app$/
     ];
