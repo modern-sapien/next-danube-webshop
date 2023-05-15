@@ -1,13 +1,14 @@
 import { test, expect } from "@playwright/test";
 
 test("test", async ({ page }) => {
-  test.setTimeout(60000);
+  test.setTimeout(30000);
 
-  await page.goto("http://localhost:3000/");
+  await page.goto("/");
+  console.log(await page.url())
   await page.getByRole("link", { name: "login" }).click();
   await page.locator('input[type="email"]').click();
-  await page.locator('input[type="email"]').fill("staging-sam@example.com");
-  await page.locator('input[type="password"]').fill("staging-password1");
+  await page.locator('input[type="email"]').fill("production-pete@example.com");
+  await page.locator('input[type="password"]').fill("password");
 
   await page.getByRole("button", { name: "Login" }).click();
 

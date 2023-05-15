@@ -13,7 +13,6 @@ const LoginForm = () => {
     e.preventDefault();
     if (isLogin) {
       try {
-        console.log(`${process.env.NEXT_PUBLIC_LOG_ENV}, "try block`)
         const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/auth/login`, {
           method: "POST",
           headers: {
