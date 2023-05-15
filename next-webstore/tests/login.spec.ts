@@ -4,7 +4,8 @@ test("test", async ({ page }) => {
   test.setTimeout(30000);
 
   await page.goto("/");
-  console.log(await page.url())
+  await page.waitForLoadState("networkidle");
+
   await page.getByRole("link", { name: "login" }).click();
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill("jane@example.com");

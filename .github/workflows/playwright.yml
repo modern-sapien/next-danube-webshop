@@ -19,7 +19,7 @@ jobs:
       - name: Install Playwright Browsers
         run: cd next-webstore && npx playwright install chromium --with-deps
       - name: Run Playwright tests
-        run: cd next-webstore && npx playwright test
+        run: cd next-webstore && npx playwright test visit --env NEXT_PUBLIC_ENV_URL=https://next-danube-webshop-backend-staging.vercel.app/api/v1
       - uses: actions/upload-artifact@v3
         if: always()
         with:

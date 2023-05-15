@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config();
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000;
@@ -30,6 +30,11 @@ export default defineConfig({
   use: {
     baseURL,
     trace: "on",
+
+    env: {
+      VARIABLE_NAME: "value",
+      // Add more environment variables as needed
+    },
   },
 
   projects: [
