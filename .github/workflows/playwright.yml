@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: cd next-webstore && npm ci
       - name: Install Playwright Browsers
-        run: cd next-webstore && npx playwright install --with-deps
+        run: cd next-webstore && npx playwright install chromium --with-deps
       - name: Run Playwright tests
         run: cd next-webstore && npx playwright test
       - uses: actions/upload-artifact@v3
