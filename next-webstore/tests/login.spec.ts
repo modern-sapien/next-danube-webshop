@@ -10,6 +10,8 @@ test("test", async ({ page }) => {
   await page.locator('input[type="email"]').fill("production-pete@example.com");
   await page.locator('input[type="password"]').fill("password");
 
+  await page.waitForTimeout(5000)
+  
   await page.getByRole("button", { name: "Login" }).click();
 
   // const response = await page.waitForResponse((response) => {
