@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: cd front-end && npm ci
+        run: cd next-webstore && npm ci
       - name: Install Playwright Browsers
-        run: cd front-end && npx playwright install --with-deps
+        run: cd next-webstore && npx playwright install --with-deps
       - name: Run Playwright tests
-        run: cd front-end && npx playwright test
+        run: cd next-webstore && npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
