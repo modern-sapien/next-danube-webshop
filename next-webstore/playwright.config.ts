@@ -1,16 +1,14 @@
 import { defineConfig, devices } from "@playwright/test";
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-require('dotenv').config();
+import dotenv from "dotenv";
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000;
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`;
+
+// Load environment variables from .env.local
+dotenv.config({ path: ".env.local" });
 
 export default defineConfig({
   testDir: "./tests",
@@ -30,11 +28,6 @@ export default defineConfig({
   use: {
     baseURL,
     trace: "on",
-
-    env: {
-      VARIABLE_NAME: "value",
-      // Add more environment variables as needed
-    },
   },
 
   projects: [

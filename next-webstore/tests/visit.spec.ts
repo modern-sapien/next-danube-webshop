@@ -9,6 +9,7 @@ test("has title", async ({ page }) => {
 
   await expect(page).toHaveTitle(/Checkly Webshop/);
 
+  console.log(process.env.NEXT_PUBLIC_LOG_ENV, "bananas in pajamas")
   console.log(await page.url());
 
   // const response = await page.waitForResponse(
