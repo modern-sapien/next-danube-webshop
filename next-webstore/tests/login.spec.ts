@@ -7,11 +7,11 @@ test("test", async ({ page }) => {
   console.log(await page.url())
   await page.getByRole("link", { name: "login" }).click();
   await page.locator('input[type="email"]').click();
-  await page.locator('input[type="email"]').fill("production-pete@example.com");
-  await page.locator('input[type="password"]').fill("password");
+  await page.locator('input[type="email"]').fill("jane@example.com");
+  await page.locator('input[type="password"]').fill("password2");
 
   await page.waitForTimeout(5000)
-  
+
   await page.getByRole("button", { name: "Login" }).click();
 
   // const response = await page.waitForResponse((response) => {
