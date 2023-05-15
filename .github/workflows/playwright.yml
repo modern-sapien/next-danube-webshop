@@ -1,0 +1,28 @@
+name: Playwright Tests
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches: [main, staging]
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: cd front-end && npm ci
+      - name: Install Playwright Browsers
+        run: cd front-end && npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: cd front-end && npx playwright test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: front-end/playwright-report/
+          retention-days: 1
