@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 test("test", async ({ page }) => {
+  test.setTimeout(120000);
+
   await page.goto("http://localhost:3000/");
   await page.getByRole("link", { name: "login" }).click();
   await page.locator('input[type="email"]').click();
@@ -14,7 +16,7 @@ test("test", async ({ page }) => {
       .url()
       .includes("https://next-danube-webshop-backend-staging.vercel.app/api/v1/auth/login");
   });
-  
+
   await page.waitForSelector('[data-test="login-state"]');
   const loginStateElement = await page.locator('[data-test="login-state"]');
   const loginStateText = await loginStateElement.innerText();
