@@ -127,7 +127,7 @@ const LoginForm = () => {
         </a>
       </p>
 
-      {message ? <h2 style={{ color: "blue" }}> {message} </h2> : ""}
+      {message ? <h2 data-test="login-state" style={{ color: "blue" }}> {message} </h2> : ""}
     </div>
   );
 };
