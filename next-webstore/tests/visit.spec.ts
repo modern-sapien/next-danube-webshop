@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 test("has title", async ({ page }) => {
-  test.setTimeout(120000);
-  
+  test.setTimeout(60000);
+
   await page.goto("/");
 
   await expect(page).toHaveTitle(/Checkly Webshop/);
