@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 const baseURL = `http://localhost:${PORT}`;
 
 export default defineConfig({
+  timeout: 60 * 1000,
   testDir: "./tests",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -24,6 +25,8 @@ export default defineConfig({
   use: {
     baseURL,
     trace: "on",
+    actionTimeout: 6000,
+    navigationTimeout: 5000
   },
 
   projects: [

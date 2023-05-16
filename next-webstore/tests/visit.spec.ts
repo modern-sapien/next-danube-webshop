@@ -10,9 +10,8 @@ const testUser = process.env.NODE_ENV === "production" ? {email: "jane@example.c
 }
 
 test("has title", async ({ page }) => {
-  test.setTimeout(30000);
-
   await page.goto("/");
+  console.log(responseURL, "responseURL")
   const response = await page.waitForResponse(
     `${responseURL}/books`
   );

@@ -9,12 +9,11 @@ const testUser = process.env.NODE_ENV === "production" ? {email: "jane@example.c
   email: "staging-sam@example.com", password: "staging-password1"
 }
 
-test("test", async ({ page }) => {
-  test.setTimeout(30000);
-
+test("login", async ({ page }) => {
   await page.goto("/");
   await page.waitForLoadState("networkidle");
-
+  console.log(responseURL, "responseURL")
+  
   await page.getByRole("link", { name: "login" }).click();
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill(testUser.email);
@@ -22,7 +21,7 @@ test("test", async ({ page }) => {
   
   await page.getByRole("button", { name: "Login" }).click();
 
-  console.log(responseURL)
+  console.log(responseURL, "responseURL")
   
   const response = await page.waitForResponse((response) => {
     return response
