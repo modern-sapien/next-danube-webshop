@@ -1,7 +1,7 @@
 export const defaults = {
-  testTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "test"
+  testTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging"
   ? 60000: 45000,
-  waitTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "test"
+  waitTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging"
   ? 10000: 5000,
   testUser:
     process.env.NEXT_PUBLIC_NODE_ENV === "production"
@@ -13,7 +13,7 @@ export const defaults = {
   pageUrl:
     process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? "https://next-danube-webshop.vercel.app"
-      : process.env.NEXT_PUBLIC_NODE_ENV === "test"
+      : process.env.NEXT_PUBLIC_NODE_ENV === "staging"
       ? "https://next-danube-webshop-staging.vercel.app"
       : "http://localhost:3000",
 
