@@ -21,8 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
+        # with:
+        #   node-version-file: '.nvmrc'
       - name: Restore or cache node_modules
         id: cache-node-modules
         uses: actions/cache@v3
