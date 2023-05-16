@@ -5,7 +5,9 @@ import dotenv from "dotenv";
 const PORT = process.env.PORT || 3000;
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
-const baseURL = `http://localhost:${PORT}`;
+const baseURL = process.env.NODE_ENV === 'production'
+  ? 'https://next-danube-webshop-backend.vercel.app/api/v1'
+  : 'https://next-danube-webshop-backend-staging.vercel.app/api/v1';
 
 // Load environment variables from .env.local
 dotenv.config({ path: ".env.local" });

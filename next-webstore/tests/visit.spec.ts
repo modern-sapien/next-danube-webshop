@@ -12,12 +12,12 @@ test("has title", async ({ page }) => {
   console.log(process.env.NEXT_PUBLIC_LOG_ENV, "bananas in pajamas")
   console.log(await page.url());
 
-  // const response = await page.waitForResponse(
-  //   "https://next-danube-webshop-backend-staging.vercel.app/api/v1/books"
-  // );
+  const response = await page.waitForResponse(
+    "https://next-danube-webshop-backend-staging.vercel.app/api/v1/books"
+  );
 
-  // if (response.status() !== 200) {
-  //   console.log(response.status());
-  //   throw new Error(`Request failed with status ${response.status()}`);
-  // }
+  if (response.status() !== 200) {
+    console.log(response.status());
+    throw new Error(`Request failed with status ${response.status()}`);
+  }
 });

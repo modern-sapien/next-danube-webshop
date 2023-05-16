@@ -15,11 +15,11 @@ test("test", async ({ page }) => {
 
   await page.getByRole("button", { name: "Login" }).click();
 
-  // const response = await page.waitForResponse((response) => {
-  //   return response
-  //     .url()
-  //     .includes("https://next-danube-webshop-backend-staging.vercel.app/api/v1/auth/login");
-  // });
+  const response = await page.waitForResponse((response) => {
+    return response
+      .url()
+      .includes("https://next-danube-webshop-backend-staging.vercel.app/api/v1/auth/login");
+  });
 
   await page.waitForSelector('[data-test="login-state"]');
   const loginStateElement = await page.locator('[data-test="login-state"]');
