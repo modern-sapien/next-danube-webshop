@@ -16,7 +16,7 @@ connectDB();
 const allowedOrigins = ["http://localhost:3000"];
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || origin.includes("https://next-danube-webshop-") || allowedOrigins.includes(origin)) {
+    if (!origin || origin.includes("https://next-danube-webshop") || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
