@@ -1,9 +1,11 @@
 import { defineConfig } from '@checkly/cli'
+import { defaults } from "./tests/defaults";
+// set path in terminal when testing locally
 require('dotenv').config()
 
 const config = defineConfig({
-  projectName: 'Uniting Testing and Monitoring',
-  logicalId: 'uniting-testing-and-monitorings',
+  projectName: 'Next Danube',
+  logicalId: 'next-danube-blog-post',
   repoUrl: 'https://vercel.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
