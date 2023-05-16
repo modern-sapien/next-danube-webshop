@@ -20,7 +20,7 @@ jobs:
         run: cd next-webstore && npx playwright install chromium --with-deps
       - name: Run Playwright tests
         working-directory: ./next-webstore
-        run: NODE_ENV=staging NEXT_PUBLIC_LOG_ENV=bananas-in-pajamas npx playwright test
+        run: NODE_ENV=staging NEXT_PUBLIC_ENV_URL=https://next-danube-webshop-backend-staging.vercel.app/api/v1 NEXT_PUBLIC_LOG_ENV=bananas-in-pajamas npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
