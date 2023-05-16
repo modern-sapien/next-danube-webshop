@@ -7,11 +7,6 @@ const PORT = process.env.PORT || 3000;
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`;
 
-const responseURL =
-  process.env.NODE_ENV !== "production"
-    ? "https://next-danube-webshop-backend.vercel.app/api/v1"
-    : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
-
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
