@@ -1,0 +1,29 @@
+name: Playwright Tests
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches: [main, staging]
+jobs:
+  test:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install dependencies
+        run: cd next-webstore && npm ci
+      - name: Install Playwright Browsers
+        run: cd next-webstore && npx playwright install chromium --with-deps
+      - name: Run Playwright tests
+        working-directory: ./next-webstore
+        run: NODE_ENV=staging NEXT_PUBLIC_ENV_URL=https://next-danube-webshop-backend-staging.vercel.app/api/v1 NEXT_PUBLIC_LOG_ENV=bananas-in-pajamas npx playwright test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: next-webstore/playwright-report/
+          retention-days: 1

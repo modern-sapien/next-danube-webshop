@@ -13,7 +13,6 @@ const LoginForm = () => {
     e.preventDefault();
     if (isLogin) {
       try {
-        console.log(`${process.env.NEXT_PUBLIC_LOG_ENV}, "try block`)
         const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/auth/login`, {
           method: "POST",
           headers: {
@@ -127,7 +126,7 @@ const LoginForm = () => {
         </a>
       </p>
 
-      {message ? <h2 style={{ color: "blue" }}> {message} </h2> : ""}
+      {message ? <h2 data-test="login-state" style={{ color: "blue" }}> {message} </h2> : ""}
     </div>
   );
 };

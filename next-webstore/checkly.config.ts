@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const config = defineConfig({
   projectName: 'Uniting Testing and Monitoring',
-  logicalId: 'uniting-testing-and-monitoring',
+  logicalId: 'uniting-testing-and-monitorings',
   repoUrl: 'https://vercel.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
