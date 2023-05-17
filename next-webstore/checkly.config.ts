@@ -1,4 +1,4 @@
-import { defineConfig } from '@checkly/cli'
+import { defineConfig } from 'checkly'
 // set path in terminal when testing locally
 require('dotenv').config()
 
