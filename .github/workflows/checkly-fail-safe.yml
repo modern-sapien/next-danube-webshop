@@ -74,10 +74,10 @@ jobs:
       - name: Set Environment Variables
         run: |
           echo "GitHub Ref: ${{ github.ref }}"
-          if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+          if [ ${{ github.ref }} = 'main' ]; then
             echo "Setting NEXT_PUBLIC_NODE_ENV=production"
             echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
-          elif [ ${{ github.ref }} = 'refs/heads/staging' ]; then
+          elif [ ${{ github.ref }} = 'staging' ]; then
             echo "Setting NEXT_PUBLIC_NODE_ENV=staging"
             echo "NEXT_PUBLIC_NODE_ENV=staging" >> $GITHUB_ENV
           else
@@ -87,7 +87,7 @@ jobs:
       - name: Print Environment Variables
         run: |
           echo "NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}"
-          echo "ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }}"
+          echo "NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }}"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - name: Restore or cache node_modules
