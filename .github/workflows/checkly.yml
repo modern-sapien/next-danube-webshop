@@ -39,7 +39,6 @@ jobs:
           else
             echo "NEXT_PUBLIC_NODE_ENV=test" >> $GITHUB_ENV
           fi
-          echo "NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}" >> $GITHUB_ENV
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
@@ -47,4 +46,5 @@ jobs:
         continue-on-error: false
       - name: Deploy checks
         if: steps.run-checks.outcome == 'success'
-        run: cd next-webstore && NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy
+        run: |
+          echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy        

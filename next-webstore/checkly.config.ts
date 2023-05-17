@@ -10,7 +10,7 @@ const config = defineConfig({
     activated: true,
     muted: false,
     runtimeId: "2022.10",
-    frequency: 1,
+    frequency: 60,
     locations: ["us-east-1", "eu-west-1"],
     tags: ["website", "critical-user-flows"],
     alertChannels: [],
