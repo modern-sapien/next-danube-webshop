@@ -1,8 +1,6 @@
 export const defaults = {
-  testTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging"
-  ? 60000: 45000,
-  waitTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging"
-  ? 10000: 5000,
+  testTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging" ? 60000 : 45000,
+  waitTime: process.env.NEXT_PUBLIC_NODE_ENV === "production" || "staging" ? 10000 : 5000,
   testUser:
     process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? { email: "jane@example.com", password: "password2" }

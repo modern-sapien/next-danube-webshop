@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import BookCards from "../components/bookCards";
 import UserPhoto from "../components/userPhoto";
@@ -6,16 +6,17 @@ import UserProfile from "../components/userProfile";
 
 const UserPage = () => {
   const [userData, setUserData] = useState(null);
-  const [userMessage, setUserMessage] = useState("")
+  const [userMessage, setUserMessage] = useState("");
   const [loading, setLoading] = useState(true);
-
-  console.log(process.env.NEXT_PUBLIC_LOG_ENV, "bananas log")
-
 
   useEffect(() => {
     const fetchData = async () => {
+      const apiUrl =
+        process.env.NEXT_PUBLIC_NODE_ENV === "production"
+          ? "https://next-danube-webshop-backend.vercel.app/api/v1"
+          : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
+
       try {
-        console.log(process.env.NEXT_PUBLIC_LOG_ENV, "other bananas log")
         // Get token from cookies
         const getCookie = (name) => {
           const value = `; ${document.cookie}`;
@@ -25,51 +26,43 @@ const UserPage = () => {
         const token = getCookie("token");
 
         // Fetch user data with token in headers
-        const response = await fetch(`${process.env.NEXT_PUBLIC_ENVIRONMENT_URL}/api/v1/auth/me`, {
-          method: 'GET',
+        const response = await fetch(`${apiUrl}auth/me`, {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-  
+
         if (response.ok) {
           const data = await response.json();
           setUserMessage("success");
           setUserData(data);
-          console.log(data)
+          console.log(data);
         } else {
           setUserMessage("failed");
-          console.error(error, "error")
-          console.log(error, "log error")
-          console.log("failed")
+          console.error(error, "error");
+          console.log(error, "log error");
+          console.log("failed");
         }
       } catch (error) {
         setUserMessage("failed");
         console.error(error);
-        console.log(error, "log error")
+        console.log(error, "log error");
       } finally {
         setLoading(false);
       }
     };
-  
+
     fetchData();
   }, []);
-  
 
   return (
     <div className="columns">
       <div className="left-column">
-      {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <UserPhoto userData={userData} />
-        )}      </div>
+        {loading ? <p>Loading...</p> : <UserPhoto userData={userData} />}{" "}
+      </div>
       <div className="right-column-expanded">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <UserProfile userData={userData} />
-        )}
+        {loading ? <p>Loading...</p> : <UserProfile userData={userData} />}
       </div>
     </div>
   );
