@@ -3,7 +3,8 @@ import { defaults } from "./defaults";
 
 test("login", async ({ page }) => {
   test.setTimeout(defaults.testTime);
-  await page.goto(defaults.pageUrl);
+
+  await page.goto(defaults.pageUrl)
 
   await page.getByRole("link", { name: "login" }).click();
   await page.waitForLoadState("networkidle");
@@ -14,7 +15,9 @@ test("login", async ({ page }) => {
   await page.getByRole("button", { name: "Login" }).click();
 
   const response = await page.waitForResponse((response) => {
-    return response.url().includes(`${defaults.apiUrl}/auth/login`);
+    console.log(response.url(), "response url being hit")
+    // return response.url().includes(`${defaults.apiUrl}/auth/login`);
+    return response.url().includes(`/auth/login`);
   });
   const responseBody = await response.json();
   const success = responseBody.success;

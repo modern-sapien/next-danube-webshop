@@ -11,9 +11,14 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const apiUrl =
+      process.env.NEXT_PUBLIC_NODE_ENV === "production"
+        ? "https://next-danube-webshop-backend.vercel.app/api/v1"
+        : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
+
     if (isLogin) {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/auth/login`, {
+        const response = await fetch(`${apiUrl}/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,20 +52,17 @@ const LoginForm = () => {
       }
     } else {
       try {
-        const response = await fetch(
-          "https://next-danube-webshop-backend.vercel.app/api/v1/auth/register",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-              username: username,
-              password: password,
-            }),
-          }
-        );
+        const response = await fetch(`${apiUrl}/auth/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            username: username,
+            password: password,
+          }),
+        });
         if (!response.ok) {
           throw new Error("Unable to create account");
         }
@@ -108,10 +110,11 @@ const LoginForm = () => {
             />
           </div>
         )}
-<div className="form">
-        <button class="search-button"type="submit">{isLogin ? "Login" : "Sign Up"}</button>
-
-</div>
+        <div className="form">
+          <button class="search-button" type="submit">
+            {isLogin ? "Login" : "Sign Up"}
+          </button>
+        </div>
       </form>
       <p>
         {isLogin ? "Don't have an account? " : "Already have an account? "}
@@ -126,7 +129,14 @@ const LoginForm = () => {
         </a>
       </p>
 
-      {message ? <h2 data-test="login-state" style={{ color: "blue" }}> {message} </h2> : ""}
+      {message ? (
+        <h2 data-test="login-state" style={{ color: "blue" }}>
+          {" "}
+          {message}{" "}
+        </h2>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

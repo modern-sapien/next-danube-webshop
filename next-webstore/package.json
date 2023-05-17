@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "checkly:test": "npx checkly test",
-    "checkly:deploy": "npx checkly deploy"
-    },
+    "checkly:deploy": "npx checkly deploy",
+    "checkkly:unused": "NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=production NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app --record"
+  },
   "dependencies": {
     "@playwright/test": "^1.32.3",
     "checkly": "^4.0.5",
