@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - "*"
-  pull_request:
-    branches: [main, staging]
 jobs:
   test:
     timeout-minutes: 30
@@ -21,7 +19,7 @@ jobs:
       - name: Run Playwright tests
         working-directory: ./next-webstore
         # always setting NODE_ENV as test & running against localhost:3000
-        run: NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=http:localhost:3000 npx playwright test
+        run: NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=http://localhost:3000 npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:
