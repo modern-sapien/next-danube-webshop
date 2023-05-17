@@ -1,4 +1,4 @@
-name: checkly fail safe
+name: Checkly Fail Safe
 on:
   pull_request:
     types:
@@ -6,7 +6,7 @@ on:
 jobs:
   test-e2e:
     if: github.event.pull_request.merged == true
-    name: Checkly Test & Deploy
+    name: Merge Test Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -31,8 +31,8 @@ jobs:
           fi
       - name: Run checks
         id: run-checks
-        run: npx checkly test
-          -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }} \
+        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test
+          -e NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }} \
           --reporter=github
           --record
       - name: Create summary
@@ -48,9 +48,8 @@ jobs:
           git revert HEAD
           git push origin main
 
-
           - name: Deploy checks
           if: steps.run-checks.outcome == 'success'
           working-directory: next-webstore
           run: | 
-            echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy        
+            echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy

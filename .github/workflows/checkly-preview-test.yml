@@ -15,12 +15,12 @@ env:
   CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
 jobs:
   test-e2e:
-      if: |
-        github.event.deployment_status.state == 'success' &&
-        !contains(github.event.deployment_status.target_url, 'backend')
-      name: Checkly Preview Deploy Check
-      runs-on: ubuntu-latest
-      steps:
+    if: |
+      github.event.deployment_status.state == 'success' &&
+      !contains(github.event.deployment_status.target_url, 'backend')
+    name: Checkly Preview Deploy Check
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - name: Restore or cache node_modules
@@ -35,5 +35,5 @@ jobs:
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: npx checkly test -e NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}}  --record
+        run: NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}}  --record
         continue-on-error: false
