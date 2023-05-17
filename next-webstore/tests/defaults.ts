@@ -22,7 +22,3 @@ export const defaults = {
       ? "https://next-danube-webshop-backend.vercel.app/api/v1"
       : "https://next-danube-webshop-backend-staging.vercel.app/api/v1",
 };
-
-// run test preview env // 
-
-// how can 
