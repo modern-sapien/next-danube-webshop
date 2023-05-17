@@ -46,5 +46,6 @@ jobs:
         continue-on-error: false
       - name: Deploy checks
         if: steps.run-checks.outcome == 'success'
-        run: |
+        working-directory: next-webstore
+        run: | 
           echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy        
