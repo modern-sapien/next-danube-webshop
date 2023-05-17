@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import {defaults} from "./tests/defaults"
 require("dotenv").config({ path: '.env.local' });
 
 // Use process.env.PORT by default and fallback to port 3000
@@ -18,7 +19,7 @@ export default defineConfig({
   
   webServer: {
     command: "npm run dev",
-    url: baseURL,
+    url: defaults.pageUrl,
     timeout: 60 * 1000,
     reuseExistingServer: !process.env.CI,
   },

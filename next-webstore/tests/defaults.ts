@@ -15,10 +15,14 @@ export const defaults = {
       ? "https://next-danube-webshop.vercel.app"
       : process.env.NEXT_PUBLIC_NODE_ENV === "staging"
       ? "https://next-danube-webshop-staging.vercel.app"
-      : "http://localhost:3000",
+      : process.env.NEXT_PUBLIC_ENVIRONMENT_URL,
 
   apiUrl:
     process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? "https://next-danube-webshop-backend.vercel.app/api/v1"
       : "https://next-danube-webshop-backend-staging.vercel.app/api/v1",
 };
+
+// run test preview env // 
+
+// how can 

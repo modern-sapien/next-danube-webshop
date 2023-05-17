@@ -1,0 +1,56 @@
+name: checkly fail safe
+on:
+  pull_request:
+    types:
+      - closed
+jobs:
+  test-e2e:
+    if: github.event.pull_request.merged == true
+    name: Checkly Test & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Restore or cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: cd next-webstore && npm ci
+      - name: Set Environment Variables
+        run: |
+          if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+            echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
+          else if [ ${{ github.ref }} = 'refs/heads/staging' ]; then
+            echo "NEXT_PUBLIC_NODE_ENV=staging" >> $GITHUB_ENV
+          else
+            echo "NEXT_PUBLIC_NODE_ENV=test" >> $GITHUB_ENV
+          fi
+      - name: Run checks
+        id: run-checks
+        run: npx checkly test
+          -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }} \
+          --reporter=github
+          --record
+      - name: Create summary
+        id: create-summary
+        run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
+      - name: Deploy checks
+        id: deploy-checks
+        if: steps.run-checks.outcome == 'success' && github.ref == 'refs/heads/main'
+        run: npx checkly deploy --force
+      - name: Rollback
+        if: steps.run-checks.outcome != 'success' && github.ref == 'refs/heads/main'
+        run: |
+          git revert HEAD
+          git push origin main
+
+
+          - name: Deploy checks
+          if: steps.run-checks.outcome == 'success'
+          working-directory: next-webstore
+          run: | 
+            echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy        

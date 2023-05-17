@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Playwright Integration Tests
 on:
   push:
     branches:
@@ -20,7 +20,8 @@ jobs:
         run: cd next-webstore && npx playwright install chromium --with-deps
       - name: Run Playwright tests
         working-directory: ./next-webstore
-        run: NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENV_URL=https://next-danube-webshop-backend-staging.vercel.app/api/v1 npx playwright test
+        # always setting NODE_ENV as test & running against localhost:3000
+        run: NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=http:localhost:3000 npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:

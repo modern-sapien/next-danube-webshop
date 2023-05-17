@@ -5,7 +5,7 @@ test("has title", async ({ page }) => {
   test.setTimeout(60000);
 
   console.log(defaults.pageUrl, "pageUrl")
-  await page.goto(defaults.pageUrl)
+  await page.goto("/")
 
   const response = await page.waitForResponse(`${defaults.apiUrl}/books`);
 

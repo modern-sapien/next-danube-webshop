@@ -3,7 +3,7 @@ import { defaults } from "./defaults";
 
 test("login", async ({ page }) => {
   test.setTimeout(defaults.testTime);
-  await page.goto(defaults.pageUrl);
+  await page.goto("/");
 
   await page.getByRole("link", { name: "login" }).click();
   await page.waitForLoadState("networkidle");

@@ -7,7 +7,7 @@
 # - If the dry run passes, deploy the checks.
 #
 #  You can of course trigger the Checkly CLI in other workflows or steps inside your GH Action configuration.
-name: checkly
+name: checkly preview test
 on: [deployment_status]
 env:
   ENVIRONMENT_URL: ${{ github.event.deployment_status.target_url }}
@@ -44,8 +44,3 @@ jobs:
         working-directory: next-webstore
         run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}} npx checkly test  --record
         continue-on-error: false
-      - name: Deploy checks
-        if: steps.run-checks.outcome == 'success'
-        working-directory: next-webstore
-        run: | 
-          echo "yes" | NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy        
