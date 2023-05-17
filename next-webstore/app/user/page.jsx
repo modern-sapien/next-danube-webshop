@@ -25,7 +25,7 @@ const UserPage = () => {
         const token = getCookie("token");
 
         // Fetch user data with token in headers
-        const response = await fetch(`${process.env.ENV_URL}auth/me`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_ENVIRONMENT_URL}/api/v1/auth/me`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,

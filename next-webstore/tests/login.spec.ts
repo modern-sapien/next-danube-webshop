@@ -14,7 +14,6 @@ test("login", async ({ page }) => {
 
   await page.getByRole("button", { name: "Login" }).click();
 
-
   const response = await page.waitForResponse((response) => {
     console.log(response.url(), "response url being hit")
     // return response.url().includes(`${defaults.apiUrl}/auth/login`);
