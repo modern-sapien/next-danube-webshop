@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 async function fetchBooks() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_ENV_URL}/api/v1/books`);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ENVIRONMENT_URL}/api/v1/books`);
     const responseJSON = await response.json();
     const books = await responseJSON.data;
     return books;
