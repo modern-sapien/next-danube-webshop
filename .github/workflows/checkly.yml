@@ -32,11 +32,19 @@ jobs:
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: cd next-webstore && npm ci
+      - name: Set Environment Variables
+        run: |
+          if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+            echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
+          else
+            echo "NEXT_PUBLIC_NODE_ENV=test" >> $GITHUB_ENV
+          fi
+          echo "NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}" >> $GITHUB_ENV
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: npm run checkly:test -- -e ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }}
+        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}} npx checkly test  --record
         continue-on-error: false
       - name: Deploy checks
         if: steps.run-checks.outcome == 'success'
-        run: cd next-webstore && npm run checkly:deploy
+        run: cd next-webstore && NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy
