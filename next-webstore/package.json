@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "checkly:test": "npx checkly test --env-file .env.local",
-    "checkly:production:deploy": "NEXT_PUBLIC_NODE_ENV=production npx checkly deploy",
-    "checkly:production:test": "NEXT_PUBLIC_NODE_ENV=test npx checkly deploy"
-  },
+    "checkly:test": "npx checkly test",
+    "checkly:deploy": "npx checkly deploy"
+    },
   "dependencies": {
     "@playwright/test": "^1.32.3",
     "checkly": "^4.0.5",
