@@ -1,4 +1,5 @@
 import { defineConfig } from 'checkly'
+import {defaults} from './tests/defaults'
 // set path in terminal when testing locally
 require('dotenv').config()
 
