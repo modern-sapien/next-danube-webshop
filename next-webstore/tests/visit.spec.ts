@@ -6,9 +6,7 @@ test("has title", async ({ page }) => {
 
   console.log(defaults.pageUrl, "pageUrl")
   
-  // Will clean this up in a BeforeEach
-  defaults.pageUrl === "http://localhost:3000"?
-    await page.goto("/"):await page.goto(defaults.pageUrl)
+  await page.goto(defaults.pageUrl)
 
   const response = await page.waitForResponse(`${defaults.apiUrl}/books`);
 
