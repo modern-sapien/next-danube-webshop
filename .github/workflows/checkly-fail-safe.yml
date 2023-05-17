@@ -73,11 +73,15 @@ jobs:
     steps:
       - name: Set Environment Variables
         run: |
+          echo "GitHub Ref: ${{ github.ref }}"
           if [ ${{ github.ref }} = 'refs/heads/main' ]; then
+            echo "Setting NEXT_PUBLIC_NODE_ENV=production"
             echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
           elif [ ${{ github.ref }} = 'refs/heads/staging' ]; then
+            echo "Setting NEXT_PUBLIC_NODE_ENV=staging"
             echo "NEXT_PUBLIC_NODE_ENV=staging" >> $GITHUB_ENV
           else
+            echo "Setting NEXT_PUBLIC_NODE_ENV=test"
             echo "NEXT_PUBLIC_NODE_ENV=test" >> $GITHUB_ENV
           fi
       - name: Print Environment Variables
@@ -106,7 +110,7 @@ jobs:
         id: deploy-checks
         if: steps.run-checks.outcome == 'success' && github.ref == 'refs/heads/main'
         working-directory: next-webstore
-        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy --force -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }}
+        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy --force
       - name: Rollback
         if: steps.run-checks.outcome != 'success' && github.ref == 'refs/heads/main'
         run: |
