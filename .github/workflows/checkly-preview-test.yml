@@ -7,7 +7,7 @@
 # - If the dry run passes, deploy the checks.
 #
 #  You can of course trigger the Checkly CLI in other workflows or steps inside your GH Action configuration.
-name: checkly preview test
+name: Checkly Preview Test
 on: [deployment_status]
 env:
   ENVIRONMENT_URL: ${{ github.event.deployment_status.target_url }}
@@ -15,14 +15,14 @@ env:
   CHECKLY_ACCOUNT_ID: ${{ secrets.CHECKLY_ACCOUNT_ID }}
 jobs:
   test-e2e:
-    if: github.event.deployment_status.state == 'success'
-    name: Checkly Preview Deploy Check
-    runs-on: ubuntu-latest
-    steps:
+      if: |
+        github.event.deployment_status.state == 'success' &&
+        !contains(github.event.deployment_status.target_url, 'backend')
+      name: Checkly Preview Deploy Check
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        # with:
-        #   node-version-file: '.nvmrc'
       - name: Restore or cache node_modules
         id: cache-node-modules
         uses: actions/cache@v3
