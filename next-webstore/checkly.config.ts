@@ -1,11 +1,10 @@
 import { defineConfig } from '@checkly/cli'
-import { defaults } from "./tests/defaults";
 // set path in terminal when testing locally
 require('dotenv').config()
 
 const config = defineConfig({
-  projectName: 'Next Danube',
-  logicalId: 'next-danube-blog-post',
+  projectName: `Next Danube ${process.env.NEXT_PUBLIC_NODE_ENV}`,
+  logicalId: `next-danube-${process.env.NEXT_PUBLIC_NODE_ENV}`,
   repoUrl: 'https://vercel.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
