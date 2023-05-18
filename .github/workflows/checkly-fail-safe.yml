@@ -77,12 +77,11 @@ jobs:
           if [ ${{ github.ref }} = 'main' ]; then
             echo "Setting NEXT_PUBLIC_NODE_ENV=production"
             echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop.vercel.app/" >> $GITHUB_ENV 
           elif [ ${{ github.ref }} = 'staging' ]; then
             echo "Setting NEXT_PUBLIC_NODE_ENV=staging"
             echo "NEXT_PUBLIC_NODE_ENV=staging" >> $GITHUB_ENV
-          else
-            echo "Setting NEXT_PUBLIC_NODE_ENV=test"
-            echo "NEXT_PUBLIC_NODE_ENV=test" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app/" >> $GITHUB_ENV
           fi
       - name: Print Environment Variables
         run: |
