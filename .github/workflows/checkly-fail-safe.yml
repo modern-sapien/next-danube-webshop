@@ -86,7 +86,7 @@ jobs:
       - name: Print Environment Variables
         run: |
           echo "NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}"
-          echo "NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }}"
+          echo "NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }}"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
       - name: Restore or cache node_modules
@@ -101,7 +101,7 @@ jobs:
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL }} --reporter=github --record
+        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
       - name: Create summary
         id: create-summary
         run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
