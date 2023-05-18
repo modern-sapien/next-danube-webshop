@@ -6,14 +6,14 @@ require('dotenv').config()
 const config = defineConfig({
   projectName: `Next Danube ${process.env.NEXT_PUBLIC_NODE_ENV}`,
   logicalId: `next-danube-${process.env.NEXT_PUBLIC_NODE_ENV}`,
-  repoUrl: 'https://vercel.com/modern-sapien/next-danube-webshop',
+  repoUrl: 'https://github.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
     muted: false,
     runtimeId: "2022.10",
     frequency: 60,
     locations: ["us-east-1", "eu-west-1"],
-    tags: ["website", "critical-user-flows", `${process.env.NEXT_PUBLIC_NODE_ENV}`],
+    tags: ["cli", "next-danube", `${process.env.NEXT_PUBLIC_NODE_ENV}`],
     alertChannels: [],
     checkMatch: "*/**/*.check.ts",
     ignoreDirectoriesMatch: [],
