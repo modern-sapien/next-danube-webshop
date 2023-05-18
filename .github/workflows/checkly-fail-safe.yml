@@ -102,9 +102,9 @@ jobs:
         id: run-checks
         working-directory: next-webstore
         run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
-      - name: Create summary
-        id: create-summary
-        run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
+      # - name: Create summary
+      #   id: create-summary
+      #   run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
       - name: Deploy checks
         id: deploy-checks
         if: steps.run-checks.outcome == 'success' && github.ref == 'refs/heads/main'
