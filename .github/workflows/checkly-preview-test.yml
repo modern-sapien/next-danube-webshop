@@ -18,6 +18,7 @@ jobs:
     if: |
       github.event.deployment_status.state == 'success' &&
       !contains(github.event.deployment_status.target_url, 'backend')
+    timeout-minutes: 10
     name: Checkly Preview Deploy Check
     runs-on: ubuntu-latest
     steps:
