@@ -107,10 +107,10 @@ jobs:
       #   run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
       - name: Deploy checks
         id: deploy-checks
-        if: steps.run-checks.outcome == 'success' && github.ref == 'refs/heads/main'
+        if: steps.run-checks.outcome == 'success' && contains('main staging', github.ref)
         working-directory: next-webstore
         run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy --force
       - name: Rollback
-        if: steps.run-checks.outcome != 'success' && github.ref == 'refs/heads/main'
+        if: steps.run-checks.outcome != 'success' && contains('main staging', github.ref)
         run: |
           git revert HEAD
