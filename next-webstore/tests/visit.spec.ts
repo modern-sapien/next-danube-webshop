@@ -4,9 +4,9 @@ import { defaults } from "./defaults";
 test("has title", async ({ page }) => {
   test.setTimeout(60000);
 
-  console.log(defaults.pageUrl, "pageUrl")
-  
-  await page.goto(defaults.pageUrl)
+  console.log(defaults.pageUrl, "pageUrl");
+
+  await page.goto(defaults.pageUrl);
 
   const response = await page.waitForResponse(`${defaults.apiUrl}/books`);
 
