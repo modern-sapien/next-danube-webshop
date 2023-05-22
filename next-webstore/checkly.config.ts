@@ -1,6 +1,4 @@
 import { defineConfig } from 'checkly'
-import {defaults} from './tests/defaults'
-// set path in terminal when testing locally
 require('dotenv').config()
 
 const config = defineConfig({
@@ -18,7 +16,7 @@ const config = defineConfig({
     checkMatch: "*/**/*.check.ts",
     ignoreDirectoriesMatch: [],
     browserChecks: {
-      frequency: 60,
+      frequency: 5,
       testMatch: "*/**/*.spec.ts",
     },
   },
