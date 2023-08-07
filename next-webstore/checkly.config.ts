@@ -2,16 +2,16 @@ import { defineConfig } from 'checkly'
 require('dotenv').config()
 
 const config = defineConfig({
-  projectName: `Next Danube ${process.env.NEXT_PUBLIC_NODE_ENV}`,
-  logicalId: `next-danube-${process.env.NEXT_PUBLIC_NODE_ENV}`,
+  projectName: `Next Danube Production`,
+  logicalId: `next-danube-Production`,
   repoUrl: 'https://github.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
     muted: false,
-    runtimeId: "2022.10",
+    runtimeId: "2023.02",
     frequency: 60,
     locations: ["us-east-1", "eu-west-1"],
-    tags: ["cli", "next-danube", `${process.env.NEXT_PUBLIC_NODE_ENV}`],
+    tags: ["cli", "production", "next-danube", `production`],
     alertChannels: [],
     checkMatch: "*/**/*.check.ts",
     ignoreDirectoriesMatch: [],
