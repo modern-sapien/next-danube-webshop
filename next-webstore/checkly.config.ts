@@ -1,17 +1,26 @@
-import { defineConfig } from 'checkly'
-require('dotenv').config()
+import { defineConfig } from 'checkly';
+
+// Utility function to determine the environment
+const getEnvironment = () => {
+  if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return 'staging';
+  if (process.env.NEXT_PUBLIC_NODE_PRODUCTION === 'production') return 'production';
+  return 'default';
+};
+
+// Determine the environment
+const env = getEnvironment();
 
 const config = defineConfig({
-  projectName: `Next Danube ${process.env.NEXT_PUBLIC_NODE_ENV}`,
-  logicalId: `next-danube-${process.env.NEXT_PUBLIC_NODE_ENV}`,
+  projectName: `Next Danube ${env}`,
+  logicalId: `next-danube-${env}`,
   repoUrl: 'https://github.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
     muted: false,
-    runtimeId: "2022.10",
+    runtimeId: '2023.09',
     frequency: 60,
-    locations: ["us-east-1", "eu-west-1"],
-    tags: ["cli", "next-danube", `${process.env.NEXT_PUBLIC_NODE_ENV}`],
+    locations: ['us-east-1', 'eu-west-1'],
+    tags: ['cli', 'next-danube', `${env}`],
     alertChannels: [],
     checkMatch: "*/**/*.check.ts",
     ignoreDirectoriesMatch: [],

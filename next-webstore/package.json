@@ -9,11 +9,11 @@
     "lint": "next lint",
     "checkly:test": "npx checkly test",
     "checkly:deploy": "npx checkly deploy",
-    "checkkly:unused": "NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=production NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app --record"
+    "checkly:unused": "NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=production NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app --record"
   },
   "dependencies": {
     "@playwright/test": "^1.32.3",
-    "checkly": "^4.0.5",
+    "checkly": "^4.1.0",
     "dotenv": "^16.0.3",
     "next": "13.3.0",
     "react": "18.2.0",

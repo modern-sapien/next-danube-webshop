@@ -1,5 +1,4 @@
 import { defineConfig, devices } from "@playwright/test";
-import {defaults} from "./tests/defaults"
 require("dotenv").config({ path: '.env.local' });
 
 export default defineConfig({
@@ -13,7 +12,7 @@ export default defineConfig({
   
   webServer: {
     command: "npm run dev",
-    url: defaults.pageUrl,
+    url: "http://localhost:3000",
     timeout: 60 * 1000,
     reuseExistingServer: !process.env.CI,
   },
