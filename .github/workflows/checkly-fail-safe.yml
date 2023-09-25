@@ -15,18 +15,17 @@ jobs:
       - name: Set Environment Variables
         run: |
           echo "GitHub Ref: ${{ github.ref }}"
-          if [ ${{ github.ref }} = 'main' ]; then
-            echo "Setting NEXT_PUBLIC_NODE_ENV=production"
-            echo "NEXT_PUBLIC_NODE_ENV=production" >> $GITHUB_ENV
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "Setting Environment for production"
+            echo "NEXT_PUBLIC_NODE_PRODUCTION=production" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop.vercel.app/" >> $GITHUB_ENV 
-          elif [ ${{ github.ref }} = 'staging' ]; then
-            echo "Setting NEXT_PUBLIC_NODE_ENV=staging"
-            echo "NEXT_PUBLIC_NODE_ENV=staging" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" = "refs/heads/staging" ]; then
+            echo "Setting Environment for staging"
+            echo "NEXT_PUBLIC_NODE_STAGING=staging" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app/" >> $GITHUB_ENV
-          fi
+          fi 
       - name: Print Environment Variables
         run: |
-          echo "NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}"
           echo "NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }}"
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -43,9 +42,6 @@ jobs:
         id: run-checks
         working-directory: next-webstore
         run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
-      # - name: Create summary
-      #   id: create-summary
-      #   run: cat checkly-github-report.md > $GITHUB_STEP_SUMMARY
       - name: Deploy checks
         id: deploy-checks
         if: steps.run-checks.outcome == 'success' && contains('main staging', github.ref)

@@ -4,7 +4,7 @@ import { defineConfig } from 'checkly';
 const getEnvironment = () => {
   if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return 'staging';
   if (process.env.NEXT_PUBLIC_NODE_PRODUCTION === 'production') return 'production';
-  return 'default';
+  return 'preview';
 };
 
 // Determine the environment
