@@ -1,6 +1,4 @@
-
 import { ApiCheck, AssertionBuilder } from 'checkly/constructs';
-
 
 new ApiCheck('next-danube-books-api-check', {
   name: 'Next Danube API - Books',
@@ -11,9 +9,7 @@ new ApiCheck('next-danube-books-api-check', {
     method: 'GET',
     followRedirects: true,
     skipSSL: false,
-    assertions: [
-      AssertionBuilder.statusCode().equals(200),
-    ],
+    assertions: [AssertionBuilder.statusCode().equals(200)],
   },
 });
 
@@ -26,9 +22,6 @@ new ApiCheck('next-danube-reviews-api-check', {
     method: 'GET',
     followRedirects: true,
     skipSSL: false,
-    assertions: [
-      AssertionBuilder.statusCode().equals(200),
-    ],
+    assertions: [AssertionBuilder.statusCode().equals(200)],
   },
-  
 });
