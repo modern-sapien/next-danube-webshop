@@ -1,17 +1,19 @@
 import { Dashboard } from "checkly/constructs";
 
-new Dashboard('next-danube-dashboard-1', {
-  header: 'Next Danube Production Dashboard',
-  description: 'service availability and response times',
-  tags: ['production'],
-  logo: 'https://assets.acme.com/images/acme-logo.png',
-  customUrl: `status-test-cli-production`,
-})
+const getEnvironment = () => {
+  if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return 'staging';
+  if (process.env.NEXT_PUBLIC_NODE_PRODUCTION === 'production')
+    return 'production';
+  return 'preview';
+};
 
-new Dashboard('next-danube-staging-dashboard-1', {
-  header: 'Next Danube Staging Dashboard',
+// Determine the environment
+const env = getEnvironment();
+
+new Dashboard(`next-danube-${env}-dashboard-1`, {
+  header: `Next Danube ${env} Dashboard`,
   description: 'service availability and response times',
-  tags: ['staging'],
+  tags: [`${env}`],
   logo: 'https://assets.acme.com/images/acme-logo.png',
-  customUrl: `status-test-cli-staging`,
+  customUrl: `status-test-cli-${env}`,
 })
