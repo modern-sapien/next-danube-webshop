@@ -1,9 +1,15 @@
 import { defineConfig } from 'checkly';
+import {
+  emailChannel,
+  slackChannel,
+  webhookChannel,
+} from '../next-webstore/checks/alertChannels';
 
 // Utility function to determine the environment
 const getEnvironment = () => {
   if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return 'staging';
-  if (process.env.NEXT_PUBLIC_NODE_PRODUCTION === 'production') return 'production';
+  if (process.env.NEXT_PUBLIC_NODE_PRODUCTION === 'production')
+    return 'production';
   return 'preview';
 };
 
@@ -21,17 +27,17 @@ const config = defineConfig({
     frequency: 60,
     locations: ['us-east-1', 'eu-west-1'],
     tags: ['cli', 'next-danube', `${env}`],
-    alertChannels: [],
-    checkMatch: "*/**/*.check.ts",
+    alertChannels: [emailChannel, slackChannel, webhookChannel],
+    checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
     browserChecks: {
       frequency: 5,
-      testMatch: "*/**/*.spec.ts",
+      testMatch: '*/**/*.spec.ts',
     },
   },
   cli: {
     runLocation: 'us-east-1',
   },
-})
+});
 
-export default config
+export default config;

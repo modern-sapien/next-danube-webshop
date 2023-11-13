@@ -4,6 +4,7 @@ new ApiCheck('next-danube-books-api-check', {
   name: 'Next Danube API - Books',
   degradedResponseTime: 3000,
   maxResponseTime: 5000,
+  tags: ['production', 'cli', 'next-danube'],
   request: {
     url: `https://next-danube-webshop-backend.vercel.app/api/v1/books`,
     method: 'GET',
@@ -17,6 +18,7 @@ new ApiCheck('next-danube-reviews-api-check', {
   name: 'Next Danube API - Reviews',
   degradedResponseTime: 3000,
   maxResponseTime: 5000,
+  tags: ['production', 'cli', 'next-danube'],
   request: {
     url: `https://next-danube-webshop-backend.vercel.app/api/v1/reviews`,
     method: 'GET',
