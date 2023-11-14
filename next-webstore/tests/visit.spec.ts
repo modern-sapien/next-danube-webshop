@@ -17,4 +17,8 @@ test("has title", async ({ page }) => {
   await page.waitForLoadState("networkidle");
 
   await expect(page).toHaveTitle(/Checkly Webshop/);
+
+  // await page.waitForTimeout(1000)
+  
+  // await expect(page).toHaveScreenshot()
 });

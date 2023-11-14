@@ -14,6 +14,6 @@ new Dashboard(`next-danube-${env}-dashboard-1`, {
   header: `Next Danube ${env} Dashboard`,
   description: 'service availability and response times',
   tags: [`${env}`],
-  logo: 'https://assets.acme.com/images/acme-logo.png',
+  logo: '/images/acme-logo.png',
   customUrl: `status-test-cli-${env}`,
 })
