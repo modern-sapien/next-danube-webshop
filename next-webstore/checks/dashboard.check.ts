@@ -14,6 +14,6 @@ new Dashboard(`next-danube-${env}-dashboard-1`, {
   header: `Next Danube ${env} Dashboard`,
   description: 'service availability and response times',
   tags: [`${env}`],
-  logo: '/images/acme-logo.png',
+  // logo: 'https://coralogix.com/wp-content/uploads/2023/05/Checkly-96X96.svg,
   customUrl: `status-test-cli-${env}`,
 })
