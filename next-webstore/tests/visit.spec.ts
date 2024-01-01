@@ -6,7 +6,7 @@ test("does a simple visit and confirms the title and that it looks correct", asy
 
   console.log(defaults.pageUrl, "pageUrl");
 
-  await page.goto("https://www.google.com");
+  await page.goto(defaults.pageUrl);
 
   const response = await page.waitForResponse(`${defaults.apiUrl}/books`);
 
