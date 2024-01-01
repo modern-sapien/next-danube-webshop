@@ -31,7 +31,7 @@ const config = defineConfig({
     checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
     browserChecks: {
-      frequency: 5,
+      frequency: 30,
       testMatch: '*/**/*.spec.ts',
     },
   },
