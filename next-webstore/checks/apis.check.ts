@@ -1,4 +1,5 @@
 import { ApiCheck, AssertionBuilder } from 'checkly/constructs';
+import { defaults } from '../tests/defaults';
 
 const getEnvironment = () => {
   if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return '-staging';
@@ -13,8 +14,8 @@ const env = getEnvironment();
 
 let nameEnv = env.split('-')[1]
 
-new ApiCheck(`next-danube-${env}-books-api-check`, {
-  name: `Next Danube API ${nameEnv} - Books`,
+new ApiCheck(`next-danube-${defaults.projectEnv}-books-api-check`, {
+  name: `Next Danube API ${defaults.projectEnv} - Books`,
   degradedResponseTime: 3000,
   frequency: 5,
   maxResponseTime: 5000,
@@ -27,8 +28,8 @@ new ApiCheck(`next-danube-${env}-books-api-check`, {
   },
 });
 
-new ApiCheck(`next-danube-${env}-reviews-api-check`, {
-  name: `Next Danube API ${nameEnv} - Reviews`,
+new ApiCheck(`next-danube-${defaults.projectEnv}-reviews-api-check`, {
+  name: `Next Danube API ${defaults.projectEnv} - Reviews`,
   degradedResponseTime: 3000,
   frequency: 10,
   maxResponseTime: 5000,

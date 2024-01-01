@@ -11,7 +11,7 @@ const env = getEnvironment();
 export const defaults = {
   testTime: ['production', 'staging'].includes(env) ? 45000 : 60000,
   waitTime: ['production', 'staging'].includes(env) ? 2500 : 3000,
-  projectName: env,
+  projectEnv: env,
   testUser: env === 'production'
     ? { email: 'jane@example.com', password: 'password2' }
     : { email: 'staging-sam@example.com', password: 'staging-password1' },
