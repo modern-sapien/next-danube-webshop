@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { defaults } from "./defaults";
 
-test("has title", async ({ page }) => {
+test("does a simple visit and confirms the title and that it looks correct", async ({ page }) => {
   test.setTimeout(60000);
 
   console.log(defaults.pageUrl, "pageUrl");
@@ -17,4 +17,8 @@ test("has title", async ({ page }) => {
   await page.waitForLoadState("networkidle");
 
   await expect(page).toHaveTitle(/Checkly Webshop/);
+
+  await page.waitForTimeout(1000)
+  
+  await expect(page).toHaveScreenshot()
 });

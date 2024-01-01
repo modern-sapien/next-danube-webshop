@@ -2,13 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 
 ## Helpful Run Commands
-NEXT_PUBLIC_NODE_STAGING=staging npx checkly testing --record
+NEXT_PUBLIC_NODE_STAGING=staging npx checkly test --record
 NEXT_PUBLIC_NODE_STAGING=staging npx checkly deploy
 
-NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly testing --record
+NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly test --record
 NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly deploy
 
-NEXT_PUBLIC_NODE_PREVIEW=preview npx checkly testing --record
+NEXT_PUBLIC_NODE_PREVIEW=preview npx checkly test --record
 
 
 ## Getting Started
