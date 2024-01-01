@@ -1,6 +1,6 @@
 import { MultiStepCheck, Frequency } from 'checkly/constructs';
 import { defaults } from '../tests/defaults';
-import { group } from './group.check';
+import { group } from './resources/group.check';
 import * as path from 'path';
 
 new MultiStepCheck(`next-danube-${defaults.projectEnv}-crud`, {

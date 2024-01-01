@@ -1,6 +1,6 @@
 import { ApiCheck, AssertionBuilder } from 'checkly/constructs';
 import { defaults } from '../tests/defaults';
-import { group } from './group.check';
+import { group } from './resources/group.check';
 
 const getEnvironment = () => {
   if (process.env.NEXT_PUBLIC_NODE_STAGING === 'staging') return '-staging';

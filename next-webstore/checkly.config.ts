@@ -3,7 +3,7 @@ import {
   emailChannel,
   slackChannel,
   webhookChannel,
-} from '../next-webstore/checks/alertChannels';
+} from './checks/resources/alertChannels';
 import { defaults } from '../next-webstore/tests/defaults';
 
 
