@@ -5,7 +5,7 @@ export const emailChannel = new EmailAlertChannel('email-channel-1', {
 });
 
 export const slackChannel = new SlackAlertChannel('slack-channel-1', {
-  url: new URL('https://hooks.slack.com/services/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'),
+  url: new URL(`https://hooks.slack.com/services/${process.env.SLACK_URL_ENDING}`),
   channel: '#ops'
 })
 
