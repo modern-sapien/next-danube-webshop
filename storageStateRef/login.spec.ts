@@ -8,10 +8,10 @@ const accountID = defaults.accountID;
 // Declare variable we'll reference during our test
 let storageState;
 
-// test.beforeAll(async () => {
-//   // Assign storage state from env variable to test specific state
-//   storageState = await validateStorageState(apiKey, accountID);
-// });
+test.beforeAll(async () => {
+  // Assign storage state from env variable to test specific state
+  storageState = await validateStorageState(apiKey, accountID);
+});
 
 test('login', async ({ page }) => {
   const context = await createChecklyContext(apiKey, accountID)
