@@ -7,30 +7,18 @@ import { test, expect } from "@playwright/test"
 const baseUrl = "https://crudapi.co.uk/api/v1/todo"
 
 const headers = {
-  // Learn more about using environment variables here: https://www.checklyhq.com/docs/api-checks/variables
   Authorization: `Bearer ${process.env.CRUD_API_KEY}`,
   "Content-Type": "application/json",
 }
 
-/**
- * Share state between hooks and test.steps
- */
 let createdResources = null
 
-/**
- * Use `beforeAll` as a setup script
- * Make sure there's no Todo task prior
- */
 test.beforeAll(async ({ request }) => {
   const response = await request.get(baseUrl, { headers })
   const { items } = await response.json()
   expect(items.length).toEqual(0)
 })
 
-/**
- * Use `afterAll` as a teardown script
- * Remove the created Todo before the check ends
- */
 test.afterAll(async ({ request }) => {
   if (createdResources) {
     const response = await request.delete(baseUrl, {

@@ -10,6 +10,20 @@ NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly deploy
 
 NEXT_PUBLIC_NODE_PREVIEW=preview npx checkly test --record
 
+## New Checkly Features
+Visual comparison - Beta
+* npx checkly test --update-snapshots
+* npx checkly test --record
+* tests/visit.spec.ts
+
+Multi-step check - Beta
+* tests/multi-crud.spec.ts
+* checks/multi-step.check.ts
+
+Retry Strategy - GA & Run Parallel - Beta
+* checks/resources/group.check.ts
+  * fixed, linear, expontential options
+
 
 ## Getting Started
 

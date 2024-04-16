@@ -15,6 +15,7 @@ new BrowserCheck(`next-danube-${defaults.projectEnv}-login`, {
 new BrowserCheck(`next-danube-${defaults.projectEnv}-visit`, {
   name: `Next Danube ${defaults.projectEnv} visit - browser`,
   group,
+  tags: ["tagtest"],
   frequency: Frequency.EVERY_10M,
   code: {
     entrypoint: path.join(__dirname, '../tests/visit.spec.ts'),
