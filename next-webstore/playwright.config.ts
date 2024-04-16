@@ -19,7 +19,7 @@ export default defineConfig({
   use: {
     trace: "on",
     actionTimeout: 6000,
-    navigationTimeout: 5000
+    navigationTimeout: 5000,
   },
 
   projects: [

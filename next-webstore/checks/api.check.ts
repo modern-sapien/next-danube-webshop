@@ -21,6 +21,8 @@ new ApiCheck(`next-danube-${defaults.projectEnv}-books-api-check`, {
     url: `https://next-danube-webshop-backend${env}.vercel.app/api/v1/books`,
     method: 'GET',
     followRedirects: true,
+    bodyType: "RAW",
+    body: "hello",
     skipSSL: false,
     assertions: [AssertionBuilder.statusCode().equals(200)],
   },

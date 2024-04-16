@@ -17,7 +17,7 @@ const config = defineConfig({
     runtimeId: '2023.09',
     frequency: 60,
     locations: ['us-east-1', 'eu-west-1'],
-    tags: ['cli', 'next-danube', `${defaults.projectEnv}`],
+    tags: [`thiswillbeoverwritten`],
     alertChannels: [emailChannel, slackChannel, webhookChannel],
     checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
@@ -28,6 +28,7 @@ const config = defineConfig({
   },
   cli: {
     runLocation: 'us-east-1',
+    // privateRunLocation: 'test-location'
   },
 });
 
