@@ -17,7 +17,7 @@ const config = defineConfig({
     runtimeId: '2023.09',
     frequency: 60,
     locations: ['us-east-1', 'eu-west-1'],
-    tags: [`thiswillbeoverwritten`],
+    tags: [`cli`],
     alertChannels: [emailChannel, slackChannel, webhookChannel],
     checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
