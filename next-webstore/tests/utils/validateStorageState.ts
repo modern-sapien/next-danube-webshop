@@ -1,4 +1,4 @@
-import { createChecklyContext } from '../utils/checklyRequestContext';
+import { createChecklyContext } from './checklyRequestContext';
 
 export async function validateStorageState(apiKey, accountID) {
   const context = await createChecklyContext(apiKey, accountID);

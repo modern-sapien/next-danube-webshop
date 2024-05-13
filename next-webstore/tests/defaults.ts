@@ -9,6 +9,7 @@ const getEnvironment = () => {
 const env = getEnvironment();
 
 export const defaults = {
+
   testTime: ['production', 'staging'].includes(env) ? 45000 : 60000,
   waitTime: ['production', 'staging'].includes(env) ? 2500 : 3000,
   projectEnv: env,
