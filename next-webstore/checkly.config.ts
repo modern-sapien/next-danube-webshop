@@ -18,11 +18,11 @@ const config = defineConfig({
     ignoreDirectoriesMatch: [],
     browserChecks: {
       frequency: 30,
-      testMatch: '*/**/*.spec.ts',
+      testMatch: '*/tests/e2e/*.spec.ts',
     },
     multiStepChecks: {
       frequency: 30,
-      testMatch: '*/**/multi/*.spec.ts',
+      testMatch: '*/tests/multi/*.spec.ts',
     }
   },
   cli: {

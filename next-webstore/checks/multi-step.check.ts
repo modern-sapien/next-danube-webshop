@@ -13,24 +13,6 @@ new MultiStepCheck(`next-danube-${defaults.projectEnv}-crud`, {
   group,
   frequency: Frequency.EVERY_5M,
   code: {
-    entrypoint: path.join(__dirname, 'multi/multi-crud.spec.ts'),
-  },
-});
-
-new MultiStepCheck(`next-danube-${defaults.projectEnv}-graphql`, {
-  name: `Next Danube ${defaults.projectEnv} CRUD - multi`,
-  group,
-  frequency: Frequency.EVERY_5M,
-  code: {
-    entrypoint: path.join(__dirname, 'multi/graphql-requests.spec.ts'),
-  },
-});
-
-new MultiStepCheck(`next-danube-${defaults.projectEnv}-binary-payload`, {
-  name: `Next Danube ${defaults.projectEnv} CRUD - multi`,
-  group,
-  frequency: Frequency.EVERY_5M,
-  code: {
-    entrypoint: path.join(__dirname, 'multi/binary-payload-multi.spec.ts'),
+    entrypoint: path.join(__dirname, '../tests/multi/multi-crud.spec.ts'),
   },
 });

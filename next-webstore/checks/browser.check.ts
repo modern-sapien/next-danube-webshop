@@ -8,7 +8,7 @@ new BrowserCheck(`next-danube-${defaults.projectEnv}-login`, {
   group,
   frequency: Frequency.EVERY_5M,
   code: {
-    entrypoint: path.join(__dirname, '../tests/login.spec.ts'),
+    entrypoint: path.join(__dirname, '../tests/e2e/login.spec.ts'),
   },
 });
 
@@ -18,6 +18,6 @@ new BrowserCheck(`next-danube-${defaults.projectEnv}-visit`, {
   tags: ['tagtest'],
   frequency: Frequency.EVERY_5M,
   code: {
-    entrypoint: path.join(__dirname, '../tests/visit.spec.ts'),
+    entrypoint: path.join(__dirname, '../tests/e2e/visit.spec.ts'),
   },
 });

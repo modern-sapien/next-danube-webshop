@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { defaults } from './defaults';
-import { validateStorageState } from './utils/validateStorageState';
-import { createChecklyContext } from './utils/checklyRequestContext';
+import { defaults } from '../defaults';
+import { validateStorageState } from '../utils/validateStorageState';
+import { createChecklyContext } from '../utils/checklyRequestContext';
 
 const apiKey =  defaults.apiKey;
 const accountID = defaults.accountID;
