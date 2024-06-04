@@ -15,7 +15,7 @@ new ApiCheck(`next-danube-${defaults.projectEnv}-books-api-check`, {
   name: `Next Danube API ${defaults.projectEnv} - Books`,
   group,
   degradedResponseTime: 3000,
-  frequency: 5,
+  frequency: 1,
   maxResponseTime: 5000,
   request: {
     url: `https://next-danube-webshop-backend${env}.vercel.app/api/v1/books`,
@@ -32,7 +32,7 @@ new ApiCheck(`next-danube-${defaults.projectEnv}-reviews-api-check`, {
   name: `Next Danube API ${defaults.projectEnv} - Reviews`,
   group,
   degradedResponseTime: 3000,
-  frequency: 10,
+  frequency: 1,
   maxResponseTime: 5000,
   request: {
     url: `https://next-danube-webshop-backend${env}.vercel.app/api/v1/reviews`,
