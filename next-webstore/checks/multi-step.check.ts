@@ -13,6 +13,6 @@ new MultiStepCheck(`next-danube-${defaults.projectEnv}-crud`, {
   group,
   frequency: Frequency.EVERY_5M,
   code: {
-    entrypoint: path.join(__dirname, '../tests/multi/multi-crud.spec.ts'),
+    entrypoint: path.join(__dirname, '../tests/multi/degraded-spacex.spec.ts'),
   },
 });
