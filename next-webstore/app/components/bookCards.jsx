@@ -6,37 +6,38 @@ import { useState, useEffect } from 'react';
 
 const tracer = trace.getTracer('vercel-tracer');
 
-async function fetchBooks() {
-  // const span = tracer.startSpan('fetchBooks');
-
-  const apiUrl =
-    process.env.NEXT_PUBLIC_NODE_ENV === 'production'
-      ? 'https://next-danube-webshop-backend.vercel.app/api/v1'
-      : 'https://next-danube-webshop-backend-staging.vercel.app/api/v1';
-
-  let books = null;
-
-  await tracer.startActiveSpan('fetchBooks', async (span) => {
-    try {
-      console.log(apiUrl);
-      const response = await fetch(`${apiUrl}/books`);
-      const responseJSON = await response.json();
-      books = responseJSON.data;
-      span.setStatus({ code: SpanStatusCode.OK });
-    } catch (error) {
-      span.setStatus({ code: SpanStatusCode.ERROR, message: error.message });
-      console.log(error);
-    } finally {
+  async function fetchBooks() {
+    const apiUrl =
+      process.env.NEXT_PUBLIC_NODE_ENV === "production"
+        ? "https://next-danube-webshop-backend.vercel.app/api/v1"
+        : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
+  
+    let books = null;
+  
+    await tracer.startActiveSpan('fetchBooks', async (span) => {
       span.addEvent('Books API was called', {
         provider: 'checkly',
         someKey: 'someValue',
       });
-      span.end();
-    }
-  });
+      console.log('Event created: Books API was called');
 
-  return books;
-}
+  
+      try {
+        console.log(apiUrl);
+        const response = await fetch(`${apiUrl}/books`);
+        const responseJSON = await response.json();
+        books = responseJSON.data;
+        span.setStatus({ code: SpanStatusCode.OK });
+      } catch (error) {
+        span.setStatus({ code: SpanStatusCode.ERROR, message: error.message });
+        console.log(error);
+      } finally {
+        span.end();
+      }
+    });
+  
+    return books;
+  }
 
 const BookCards = () => {
   const [books, setBooks] = useState(null);
