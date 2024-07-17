@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@playwright/test": "^1.32.3",
+    "@vercel/otel": "^1.9.1",
     "checkly": "^4.1.0",
     "dotenv": "^16.0.3",
     "next": "13.3.0",
