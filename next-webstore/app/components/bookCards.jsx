@@ -26,6 +26,10 @@ async function fetchBooks() {
     console.log(error);
     return null;
   } finally {
+    span.addEvent('Books API was called', {
+      provider: 'checkly',
+      someKey: 'someValue',
+    })
     span.end();
   }
 }
