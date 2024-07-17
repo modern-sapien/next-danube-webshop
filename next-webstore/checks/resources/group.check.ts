@@ -8,11 +8,7 @@ export const group = new CheckGroup(`${defaults.projectEnv}-next-danube-group`, 
   locations: ['us-east-1', 'eu-west-1'],
   tags: [`${defaults.projectEnv}`, 'cli'],
   runParallel: true,
-  retryStrategy: RetryStrategyBuilder.fixedStrategy({
-    baseBackoffSeconds: 30,
-    maxRetries: 1,
-    sameRegion: true,
-  }),
+  retryStrategy: RetryStrategyBuilder.noRetries(),
   browserChecks: {
     frequency: Frequency.EVERY_30M,
     testMatch: '*.spec.js',

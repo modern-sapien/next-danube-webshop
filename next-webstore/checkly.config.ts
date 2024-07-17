@@ -12,22 +12,23 @@ const config = defineConfig({
     runtimeId: '2024.02',
     frequency: 60,
     locations: ['us-east-1', 'eu-west-1'],
+    // privateLocations: ['private-infra'],
     tags: [`cli`],
     alertChannels: [emailChannel, slackChannel, webhookChannel],
     checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
     browserChecks: {
       frequency: 30,
-      testMatch: '*/tests/e2e/*.spec.ts',
+      testMatch: './tests/e2e/*.spec.ts',
     },
     multiStepChecks: {
       frequency: 30,
-      testMatch: '*/tests/multi/*.spec.ts',
+      testMatch: './tests/multi/*.spec.ts',
     }
   },
   cli: {
     runLocation: 'us-east-1',
-    // privateRunLocation: 'new-local'
+    // privateRunLocation: 'private-infra'
   },
 });
 

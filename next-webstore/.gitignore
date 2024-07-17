@@ -2,7 +2,7 @@
 
 # test resource
 /tests/*.spec.ts-snapshots
-/tests/e2e/*.spec.ts-snapshots
+/tests/e2e/*-snapshots
 
 # dependencies
 /node_modules

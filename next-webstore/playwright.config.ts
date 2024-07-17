@@ -1,9 +1,10 @@
+// @ts-nocheck
 import { defineConfig, devices } from "@playwright/test";
 require("dotenv").config({ path: '.env.local' });
 
 export default defineConfig({
   timeout: 60 * 1000,
-  testDir: "./tests",
+  testDir: "./tests/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
