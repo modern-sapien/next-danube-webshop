@@ -7,8 +7,6 @@ import { useState, useEffect } from 'react';
 const tracer = trace.getTracer('vercel-tracer');
 
 async function fetchBooks() {
-  // const span = tracer.startSpan('fetchBooks');
-
   const apiUrl =
     process.env.NEXT_PUBLIC_NODE_ENV === 'production'
       ? 'https://next-danube-webshop-backend.vercel.app/api/v1'
@@ -31,6 +29,7 @@ async function fetchBooks() {
         provider: 'checkly',
         someKey: 'someValue',
       });
+      console.log('Span event ended')
       span.end();
     }
   });
