@@ -1,10 +1,14 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import BookProfile from "./bookProfile";
-import { useState, useEffect } from "react";
+import Link from 'next/link';
+import { trace, SpanStatusCode } from '@opentelemetry/api';
+import BookProfile from './bookProfile';
+import { useState, useEffect } from 'react';
+
+const tracer = trace.getTracer('vercel-tracer');
 
 async function fetchBooks() {
+  const span = tracer.startSpan('fetchBooks');
   const apiUrl =
     process.env.NEXT_PUBLIC_NODE_ENV === "production"
       ? "https://next-danube-webshop-backend.vercel.app/api/v1"
@@ -15,10 +19,18 @@ async function fetchBooks() {
     const response = await fetch(`${apiUrl}/books`);
     const responseJSON = await response.json();
     const books = await responseJSON.data;
+    span.setStatus({ code: SpanStatusCode.OK }); // Use SpanStatusCode.OK
     return books;
   } catch (error) {
+    span.setStatus({ code: SpanStatusCode.ERROR, message: error.message }); // Use SpanStatusCode.ERROR
     console.log(error);
     return null;
+  } finally {
+    span.addEvent('Books API was called', {
+      provider: 'checkly',
+      someKey: 'someValue',
+    })
+    span.end();
   }
 }
 
@@ -42,27 +54,27 @@ const BookCards = () => {
   return (
     <>
       {!selectedBook && (
-        <div className="right-column">
+        <div className='right-column'>
           {books ? (
             <>
               {books.map((book) => (
                 <div
-                  className="card"
+                  className='card'
                   data-test={book.title}
                   key={book.id}
                   onClick={() => handleBookClick(book)}
                 >
                   <div
-                    data-test="book-div"
-                    style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}
+                    data-test='book-div'
+                    style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}
                   >
-                    <h3 style={{ display: "flex", justifyContent: "center" }}>{book.title}</h3>
+                    <h3 style={{ display: 'flex', justifyContent: 'center' }}>{book.title}</h3>
                     <img
-                      style={{ display: "flex", justifyContent: "center" }}
-                      src="./gatsbycover.png"
-                      width="200"
-                      height="200"
-                      alt="User profile picture"
+                      style={{ display: 'flex', justifyContent: 'center' }}
+                      src='./gatsbycover.png'
+                      width='200'
+                      height='200'
+                      alt='User profile picture'
                     />
                   </div>
 
@@ -72,7 +84,7 @@ const BookCards = () => {
                     <li>Genre: {book.genre}</li>
                     <li> Price: {book.price}</li>
                   </ul>
-                  <button className="btn" data-test="add-to-cart">
+                  <button className='btn' data-test='add-to-cart'>
                     add to cart
                   </button>
                 </div>

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { defaults } from './defaults';
-import { validateStorageState } from './utils/validateStorageState';
-import { createChecklyContext } from './utils/checklyRequestContext';
+import { defaults } from '../defaults';
+import { validateStorageState } from '../utils/validateStorageState';
+import { createChecklyContext } from '../utils/checklyRequestContext';
 
 const apiKey =  defaults.apiKey;
 const accountID = defaults.accountID;
@@ -29,7 +29,7 @@ test('login', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
 
   let response = await page.waitForResponse((response) => {
-    // console.log(response.url(), 'response url being hit');
+    console.log(response.url(), 'response url being hit');
     return response.url().includes(`/auth/login`);
   });
   const responseBody = await response.json();
