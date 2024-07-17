@@ -27,22 +27,12 @@ new BrowserCheck(`next-danube-${defaults.projectEnv}-visit`, {
   },
 });
 
-new BrowserCheck(`wealth-mgmt-bofa`, {
-  name: `Wealth Management Sign Up - browser`,
-  tags: ['cli', 'BofA'],
+new BrowserCheck(`next-danube-${defaults.projectEnv}-otel`, {
+  name: `Next Danube ${defaults.projectEnv} otel - browser`,
   group,
-  frequency: Frequency.EVERY_1M,
+  tags: ['cli', 'otel'],
+  frequency: Frequency.EVERY_10M,
   code: {
-    entrypoint: path.join(__dirname, '../tests/e2e/wealthMGMT.spec.ts'),
-  },
-});
-
-new BrowserCheck(`visual-regression-bofa`, {
-  name: `Marketing Visual Regression - browser`,
-  tags: ['cli', 'BofA'],
-  group,
-  frequency: Frequency.EVERY_1M,
-  code: {
-    entrypoint: path.join(__dirname, '../tests/e2e/visualRegression.spec.ts'),
+    entrypoint: path.join(__dirname, '../tests/e2e/otel.spec.ts'),
   },
 });
