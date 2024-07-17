@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { trace } from '@opentelemetry/api';
+import { trace, SpanStatusCode
+ } from '@opentelemetry/api';
 import BookProfile from './bookProfile';
 import { useState, useEffect } from 'react';
 
@@ -9,21 +10,20 @@ const tracer = trace.getTracer('vercel-tracer');
 
 async function fetchBooks() {
   const span = tracer.startSpan('fetchBooks');
-
   const apiUrl =
-    process.env.NEXT_PUBLIC_NODE_ENV === 'production'
-      ? 'https://next-danube-webshop-backend.vercel.app/api/v1'
-      : 'https://next-danube-webshop-backend-staging.vercel.app/api/v1';
+    process.env.NEXT_PUBLIC_NODE_ENV === "production"
+      ? "https://next-danube-webshop-backend.vercel.app/api/v1"
+      : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
 
   try {
     console.log(apiUrl);
     const response = await fetch(`${apiUrl}/books`);
     const responseJSON = await response.json();
     const books = await responseJSON.data;
-    span.setStatus({ code: trace.SpanStatusCode.OK });
+    span.setStatus({ code: SpanStatusCode.OK }); // Use SpanStatusCode.OK
     return books;
   } catch (error) {
-    span.setStatus({ code: trace.SpanStatusCode.ERROR, message: error.message });
+    span.setStatus({ code: SpanStatusCode.ERROR, message: error.message }); // Use SpanStatusCode.ERROR
     console.log(error);
     return null;
   } finally {
