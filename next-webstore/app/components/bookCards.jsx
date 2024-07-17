@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { trace, SpanStatusCode } from '@opentelemetry/api';
 import BookProfile from './bookProfile';
 import { useState, useEffect } from 'react';
@@ -8,30 +7,35 @@ import { useState, useEffect } from 'react';
 const tracer = trace.getTracer('vercel-tracer');
 
 async function fetchBooks() {
-  const span = tracer.startSpan('fetchBooks');
-  const apiUrl =
-    process.env.NEXT_PUBLIC_NODE_ENV === "production"
-      ? "https://next-danube-webshop-backend.vercel.app/api/v1"
-      : "https://next-danube-webshop-backend-staging.vercel.app/api/v1";
+  // const span = tracer.startSpan('fetchBooks');
 
-  try {
-    console.log(apiUrl);
-    const response = await fetch(`${apiUrl}/books`);
-    const responseJSON = await response.json();
-    const books = await responseJSON.data;
-    span.setStatus({ code: SpanStatusCode.OK }); // Use SpanStatusCode.OK
-    return books;
-  } catch (error) {
-    span.setStatus({ code: SpanStatusCode.ERROR, message: error.message }); // Use SpanStatusCode.ERROR
-    console.log(error);
-    return null;
-  } finally {
-    span.addEvent('Books API was called', {
-      provider: 'checkly',
-      someKey: 'someValue',
-    })
-    span.end();
-  }
+  const apiUrl =
+    process.env.NEXT_PUBLIC_NODE_ENV === 'production'
+      ? 'https://next-danube-webshop-backend.vercel.app/api/v1'
+      : 'https://next-danube-webshop-backend-staging.vercel.app/api/v1';
+
+  let books = null;
+
+  await tracer.startActiveSpan('fetchBooks', async (span) => {
+    try {
+      console.log(apiUrl);
+      const response = await fetch(`${apiUrl}/books`);
+      const responseJSON = await response.json();
+      books = responseJSON.data;
+      span.setStatus({ code: SpanStatusCode.OK });
+    } catch (error) {
+      span.setStatus({ code: SpanStatusCode.ERROR, message: error.message });
+      console.log(error);
+    } finally {
+      span.addEvent('Books API was called', {
+        provider: 'checkly',
+        someKey: 'someValue',
+      });
+      span.end();
+    }
+  });
+
+  return books;
 }
 
 const BookCards = () => {
