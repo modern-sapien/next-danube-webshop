@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { trace, SpanStatusCode } from '@opentelemetry/api';
 import BookProfile from './bookProfile';
 import { useState, useEffect } from 'react';
