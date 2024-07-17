@@ -1,9 +1,13 @@
-// instrumentation.ts
-import { registerOTel } from '@vercel/otel'
-import { SamplingDecision } from '@opentelemetry/sdk-trace-base'
-import { trace, Context } from '@opentelemetry/api'
+import { registerOTel } from '@vercel/otel';
+import { SamplingDecision } from '@opentelemetry/sdk-trace-base';
+import { Context } from '@opentelemetry/api';
+
+let initialized = false;
 
 export function register() {
+  if (initialized) return;
+  initialized = true;
+
   registerOTel({
     serviceName: 'next-danube-app',
     traceExporter: 'auto',
@@ -18,5 +22,5 @@ export function register() {
       },
     },
   });
-  console.log('instrumentation registered')
+  console.log('OpenTelemetry registered');
 }
