@@ -10,19 +10,12 @@ export function register() {
     spanProcessors: ['auto'],
     traceSampler: {
       shouldSample: (context: Context) => {
-        const isChecklySpan = trace.getSpan(context)?.spanContext()?.traceState?.get('checkly')
-        if (isChecklySpan) {
-          console.log('Sampling decision for Checkly span:', SamplingDecision.RECORD_AND_SAMPLED)
-          return {
-            decision: SamplingDecision.RECORD_AND_SAMPLED
-          }
-        } else {
-          console.log('Sampling decision for non-Checkly span:', SamplingDecision.NOT_RECORD)
-          return {
-            decision: SamplingDecision.NOT_RECORD
-          }
-        }
+        // Always sample all spans
+        console.log('Sampling decision:', SamplingDecision.RECORD_AND_SAMPLED);
+        return {
+          decision: SamplingDecision.RECORD_AND_SAMPLED,
+        };
       },
     },
-  })
+  });
 }
