@@ -26,23 +26,3 @@ new BrowserCheck(`next-danube-${defaults.projectEnv}-visit`, {
     entrypoint: path.join(__dirname, '../tests/e2e/visit.spec.ts'),
   },
 });
-
-new BrowserCheck(`wealth-mgmt-bofa`, {
-  name: `Wealth Management Sign Up - browser`,
-  tags: ['cli', 'BofA'],
-  group,
-  frequency: Frequency.EVERY_1M,
-  code: {
-    entrypoint: path.join(__dirname, '../tests/e2e/wealthMGMT.spec.ts'),
-  },
-});
-
-new BrowserCheck(`visual-regression-bofa`, {
-  name: `Marketing Visual Regression - browser`,
-  tags: ['cli', 'BofA'],
-  group,
-  frequency: Frequency.EVERY_1M,
-  code: {
-    entrypoint: path.join(__dirname, '../tests/e2e/visualRegression.spec.ts'),
-  },
-});

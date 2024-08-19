@@ -46,6 +46,8 @@ test('login', async ({ page }) => {
 
   const unixTimestamp = Math.floor(Date.now() / 1000);
 
+  console.log(defaults.apiKey)
+
   let responseStorage = await context.put(`variables/DEV_STORAGE_STATE`, {
     data: {
       key: `DEV_STORAGE_STATE`,
@@ -65,6 +67,4 @@ test('login', async ({ page }) => {
 
   console.log(responseTimeJSON.value, 'unix response time')
   console.log(responseStorageJSON.value, 'storage JSON');
-
-
 });
