@@ -20,11 +20,12 @@ const config = defineConfig({
     browserChecks: {
       frequency: 30,
       testMatch: './tests/e2e/*.spec.ts',
+      tags: ['browser'],
     },
     multiStepChecks: {
       frequency: 30,
       testMatch: './tests/multi/*.spec.ts',
-    }
+    },
   },
   cli: {
     runLocation: 'us-east-1',
