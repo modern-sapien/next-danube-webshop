@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { defaults } from '../defaults';
-import { validateStorageState } from '../utils/validateStorageState';
+// import { validateStorageState } from '../utils/validateStorageState';
 import { createChecklyContext } from '../utils/checklyRequestContext';
 
 const apiKey =  defaults.apiKey;
@@ -8,12 +8,10 @@ const accountID = defaults.accountID;
 // Declare variable we'll reference during our test
 let storageState;
 
-// test.beforeAll(async () => {
-//   // Assign storage state from env variable to test specific state
-//   storageState = await validateStorageState(apiKey, accountID);
-// });
 
 test('login', async ({ page }) => {
+  console.log(defaults.projectEnv, " projectEnv within spec")
+
   const context = await createChecklyContext(apiKey, accountID)
 
   test.setTimeout(defaults.testTime);
@@ -46,6 +44,8 @@ test('login', async ({ page }) => {
 
   const unixTimestamp = Math.floor(Date.now() / 1000);
 
+  console.log(defaults.apiKey)
+
   let responseStorage = await context.put(`variables/DEV_STORAGE_STATE`, {
     data: {
       key: `DEV_STORAGE_STATE`,
@@ -65,6 +65,4 @@ test('login', async ({ page }) => {
 
   console.log(responseTimeJSON.value, 'unix response time')
   console.log(responseStorageJSON.value, 'storage JSON');
-
-
 });

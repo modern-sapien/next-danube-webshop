@@ -1,9 +1,16 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
-## Helpful Run Commands
-NEXT_PUBLIC_NODE_STAGING=staging npx checkly test --record
-NEXT_PUBLIC_NODE_STAGING=staging npx checkly deploy
+## Helpful Run Commands 
+```bash
+NEXT_PUBLIC_ENVIRONMENT=staging npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=staging"
+```
+
+```bash
+NEXT_PUBLIC_ENVIRONMENT=production npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=production"
+```
+Why set environment variables twice? Because Checkly has a concept of build time and run time. :)
+
 
 NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly test --record
 NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly deploy
