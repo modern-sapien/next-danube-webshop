@@ -36,5 +36,5 @@ jobs:
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: NEXT_PUBLIC_ENVIRONMENT=preview npx checkly test -e NEXT_PUBLIC_ENVIRONMENT=preview NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}}  --record
+        run: NEXT_PUBLIC_ENVIRONMENT=preview npx checkly test -e "NEXT_PUBLIC_ENVIRONMENT=preview" NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.ENVIRONMENT_URL}}  --record
         continue-on-error: false
