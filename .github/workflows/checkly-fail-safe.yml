@@ -41,12 +41,12 @@ jobs:
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
+        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly test -e "NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }}" "NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }}" --reporter=github --record
       - name: Deploy checks
         id: deploy-checks
         if: steps.run-checks.outcome == 'success' && contains('main staging', github.ref)
         working-directory: next-webstore
-        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly deploy --force
+        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly deploy --force "NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }}"
       - name: Rollback
         if: steps.run-checks.outcome != 'success' && contains('main staging', github.ref)
         run: |
