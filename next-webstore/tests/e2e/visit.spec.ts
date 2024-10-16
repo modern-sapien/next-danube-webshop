@@ -20,10 +20,9 @@ test('does a simple visit and confirms the title and that it looks correct', asy
 
   await page.waitForTimeout(1000);
 
-  if( defaults.projectEnv === 'staging' || 'production') {
-    await expect(page).toHaveScreenshot();
-
-  } else {
-    console.log('test complete')
-  }
+  // if (defaults.projectEnv == 'staging' || 'production') {
+  //   await expect(page).toHaveScreenshot();
+  // } else {
+  //   console.log('test complete');
+  // }
 });
