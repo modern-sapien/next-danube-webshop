@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { defaults } from '../defaults';
-import { validateStorageState } from '../utils/validateStorageState';
+// import { validateStorageState } from '../utils/validateStorageState';
 import { createChecklyContext } from '../utils/checklyRequestContext';
 
 const apiKey =  defaults.apiKey;

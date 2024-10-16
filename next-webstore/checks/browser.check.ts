@@ -1,6 +1,7 @@
 import { BrowserCheck, Frequency, RetryStrategyBuilder } from 'checkly/constructs';
 import { defaults } from '../tests/defaults';
 import { group } from './resources/group.check';
+// alertChannels
 import * as path from 'path';
 
 new BrowserCheck(`next-danube-${defaults.projectEnv}-login`, {

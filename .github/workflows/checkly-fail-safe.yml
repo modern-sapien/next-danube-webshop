@@ -17,11 +17,11 @@ jobs:
           echo "GitHub Ref: ${{ github.ref }}"
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "Setting Environment for production"
-            echo "NEXT_PUBLIC_NODE_PRODUCTION=production" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_ENVIRONMENT=production" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop.vercel.app/" >> $GITHUB_ENV 
           elif [ "${{ github.ref }}" = "refs/heads/staging" ]; then
             echo "Setting Environment for staging"
-            echo "NEXT_PUBLIC_NODE_STAGING=staging" >> $GITHUB_ENV
+            echo "NEXT_PUBLIC_ENVIRONMENT=staging" >> $GITHUB_ENV
             echo "NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app/" >> $GITHUB_ENV
           fi 
       - name: Print Environment Variables
@@ -41,12 +41,12 @@ jobs:
       - name: Run checks
         id: run-checks
         working-directory: next-webstore
-        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
+        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly test -e NEXT_PUBLIC_ENVIRONMENT_URL=${{ env.NEXT_PUBLIC_ENVIRONMENT_URL }} --reporter=github --record
       - name: Deploy checks
         id: deploy-checks
         if: steps.run-checks.outcome == 'success' && contains('main staging', github.ref)
         working-directory: next-webstore
-        run: NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }} npx checkly deploy --force
+        run: NEXT_PUBLIC_ENVIRONMENT=${{ env.NEXT_PUBLIC_ENVIRONMENT }} npx checkly deploy --force
       - name: Rollback
         if: steps.run-checks.outcome != 'success' && contains('main staging', github.ref)
         run: |

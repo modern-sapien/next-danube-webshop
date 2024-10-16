@@ -3,7 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Helpful Run Commands 
 ```bash
-NEXT_PUBLIC_ENVIRONMENT=staging npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=staging
+NEXT_PUBLIC_ENVIRONMENT=staging npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=staging"
 ```
 
 ```bash
