@@ -10,10 +10,9 @@ const getEnvironment = () => {
 // Determine the environment
 const env = getEnvironment();
 
-new Dashboard(`next-danube-${env}-dashboard-1`, {
-  header: `Next Danube ${env} Dashboard`,
-  description: 'service availability and response times',
-  tags: [`${env}`],
-  logo: 'https://coralogix.com/wp-content/uploads/2023/05/Checkly-96X96.svg',
-  customUrl: `status-test-cli-${env}-custom`,
-})
+// new Dashboard(`next-danube-${env}-dashboard-1`, {
+//   header: `Next Danube ${env} Dashboard`,
+//   description: 'service availability and response times',
+//   tags: [`${env}`],
+//   customUrl: `status-test-cli-${env}-customs`,
+// })
