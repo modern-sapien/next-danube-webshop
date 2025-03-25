@@ -1,0 +1,19 @@
+{
+  "name": "ai-knowledgebase",
+  "version": "1.0.0",
+  "description": "We want to create a knowledgebase for locally hosted AI, so that when we have questions about the functionality for the solutions we care the most about we're referencing the most up to date information possible.",
+  "main": "index.js",
+  "dependencies": {
+    "fsevents": "^2.3.2",
+    "playwright": "^1.51.1",
+    "playwright-core": "^1.51.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.13"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
