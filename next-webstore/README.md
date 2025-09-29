@@ -7,7 +7,7 @@ NEXT_PUBLIC_ENVIRONMENT=staging npx checkly test login --record --env "NEXT_PUBL
 ```
 
 ```bash
-NEXT_PUBLIC_ENVIRONMENT=production npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=production"
+NEXT_PUBLIC_ENVIRONMENT=production npx checkly deploy  login --record --env "NEXT_PUBLIC_ENVIRONMENT=production"
 ```
 Why set environment variables twice? Because Checkly has a concept of build time and run time. :)
 

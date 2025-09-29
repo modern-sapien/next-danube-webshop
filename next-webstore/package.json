@@ -11,14 +11,15 @@
     "checkly:deploy": "npx checkly deploy",
     "checkly:unused": "NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=production NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app --record"
   },
-  "dependencies": {
-    "@playwright/test": "^1.32.3",
-    "checkly": "^5.2.0",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "checkly": "^6.6.1",
     "dotenv": "^16.0.3",
+    "jiti": "^2.5.1",
     "next": "^15.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.9.2"
   }
 }

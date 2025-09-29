@@ -23,7 +23,7 @@ new ApiCheck(`next-danube-${defaults.projectEnv}-reviews-api-check`, {
   name: `Next Danube API ${defaults.projectEnv} - Reviews`,
   group,
   degradedResponseTime: 1500,
-  frequency: 1,
+  frequency: 5,
   maxResponseTime: 3000,
   request: {
     url: `${defaults.apiUrl}/reviews`,
