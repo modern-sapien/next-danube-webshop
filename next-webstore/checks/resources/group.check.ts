@@ -1,7 +1,7 @@
-import { CheckGroup, Frequency, RetryStrategyBuilder } from 'checkly/constructs';
+import { CheckGroupV2, Frequency, RetryStrategyBuilder } from 'checkly/constructs';
 import { defaults } from '../../tests/defaults';
 
-export const group = new CheckGroup(`${defaults.projectEnv}-next-danube-group`, {
+export const group = new CheckGroupV2(`${defaults.projectEnv}-next-danube-group`, {
   name: `Next Danube - ${defaults.projectEnv}`,
   activated: true,
   frequency: Frequency.EVERY_15M,

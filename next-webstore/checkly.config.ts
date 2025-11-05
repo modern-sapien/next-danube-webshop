@@ -9,7 +9,7 @@ const config = defineConfig({
   checks: {
     activated: true,
     muted: false,
-    runtimeId: '2024.02',
+    runtimeId: '2025.04',
     frequency: 60,
     locations: ['us-east-1', 'eu-west-1'],
     // privateLocations: ['private-infra'],

@@ -19,10 +19,4 @@ test('does a simple visit and confirms the title and that it looks correct', asy
   await expect(page).toHaveTitle(/Checkly Webshop/);
 
   await page.waitForTimeout(1000);
-
-  // if (defaults.projectEnv == 'staging' || 'production') {
-  //   await expect(page).toHaveScreenshot();
-  // } else {
-  //   console.log('test complete');
-  // }
 });

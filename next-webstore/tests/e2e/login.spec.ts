@@ -28,7 +28,7 @@ test('login', async ({ page }) => {
 
   let response = await page.waitForResponse((response) => {
     console.log(response.url(), 'response url being hit');
-    return response.url().includes(`/auth/login`);
+    return response.url().includes(`/auth/logins`);
   });
   const responseBody = await response.json();
   const success = responseBody.success;

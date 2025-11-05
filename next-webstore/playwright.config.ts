@@ -10,13 +10,6 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
-  
-  webServer: {
-    command: "npm run dev",
-    url: "http://localhost:3000",
-    timeout: 60 * 1000,
-    reuseExistingServer: !process.env.CI,
-  },
   use: {
     trace: "on",
     actionTimeout: 6000,
