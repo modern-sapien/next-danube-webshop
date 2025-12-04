@@ -5,6 +5,7 @@ console.log(`projectEnv in defaults: ${projectEnv}`);
 
 export const defaults = {
   apiKey: process.env.CHECKLY_API_KEY,
+  accountID: process.env.CHECKLY_ACCOUNT_ID,
   testTime: ['production', 'staging'].includes(process.env.NODE_ENV) ? 45000 : 60000,
   waitTime: ['production', 'staging'].includes(process.env.NODE_ENV) ? 2500 : 3000,
   projectEnv: projectEnv,

@@ -5,7 +5,7 @@ import { group } from './resources/group.check';
 import * as path from 'path';
 
 new BrowserCheck(`next-danube-${defaults.projectEnv}-login`, {
-  name: `Next Danube ${defaults.projectEnv} playwrightcodegen - browser`,
+  name: `Next Danube ${defaults.projectEnv} - browser`,
   group,
   frequency: 5,
   retryStrategy: RetryStrategyBuilder.linearStrategy({

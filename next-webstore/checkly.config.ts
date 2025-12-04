@@ -3,8 +3,8 @@ import { emailChannel, slackChannel, webhookChannel } from './checks/resources/a
 import { defaults } from './tests/defaults';
 
 const config = defineConfig({
-  projectName: `Next Danube ${defaults.projectEnv}`,
-  logicalId: `next-danube-${defaults.projectEnv}`,
+  projectName: `Next Danube production`,
+  logicalId: `next-danube-production`,
   repoUrl: 'https://github.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
