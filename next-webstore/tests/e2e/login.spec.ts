@@ -18,7 +18,7 @@ test('login', async ({ page }) => {
 
   await page.goto(defaults.pageUrl);
 
-  await page.getByRole('link', { name: 'loginsss' }).click();
+  await page.getByRole('link', { name: 'login' }).click();
   await page.waitForLoadState('networkidle');
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill(defaults.testUser.email);
