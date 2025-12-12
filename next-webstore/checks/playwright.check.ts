@@ -14,7 +14,7 @@ new PlaywrightCheck(`plawyright-next-danube-${defaults.projectEnv}-playwright-lo
   frequency: 5,
 //   installCommand: "npm ci",
 //   testCommand: "npx playwright test login.spec.ts",
-  // pwProjects: ["chromium"],
+// pwProjects: ["chromium"],
 //   pwTags: ["login"],
 //   include: [".npmrc"],
 });

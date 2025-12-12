@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { defineConfig, devices } from "@playwright/test";
-require("dotenv").config({ path: '.env.local' });
+require("dotenv").config({ path: ".env.local" });
 
 export default defineConfig({
   timeout: 60 * 1000,
@@ -20,6 +20,20 @@ export default defineConfig({
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "API",
+      testDir: "./tests/multi", // Point to the first directory
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+    {
+      name: "UI",
+      testDir: "./tests/e2e", // Point to the first directory
+      use: {
+        ...devices["Desktop Chrome"],
+      },
     },
   ],
 });

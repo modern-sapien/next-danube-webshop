@@ -16,7 +16,10 @@ export const defaults = {
   pageUrl: (() => {
     if (projectEnv === 'production') return 'https://next-danube-webshop.vercel.app';
     if (projectEnv === 'staging') return 'https://next-danube-webshop-staging.vercel.app';
-    return process.env.NEXT_PUBLIC_ENVIRONMENT_URL || '';
+    return (
+      process.env.NEXT_PUBLIC_ENVIRONMENT_URL ||
+      "https://next-danube-webshop.vercel.app"
+    );
   })(),
   apiUrl:
   projectEnv === 'production'

@@ -12,6 +12,7 @@
     "checkly:unused": "NEXT_PUBLIC_NODE_ENV=test npx checkly test -e NEXT_PUBLIC_NODE_ENV=production NEXT_PUBLIC_ENVIRONMENT_URL=https://next-danube-webshop-staging.vercel.app --record"
   },
   "dependencies": {
+    "@checkly/playwright-helpers": "^1.0.4",
     "@playwright/test": "^1.32.3",
     "checkly": "^6.8.2",
     "dotenv": "^16.0.3",
