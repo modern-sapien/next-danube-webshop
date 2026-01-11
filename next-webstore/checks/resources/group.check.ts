@@ -2,7 +2,7 @@ import { CheckGroupV2, Frequency, RetryStrategyBuilder } from 'checkly/construct
 import { defaults } from '../../tests/defaults';
 
 export const group = new CheckGroupV2(`${defaults.projectEnv}-next-danube-group`, {
-  name: `Next Danube - ${defaults.projectEnv}`,
+  name: `Next Danube`,
   activated: true,
   frequency: Frequency.EVERY_15M,
   locations: ['us-east-1', 'us-west-1'],

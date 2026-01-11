@@ -1,13 +1,13 @@
-import { EmailAlertChannel, SlackAlertChannel, WebhookAlertChannel } from 'checkly/constructs';
+import { EmailAlertChannel, WebhookAlertChannel } from 'checkly/constructs';
 
 export const emailChannel = new EmailAlertChannel('email-channel-1', {
   address: 'alerts@acme.com',
 });
 
-export const slackChannel = new SlackAlertChannel('slack-channel-1', {
-  url: new URL(`https://hooks.slack.com/services/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'`),
-  channel: '#ops'
-})
+// export const slackChannel = new SlackAlertChannel('slack-channel-1', {
+//   url: new URL(`https://hooks.slack.com/services/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'`),
+//   channel: '#ops'
+// })
 
 export const webhookChannel = new WebhookAlertChannel('webhook-channel-1', {
   name: 'Pushover webhook',

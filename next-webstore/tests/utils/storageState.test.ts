@@ -46,16 +46,19 @@ test('login', async ({ page }) => {
 
   const unixTimestamp = Math.floor(Date.now() / 1000);
 
-  let responseStorage = await context.put(`variables/DEV_STORAGE_STATE`, {
+  const storageVarName = defaults.checklyVars.storageState;
+  const cookieTimeVarName = defaults.checklyVars.cookieTime;
+
+  let responseStorage = await context.put(`variables/${storageVarName}`, {
     data: {
-      key: `DEV_STORAGE_STATE`,
+      key: storageVarName,
       value: `${stringifiedStorage}`,
     },
   });
 
-  let responseTime = await context.put(`variables/DEV_COOKIE_TIME`, {
+  let responseTime = await context.put(`variables/${cookieTimeVarName}`, {
     data: {
-      key: `DEV_COOKIE_TIME`,
+      key: cookieTimeVarName,
       value: `${unixTimestamp}`,
     },
   });
@@ -65,6 +68,4 @@ test('login', async ({ page }) => {
 
   console.log(responseTimeJSON.value, 'unix response time')
   console.log(responseStorageJSON.value, 'storage JSON');
-
-
 });

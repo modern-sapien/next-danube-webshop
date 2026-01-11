@@ -18,7 +18,7 @@ test('login', async ({ page }) => {
 
   await page.goto(defaults.pageUrl);
 
-  await page.getByRole('link', { name: 'login' }).click();
+  await page.getByRole('link', { name: 'loginss' }).click();
   await page.waitForLoadState('networkidle');
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill(defaults.testUser.email);
@@ -28,7 +28,7 @@ test('login', async ({ page }) => {
 
   let response = await page.waitForResponse((response) => {
     console.log(response.url(), 'response url being hit');
-    return response.url().includes(`/auth/logins`);
+    return response.url().includes(`/auth/login`);
   });
   const responseBody = await response.json();
   const success = responseBody.success;
@@ -46,16 +46,19 @@ test('login', async ({ page }) => {
 
   console.log(defaults.apiKey)
 
-  let responseStorage = await context.put(`variables/DEV_STORAGE_STATE`, {
+  const storageVarName = defaults.checklyVars.storageState;
+  const cookieTimeVarName = defaults.checklyVars.cookieTime;
+
+  let responseStorage = await context.put(`variables/${storageVarName}`, {
     data: {
-      key: `DEV_STORAGE_STATE`,
+      key: storageVarName,
       value: `${stringifiedStorage}`,
     },
   });
 
-  let responseTime = await context.put(`variables/DEV_COOKIE_TIME`, {
+  let responseTime = await context.put(`variables/${cookieTimeVarName}`, {
     data: {
-      key: `DEV_COOKIE_TIME`,
+      key: cookieTimeVarName,
       value: `${unixTimestamp}`,
     },
   });
@@ -78,7 +81,7 @@ test("login electric boogaloo", async ({ page }) => {
 
   await page.goto(defaults.pageUrl);
 
-  await page.getByRole("link", { name: "loginsss" }).click();
+  await page.getByRole("link", { name: "login" }).click();
   await page.waitForLoadState("networkidle");
   await page.locator('input[type="email"]').click();
   await page.locator('input[type="email"]').fill(defaults.testUser.email);
@@ -106,16 +109,19 @@ test("login electric boogaloo", async ({ page }) => {
 
   console.log(defaults.apiKey);
 
-  let responseStorage = await context.put(`variables/DEV_STORAGE_STATE`, {
+  const storageVarName = defaults.checklyVars.storageState;
+  const cookieTimeVarName = defaults.checklyVars.cookieTime;
+
+  let responseStorage = await context.put(`variables/${storageVarName}`, {
     data: {
-      key: `DEV_STORAGE_STATE`,
+      key: storageVarName,
       value: `${stringifiedStorage}`,
     },
   });
 
-  let responseTime = await context.put(`variables/DEV_COOKIE_TIME`, {
+  let responseTime = await context.put(`variables/${cookieTimeVarName}`, {
     data: {
-      key: `DEV_COOKIE_TIME`,
+      key: cookieTimeVarName,
       value: `${unixTimestamp}`,
     },
   });

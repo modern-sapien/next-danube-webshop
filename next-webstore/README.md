@@ -1,71 +1,192 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Danube Webshop
 
+A [Next.js](https://nextjs.org/) e-commerce demo application with integrated [Checkly](https://www.checklyhq.com/) monitoring.
 
-## Helpful Run Commands 
-```bash
-NEXT_PUBLIC_ENVIRONMENT=staging npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=staging"
+## Architecture
+
+This frontend repo supports multiple deployment environments with Checkly monitoring:
+
+```
+Production  → https://next-danube-webshop.vercel.app
+Staging     → https://next-danube-webshop-staging.vercel.app
+Preview     → Dynamic Vercel preview URLs (per PR)
+Development → http://localhost:3000
 ```
 
+### Environment Detection
+
+The system automatically detects the environment:
+
+1. **Explicit**: `NEXT_PUBLIC_ENVIRONMENT=production|staging` takes priority
+2. **Vercel Preview**: Detected via `VERCEL_ENV=preview` + `VERCEL_URL`
+3. **Fallback**: Defaults to `development`
+
+### Checkly Integration
+
+Each environment has isolated Checkly configurations:
+
+| Environment | Check Frequency | Checkly Variables | Deployed to Checkly |
+|-------------|-----------------|-------------------|---------------------|
+| Production  | 5 min           | `PROD_*`          | Yes                 |
+| Staging     | 15 min          | `STAGING_*`       | Yes                 |
+| Preview     | Ad-hoc          | `PREVIEW_*`       | No (CI only)        |
+| Development | Ad-hoc          | `DEV_*`           | No                  |
+
+## Prerequisites
+
+1. Node.js 18+
+2. Checkly account with API key
+3. Environment variables configured (see below)
+
+## Environment Variables
+
+Create a `.env` or `.env.local` file:
+
 ```bash
-NEXT_PUBLIC_ENVIRONMENT=production npx checkly test login --record --env "NEXT_PUBLIC_ENVIRONMENT=production"
+# Checkly credentials
+CHECKLY_API_KEY=your_api_key
+CHECKLY_ACCOUNT_ID=your_account_id
+
+# Optional: Override URLs for local development
+NEXT_PUBLIC_ENVIRONMENT_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
 ```
-Why set environment variables twice? Because Checkly has a concept of build time and run time. :)
 
+## Installation
 
-NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly test --record
-NEXT_PUBLIC_NODE_PRODUCTION=production npx checkly deploy
+```bash
+npm install
+```
 
-NEXT_PUBLIC_NODE_PREVIEW=preview npx checkly test --record
+### First-time Setup
 
-## New Checkly Features
-Visual comparison - Beta
-* npx checkly test --update-snapshots
-* npx checkly test --record
-* tests/visit.spec.ts
+Create the Checkly environment variables for all environments:
 
-Multi-step check - Beta
-* tests/multi-crud.spec.ts
-* checks/multi-step.check.ts
+```bash
+npm run checkly:setup-vars
+```
 
-Retry Strategy - GA & Run Parallel - Beta
-* checks/resources/group.check.ts
-  * fixed, linear, expontential options
+This creates `PROD_STORAGE_STATE`, `PROD_COOKIE_TIME`, `STAGING_STORAGE_STATE`, and `STAGING_COOKIE_TIME` in your Checkly account.
 
-
-## Getting Started
-
-First, run the development server:
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Testing Commands
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.js`.
+### Local Playwright Tests
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+# Run all e2e tests locally
+npx playwright test
+
+# Run specific test
+npx playwright test login.spec.ts
+```
+
+### Checkly Tests (Ad-hoc)
+
+```bash
+# Test against production
+npm run checkly:test:prod
+
+# Test against staging
+npm run checkly:test:staging
+
+# Test with recording (includes traces/videos)
+npm run checkly:test:prod -- --record
+```
+
+### Checkly Deployment (Persistent Monitoring)
+
+```bash
+# Deploy checks to monitor production
+npm run checkly:deploy:prod
+
+# Deploy checks to monitor staging
+npm run checkly:deploy:staging
+```
+
+## NPM Scripts Reference
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run checkly:test` | Run Checkly tests (default env) |
+| `npm run checkly:test:prod` | Run Checkly tests against production |
+| `npm run checkly:test:staging` | Run Checkly tests against staging |
+| `npm run checkly:deploy` | Deploy checks (default env) |
+| `npm run checkly:deploy:prod` | Deploy checks for production monitoring |
+| `npm run checkly:deploy:staging` | Deploy checks for staging monitoring |
+| `npm run checkly:setup-vars` | Create Checkly environment variables |
+
+## Project Structure
+
+```
+.
+├── checks/                    # Checkly check definitions
+│   ├── api.check.ts          # API health checks
+│   ├── browser.check.ts      # Browser checks
+│   ├── playwright.check.ts   # Playwright-based checks
+│   ├── multi-step.check.ts   # Multi-step checks
+│   └── resources/
+│       ├── alertChannels.ts  # Alert channel configs
+│       ├── group.check.ts    # Check group definition
+│       └── dashboard.check.ts
+├── tests/
+│   ├── defaults.ts           # Central environment config
+│   ├── e2e/                  # Playwright e2e tests
+│   │   ├── login.spec.ts
+│   │   ├── visit.spec.ts
+│   │   └── ...
+│   ├── multi/                # Multi-step API tests
+│   └── utils/
+│       ├── checklyRequestContext.ts
+│       └── validateStorageState.ts
+├── scripts/
+│   └── setup-checkly-variables.ts
+├── checkly.config.ts         # Checkly CLI configuration
+└── playwright.config.ts      # Playwright configuration
+```
+
+## CI/CD Integration
+
+### GitHub Actions
+
+The repo includes workflows for:
+
+- **Preview Deployments**: Runs Checkly tests against Vercel preview URLs
+- **Production Deployment**: Deploys Checkly checks after production deploy
+- **Staging Deployment**: Deploys Checkly checks after staging deploy
+
+Required GitHub Secrets:
+- `CHECKLY_API_KEY`
+- `CHECKLY_ACCOUNT_ID`
+
+### Vercel Integration
+
+The environment is auto-detected from Vercel's environment variables:
+- `VERCEL_ENV`: `production`, `preview`, or `development`
+- `VERCEL_URL`: The deployment URL
+
+## Checkly Features Used
+
+- **Browser Checks**: Playwright-based UI testing
+- **API Checks**: Endpoint health monitoring
+- **Multi-step Checks**: Complex user flow testing
+- **Retry Strategy**: Configurable retry patterns (linear, exponential)
+- **Check Groups**: Organized check management
+- **Alert Channels**: Email and webhook notifications
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Checkly Documentation](https://www.checklyhq.com/docs/)
+- [Playwright Documentation](https://playwright.dev/docs/intro)

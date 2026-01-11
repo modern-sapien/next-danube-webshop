@@ -18,8 +18,10 @@ jobs:
         run: cd next-webstore && npx playwright install chromium --with-deps
       - name: Run Playwright tests
         working-directory: ./next-webstore
-        # always setting NODE_ENV as test & running against localhost:3000
-        run: NEXT_PUBLIC_NODE_ENV=test NEXT_PUBLIC_ENVIRONMENT_URL=http://localhost:3000 npx playwright test
+        env:
+          NEXT_PUBLIC_ENVIRONMENT: development
+          NEXT_PUBLIC_ENVIRONMENT_URL: http://localhost:3000
+        run: npx playwright test
       - uses: actions/upload-artifact@v3
         if: always()
         with:

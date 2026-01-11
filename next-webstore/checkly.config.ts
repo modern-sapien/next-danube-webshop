@@ -1,35 +1,33 @@
 import { defineConfig } from 'checkly';
-import { emailChannel, slackChannel, webhookChannel } from './checks/resources/alertChannels';
+import { emailChannel, webhookChannel } from './checks/resources/alertChannels';
 import { defaults } from './tests/defaults';
 
 const config = defineConfig({
-  projectName: `Next Danube production`,
-  logicalId: `next-danube-production`,
+  projectName: `Next Danube ${defaults.projectEnv}`,
+  logicalId: `next-danube-${defaults.projectSuffix}`,
   repoUrl: 'https://github.com/modern-sapien/next-danube-webshop',
   checks: {
     activated: true,
     muted: false,
     runtimeId: '2025.04',
-    frequency: 60,
+    frequency: defaults.checkFrequency,
     locations: ['us-east-1', 'eu-west-1'],
-    // privateLocations: ['private-infra'],
-    tags: [`cli`],
-    alertChannels: [emailChannel, slackChannel, webhookChannel],
+    tags: [defaults.projectEnv, 'cli'],
+    alertChannels: [emailChannel, webhookChannel],
     checkMatch: '*/**/*.check.ts',
     ignoreDirectoriesMatch: [],
     browserChecks: {
-      frequency: 30,
+      frequency: defaults.checkFrequency,
       testMatch: './tests/e2e/*.spec.ts',
-      tags: ['browser'],
+      tags: ['browser', defaults.projectEnv],
     },
     multiStepChecks: {
-      frequency: 30,
+      frequency: defaults.checkFrequency,
       testMatch: './tests/multi/*.spec.ts',
     },
   },
   cli: {
-    runLocation: 'us-east-1',
-    // privateRunLocation: 'private-infra'
+    runLocation: 'us-west-1',
   },
 });
 
