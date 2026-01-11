@@ -8,10 +8,10 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
       - name: Install dependencies
         run: cd next-webstore && npm ci
       - name: Install Playwright Browsers
@@ -22,7 +22,7 @@ jobs:
           NEXT_PUBLIC_ENVIRONMENT: development
           NEXT_PUBLIC_ENVIRONMENT_URL: http://localhost:3000
         run: npx playwright test
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
