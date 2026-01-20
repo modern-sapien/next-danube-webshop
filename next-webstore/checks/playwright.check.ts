@@ -19,7 +19,7 @@ new PlaywrightCheck(`${env}-playwright-e2e-suite`, {
   name: `E2E Test Suite (Playwright)`,
   alertChannels,
   playwrightConfigPath: '../playwright.config.ts',
-  testCommand: 'npx playwright test tests/e2e --project=chromium',
+  testCommand: 'npx playwright test tests/e2e --project=firefox',
   group,
   frequency: Frequency.EVERY_1H,
   activated: defaults.isPersistentEnv, // Only for prod/staging

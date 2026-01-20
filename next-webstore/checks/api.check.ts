@@ -27,7 +27,7 @@ new ApiCheck(`next-danube-${defaults.projectEnv}-reviews-api-check`, {
   maxResponseTime: 3000,
   request: {
     url: `${defaults.apiUrl}/reviews`,
-    method: 'GET',
+    method: 'POST',
     followRedirects: true,
     skipSSL: false,
     assertions: [AssertionBuilder.statusCode().equals(200)],

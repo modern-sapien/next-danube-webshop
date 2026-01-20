@@ -70,7 +70,7 @@ test.describe('API User Flow - Complete Journey', () => {
       expect(response).toBeOK();
       const body = await response.json();
       expect(body.success).toBe(true);
-      expect(Array.isArray(body.data)).toBe(true);
+      expect(Array.isArray(body.data)).toBe(false);
     });
 
     // Step 6: Submit a new review
