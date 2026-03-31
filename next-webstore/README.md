@@ -185,6 +185,42 @@ The environment is auto-detected from Vercel's environment variables:
 - **Check Groups**: Organized check management
 - **Alert Channels**: Email and webhook notifications
 
+## What This Repo Demonstrates
+
+This repository is a reference implementation for **production-grade monitoring and continuous quality assurance** built on top of a realistic full-stack application. It goes well beyond a typical demo app to show how modern teams ship and monitor software with confidence.
+
+### Monitoring as Code
+
+All monitoring configuration lives in the repository alongside the application code. Checkly checks, alert channels, dashboards, check groups, and maintenance windows are defined as TypeScript files in `checks/` and `checks/resources/`. This means monitoring is version-controlled, peer-reviewed, and deployed through the same CI/CD pipeline as the application itself — eliminating configuration drift between what you ship and what you monitor.
+
+### Multi-Layer Testing Strategy
+
+The repo showcases three distinct testing layers working together:
+
+- **E2E Browser Tests** (`tests/e2e/`) — Playwright tests that exercise real user flows: login, navigation, catalog browsing, cart checkout, and account management. These same tests run locally during development, in CI on every push, and continuously in production via Checkly.
+- **Multi-Step API Tests** (`tests/multi/`) — Orchestrated API test sequences that validate complete backend workflows: authentication flows, CRUD operations, user journeys across multiple endpoints, error handling, and security checks (XSS, malformed input).
+- **Synthetic API Monitors** (`checks/api.check.ts`) — Lightweight HTTP checks with response time SLAs (degraded at 1500ms, failing at 3000ms) that run continuously from multiple geographic locations.
+
+### Environment-Aware Configuration
+
+A single `tests/defaults.ts` file drives all environment-specific behavior. The system automatically detects whether it is running against development, staging, preview, or production — and adjusts target URLs, check frequency, and credentials accordingly. This means the same test suite works seamlessly across every stage of the deployment pipeline without any manual reconfiguration.
+
+### CI/CD with Automated Rollback
+
+The GitHub Actions workflows demonstrate a deployment safety net:
+
+1. **Every push** triggers Playwright tests to catch regressions early.
+2. **Preview deployments** on Vercel automatically trigger Checkly checks against the preview URL, giving PR reviewers monitoring validation before merge.
+3. **Merged PRs** to `main` or `staging` trigger a fail-safe workflow: Checkly tests run against the deployed environment, and if they fail, the commit is automatically reverted — preventing broken deployments from persisting in production.
+
+### Test-to-Monitor Reuse
+
+One of the most valuable patterns demonstrated here is **writing tests once and using them in two contexts**. The Playwright specs in `tests/e2e/` serve as both local/CI test assertions and as Checkly browser checks running on a schedule in production. This eliminates the common problem of maintaining separate test suites for QA and monitoring, reducing duplication and ensuring that what you test before shipping is exactly what you monitor after shipping.
+
+### Alerting and Observability
+
+The `checks/resources/` directory shows how to configure alert channels (email and webhook-based push notifications), organize checks into logical groups by environment, set up monitoring dashboards for at-a-glance status, and define maintenance windows to suppress false alarms during planned downtime. This is the operational scaffolding that turns a test suite into a production monitoring system.
+
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
